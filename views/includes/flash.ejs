@@ -1,0 +1,16 @@
+<% if(success && success.length){ %>
+    <div class="alert alert-success  d-flex align-items-center alert-dismissible fade show col-6 offset-3" role="alert">
+        <%=success%>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% } %>
+
+
+<% if(error && error.length){ %>
+    <div class="alert alert-danger  d-flex align-items-center alert-dismissible fade show col-6 offset-3" role="alert">
+        <%=error%>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% } %>
+
+<!-- success.length>0 OR only success.length both are equal -->
