@@ -24,7 +24,7 @@ const flash = require("connect-flash");
 
 const passPort = require("passport");
 const LocalStartegy = require("passport-local");
-const User = require("./models/user.js");
+const Usr = require("./models/user.js");
 //const passport = require("passport");
 
 const sessionOptions = {
@@ -59,24 +59,24 @@ app.use(flash());
 
 app.use(passPort.initialize());
 app.use(passPort.session());
+passPort.use(new LocalStartegy(Usr.authenticate()));
 
-passPort.use(LocalStartegy(User.authenticate()));
-passPort.serializeUser(User.serializeUser())
-passPort.deserializeUser(User.deserializeUser())
+passPort.serializeUser(Usr.serializeUser());
+passPort.deserializeUser(Usr.deserializeUser());
+
+app.get("/demoUser", async (req, res) => {
+    let fakeUser = new Usr({
+        email:"abc",
+        username: "ABC"
+    });
+    let newUser = await Usr.register(fakeUser, "helloworld")
+    res.send(newUser);
+})
 
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     next();
-})
-
-app.get("/demoUser", async (req, res) => {
-    let fakeUser = new User({
-        email:"abc",
-        username: "ABC"
-    })
-    const newUser = await User.register(fakeUser, "helloworld")
-    res.send(newUser);
 })
 
 app.use("/listings", Routers);

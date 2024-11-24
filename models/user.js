@@ -6,8 +6,8 @@ const userSchema = new Schema({
     email: {
         type:String,
         required:true
-    }
+    },
 })
 
 userSchema.plugin(passportLocalMongoose);
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Usr', userSchema);
