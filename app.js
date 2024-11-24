@@ -34,7 +34,7 @@ const sessionOptions = {
 
 main()
 .then(() => {
-    console.log("Success")
+    console.log("Database was connected")
 })
 .catch((err) => {
     console.log(err)
