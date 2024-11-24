@@ -98,9 +98,9 @@ body{
 
 .btns{
     display:flex;
-    margin-left: 285px;
+    margin-left: 21rem;
 }
 
 .deleteBtn{
-    margin-left:20px
+    margin-left:2rem
 }
