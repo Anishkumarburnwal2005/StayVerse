@@ -16,16 +16,16 @@ app.use(methodOverride("_method"));
 const  ExpressError = require("./utils/ExpressError.js");
 const mongoose = require("mongoose");
 
-const Routers = require("./routes/route.js");
-const Reviews = require("./routes/review.js");
+const listingRouters = require("./routes/route.js");
+const reviewRouters = require("./routes/review.js");
+const userRouters = require("./routes/user.js");
 
 const session = require("express-session");
 const flash = require("connect-flash");
 
 const passPort = require("passport");
 const LocalStartegy = require("passport-local");
-const Usr = require("./models/user.js");
-//const passport = require("passport");
+const User = require("./models/user.js");
 
 const sessionOptions = {
     secret: "My pleasure",
@@ -50,28 +50,24 @@ async function main(){
     await mongoose.connect("mongodb://127.0.0.1:27017/wonderList");
 }
 
-app.get("/", (req, res) => {
-    res.redirect("/listings");
-})
-
 app.use(session(sessionOptions));
 app.use(flash());
 
 app.use(passPort.initialize());
 app.use(passPort.session());
-passPort.use(new LocalStartegy(Usr.authenticate()));
+passPort.use(new LocalStartegy(User.authenticate()));
 
-passPort.serializeUser(Usr.serializeUser());
-passPort.deserializeUser(Usr.deserializeUser());
+passPort.serializeUser(User.serializeUser());
+passPort.deserializeUser(User.deserializeUser());
 
-app.get("/demoUser", async (req, res) => {
-    let fakeUser = new Usr({
-        email:"abc",
-        username: "ABC"
-    });
-    let newUser = await Usr.register(fakeUser, "helloworld")
-    res.send(newUser);
-})
+// app.get("/demoUser", async (req, res) => {
+//     let fakeUser = new User({
+//         email:"abc",
+//         username: "ABC"
+//     });
+//     let newUser = await User.register(fakeUser, "helloworld")
+//     res.send(newUser);
+// })
 
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
@@ -79,17 +75,19 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use("/listings", Routers);
-app.use("/listings/:id/reviews", Reviews);
+app.use("/listings", listingRouters);
+app.use("/listings/:id/reviews", reviewRouters);
+app.use("/", userRouters);
 
 app.all("*", (req, res, next) => {
-    throw new ExpressError(404, "Page not found!!")
+    throw new ExpressError(404, "Page not found!!");
 })
 
 app.use((err, req, res, next) => {
     let {statusCode = 500, message = "Something went Wrong"} = err;
     //res.status(statusCode).send(message);
     res.status(statusCode).render("error.ejs", {err});
+    next(); 
 })
 
 app.listen(port, () => {
