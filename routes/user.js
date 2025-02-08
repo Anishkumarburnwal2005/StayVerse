@@ -11,19 +11,19 @@ router.get("/", userController.root);
 
 router
     .route("/signUp")
-    .get(userController.getSign)
-    .post(wrapAsync(userController.postSign));
+    .get(userController.getSign) //signUp
+    .post(wrapAsync(userController.postSign)); //signUp
 
 router
     .route("/login")
-    .get(userController.getLogin)
-    .post(saveRedirectUrl, passport.authenticate("local",
+    .get(userController.getLogin) //Login
+    .post(saveRedirectUrl, passport.authenticate("local", 
         {failureRedirect: "/login",
         failureFlash: true
         }
     ),
         userController.postLogin
-    );
+    );//login
 
 router.get("/logout", userController.logout);
 

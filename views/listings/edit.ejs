@@ -6,57 +6,54 @@
 
      <div class="row">
         <div class="col-7 offset-2">
-            <h2>Edit the listing</h2>
-            <form method="POST" action="/listings/<%=listing._id%>?_method=PUT" class="needs-validation" novalidate enctype="multipart/form-data">
-        <br>
-        <div class="mb-3">
-            <label for="title" class="form-label"><b>Give a title :</b></label>
-            <input type="text" id="title" name="listing[title]" value="<%=listing.title%>" class="form-control" required>
-            <div class="valid-feedback">Title looks good!!</div>
-            <div class="invalid-feedback">Enter a suitable Title.</div>
-        </div>
-        
-        <div class="mb-3">
-            <label for="description" class="form-label"><b>Write descriptions :</b></label>
-            <input type="text" id="description" name="listing[description]" value="<%=listing.description%>" class="form-control" required>
-            <div class="invalid-feedback">Please enter a short description!!</div>
-        </div>
-        
-        <div class="mb-3">
-            <img src="<%=orignalImageUrl%>"/>
-        </div>
-        
-        <div class="mb-3">
-            <label for="image" class="form-label"><b>Upload listing image :</b></label>
-            <input type="file" id="image" name="listing[image][url]" class="form-control">
-            <div class="invalid-feedback">Enter a valid image url</div>
-        </div>
-        
-        <div class="mb-3">
-            <label for="location" class="form-label"><b>Give location :</b></label>
-            <input type="text" id="locaiton" name="listing[location]" value="<%=listing.location%>" class="form-control" required>
-            <div class="invalid-feedback">Location should be valid</div>
-        </div>
-    
-        <div class="row">
-            <div class="mb-3 col-md-4">
-                <label for="price" class="form-label"><b>Set the price :</b></label>
-                <input id="price" name="listing[price]" value="<%=listing.price%>" class="form-control" required>
-                <div class="invalid-feedback">Price should be valid</div>
-            </div>
+            <h2 class="mb-4 mt-3">Edit the listing</h2>
             
-            <div class="mb-3 col-md-8">
-                <label for="country" class="form-label"><b>Enter your country :</b></label>
-                <input type="text" id="country" name="listing[country]" value="<%=listing.country%>" class="form-control" required>
-                <div class="invalid-feedback">Country should be valid</div>
-            </div>
+            <form method="POST" action="/listings/<%=listing._id%>?_method=PUT" class="needs-validation" novalidate enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="title" class="form-label"><b>Title:</b></label>
+                    <input type="text" id="title" name="listing[title]" value="<%=listing.title%>" class="form-control" required>
+                    <div class="valid-feedback">Title looks good!!</div>
+                    <div class="invalid-feedback">Enter a suitable Title.</div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="description" class="form-label"><b>Description: </b></label>
+                    <input type="text" id="description" name="listing[description]" value="<%=listing.description%>" class="form-control" required>
+                    <div class="invalid-feedback">please enter a short description!!</div>
+                </div>
+                
+                <div class="mb-3">
+                    <img src="<%=listing.image.url%>" alt="listing_img" style="height: 12rem; width: 20rem; border-radius: 0.8rem;"/>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="image" class="form-label"><b>Upload new image: </b></label>
+                    <input type="file" id="image" name="listing[image]" class="form-control">
+                    <div class="invalid-feedback">Enter a valid image url</div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="location" class="form-label"><b>Location: </b></label>
+                    <input type="text" id="locaiton" name="listing[location]" value="<%=listing.location%>" class="form-control" required>
+                    <div class="invalid-feedback">Location should be valid</div>
+                </div>
+            
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                        <label for="price" class="form-label"><b>Price: </b></label>
+                        <input id="price" name="listing[price]" value="<%=listing.price%>" class="form-control" required>
+                        <div class="invalid-feedback">Price should be valid</div>
+                    </div>
+                    
+                    <div class="mb-3 col-md-8">
+                        <label for="country" class="form-label"><b>Country: </b></label>
+                        <input type="text" id="country" name="listing[country]" value="<%=listing.country%>" class="form-control" required>
+                        <div class="invalid-feedback">Country should be valid</div>
+                    </div>
+                </div>
+                <button class="btn btn-outline-success">Edit</button>
+            </form>
         </div>
-        
-        <br><br>
-        <button class="btn btn-primary">Edit</button>
-        <br><br>
-        </form>
-        </div>
-        </div>
+    </div>
 </body>
 

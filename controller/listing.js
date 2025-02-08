@@ -1,8 +1,8 @@
 const Listing = require("../models/listing.js");
 
 module.exports.index = async (req, res) => {
-    let lists = await Listing.find({});
-    res.render("listings/index.ejs", { lists });
+    let listings = await Listing.find({});
+    res.render("listings/index.ejs", { listings });
 };
 
 module.exports.renderNewForm =  (req, res) => {
@@ -11,7 +11,7 @@ module.exports.renderNewForm =  (req, res) => {
 
 module.exports.renderShowForm = async (req, res) => {
     let { id } = req.params;
-    const data = await Listing.findById(id)
+    const listing = await Listing.findById(id)
     .populate({
         path: "reviews",
         populate: {
@@ -19,20 +19,29 @@ module.exports.renderShowForm = async (req, res) => {
         },
     })
     .populate("owner");
-    if(!data){
+    if(!listing){
         req.flash("error", "Listing you requested for does not exist!")
         res.redirect("/listings")
     }
-    res.render("listings/show.ejs", { data });
-}
+    res.render("listings/show.ejs", { listing });
+};
 
 module.exports.create = async(req, res) => {
-    let {path, filename} = req.file;
-    //console.log(path, "...", filename);
+   
+    //console.log(url, "...", filename);
     let newListing = new Listing(req.body.listing);
     newListing.owner = req.user._id;
-    newListing.image.url = path;
-    newListing.image.filename = filename;
+    
+    if(req.file){
+        const url = req.file.path;
+        const filename = req.file.filename;
+        newListing.image = {filename, url};
+        //console.log(newListing);
+    }else{
+        const url = "https://media.audleytravel.com/-/media/images/home/europe/uk/overview-letterboxes/istock_509915554_uk_antrim_coast_3000x1000.jpg?q=79&w=1920&h=685";
+        const filename = "listingImg";
+        newListing.image = {filename, url};
+    }
     await newListing.save();
     req.flash("success", "New Listing Created!")
     res.redirect("/listings");
@@ -45,15 +54,14 @@ module.exports.edit = async (req, res) => {
         req.flash("error", "Listing you requested for edit does not exist!")
         res.redirect("/listings")
     }
-    let orignalImageUrl = listing.image.url;
-    orignalImageUrl =  orignalImageUrl.replace("/upload", "/upload/h_180,w_280");
-    res.render("listings/edit.ejs", { listing, orignalImageUrl });
+    res.render("listings/edit.ejs", {listing});
 };
 
 module.exports.update = async (req, res) => {
     let { id } = req.params;
     //console.log(path, "...", filename);
     let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing});
+
     if(typeof req.file !== "undefined"){
         let {path, filename} = req.file;
         listing.image.url = path;

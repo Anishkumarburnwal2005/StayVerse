@@ -5,7 +5,7 @@ module.exports.root =  (req, res) => {
 };
 
 module.exports.getSign =  (req, res) => {
-    res.render("Users/form.ejs");
+    res.render("Users/signUp.ejs");
 };
 
 module.exports.postSign = async (req, res) => {
