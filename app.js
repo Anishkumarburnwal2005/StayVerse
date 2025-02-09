@@ -25,15 +25,46 @@ const reviewRouters = require("./routes/review.js");
 const userRouters = require("./routes/user.js");
 
 const session = require("express-session");
+const MongoStore = require('connect-mongo');
 const flash = require("connect-flash");
 
 const passPort = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 
+const dbUrl = process.env.ATLASDB_URL;
+
+main()
+.then(() => {
+    console.log("Databse was connected successfully");
+})
+.catch((err) => {
+    console.log(err);
+});
+
+async function main() {
+    await mongoose.connect(dbUrl);
+};
+
+// app.get("/", (req, res) => {
+//     res.send("Working Baby!");
+// })
+
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    crypto:{
+        secret: process.env.SECRET,
+    },
+    touchAfter: 24*3600,
+});
+
+store.on("error", () => {
+    console.log("Error in MONGO SESSION STORE", err);
+});
 
 const sessionOptions = {
-    secret: "My pleasure",
+    store,
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false, 
     cookie: {
@@ -43,21 +74,7 @@ const sessionOptions = {
     }
 };
 
-// Database connection
-async function main() {
-    try {
-        await mongoose.connect("mongodb://127.0.0.1:27017/wonderList");
-        console.log("Database was connected");
-    } catch (err) {
-        console.log("Database connection failed:", err.message);
-    }
-}
 
-main();
-
-// app.get("/", (req, res) => {
-//     res.send("Working Baby!");
-// })
 
 app.use(session(sessionOptions));
 app.use(passPort.initialize());
