@@ -1,5 +1,29 @@
 const Listing = require("../models/listing.js");
 
+// const mapToken = process.env.MAP_TOKEN;
+// console.log(mapToken);
+
+//console.log(process.env.MAP_TOKEN);
+
+
+async function getCoordinates(address) {
+    try {
+        const response = await fetch(
+            `https://api.maptiler.com/geocoding/${encodeURIComponent(address)}.json?key=${process.env.MAP_TOKEN}`
+        );
+        const data = await response.json();
+
+        if (data.features.length === 0) {
+            throw new Error("Location not found!");
+        }
+
+        return data.features[0].geometry; // [longitude, latitude]
+    } catch (error) {
+        console.error("Geocoding Error:", error);
+        return null;
+    }
+}
+
 module.exports.index = async (req, res) => {
     let listings = await Listing.find({});
     res.render("listings/index.ejs", { listings });
@@ -42,8 +66,29 @@ module.exports.create = async(req, res) => {
         const filename = "listingImg";
         newListing.image = {filename, url};
     }
-    await newListing.save();
-    req.flash("success", "New Listing Created!")
+
+    try {
+        const address = newListing.location; // Form से लिया गया Address
+        const geometry = await getCoordinates(address);
+
+        if (!geometry) {
+            req.flash("error", "Invalid address! Please enter a valid location.");
+            return res.redirect("/listings/new");
+        }
+
+        //const [longitude, latitude] = coordinates;
+        //console.log(longitude, "....", latitude);
+        newListing.geometry=geometry;
+
+    } catch (err) {
+        console.error(err);
+        req.flash("error", "Geocoding failed!");
+        res.redirect("/listings/new");
+    }
+
+    const updatedListing = await newListing.save();
+    console.log(updatedListing);
+    req.flash("success", "New Listing Created!");
     res.redirect("/listings");
 };
 
@@ -79,47 +124,3 @@ module.exports.delete = async (req, res) => {
     req.flash("success", "Listing Deleted!")
     res.redirect("/listings");
 };
-
-
-
-    
-    //     let {title, description, price, location, country, image} = req.body;
-    //     let newListing = new Listing({
-    //         title: title,
-    //         price: price,
-    //         image:image,
-    //         description: description,
-    //         location: location,
-    //         country: country
-    //     })
-    
-    //     newListing.save()
-    //     .then(() => {
-    //         console.log("Data was saved")
-    //     })
-    
-    //     let newListing = req.body.listing;
-    //     console.log(newListing)
-    
-    
-    //     if(!req.body.listing){
-    //         throw new ExpressError(400, "Send valid data for listing!!")
-    //     }
-    //     if(!req.body.title){
-    //         throw new ExpressError(400, "Title was missing!!")
-    //     }
-    //     if(!req.body.listing){
-    //         throw new ExpressError(400, "description was missing!!")
-    //     }
-    //     if(!req.body.Location){
-    //         throw new ExpressError(400, "Location was missing!!")
-    //     } //ETC
-        
-    //     let result = listingSchema.validate(req.body);
-    //     console.log(result);
-    //     if(result.error) {
-    //         throw new ExpressError(400, result.error);
-    //     }
-    
-    
-    

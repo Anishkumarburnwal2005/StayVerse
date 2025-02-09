@@ -19,18 +19,97 @@ body{
     flex: 1;
 }
 
-.navbar {
+/* .navbar {
     height:4.6rem;
     background-color: rgb(238, 237, 237);
 }
 
-.fa-compass {
-    color:#fe424d;
-    font-size:2rem
+.navbar, .container-fluid{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.navbar .search-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar .right-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto; /* Right align karega */
+/* }
+
+
 .nav-link{
     color:#222222 !important;
+} */ 
+
+.navbar {
+    height: 4.6rem;
+    background-color: rgb(238, 237, 237);
 }
+
+.navbar-brand {
+    font-size: 2rem;
+    
+}
+
+.fa-compass {
+    color:#fe424d;
+    font-size:3.5rem
+}
+
+.navbar .form-control {
+    width: 100%;
+}
+
+.navbar .searchBtn {
+    background-color: #fe424d;
+    color: white;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem;
+}
+
+.searchInput{
+    border-radius: 25px !important;
+    padding: 0.5rem 3rem 0.5rem 3rem !important;
+    font-size: 1.2rem !important;
+}
+
+.searchBtn i{
+    display: inline;
+    margin-right: 0.5rem;
+}
+
+.searchBtn:hover{
+    background-color: #fe424d !important;
+    color: white !important;
+}
+
+.searchBtn:active{
+    background-color: #fff !important;
+    color: #fe424d !important;
+}
+
+.navbar .dropdown-menu {
+    right: 0;
+    left: auto;
+}
+
+.fa-bars {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.fa-bars:hover {
+    opacity: 1;
+}
+
+/* Footer Styling */
 
 .f-info-links a{
     color:#111111;
@@ -79,7 +158,7 @@ body{
 
 .f-info{
     text-align: center;
-    height:6.3rem;
+    height:7rem;
     background-color: #dddada;
     display:flex;
     flex-wrap:wrap;
@@ -94,7 +173,7 @@ body{
 }
 
 .card-img-top{
-    border-radius: 1rem !important;
+    border-radius: 1.2rem !important;
     width:100% !important;
     object-fit: cover !important;
 }
@@ -137,17 +216,18 @@ body{
     margin-left:2rem
 }
 
-
-.fa-bars{
-    opacity:0.8;
+/* Index.ejs */
+.boldTitle{
+    font-weight: 600 !important;
+}
+.boldPrice{
+    font-weight: 500 !important;
 }
 
-.ms-auto{
-    position: relative !important;
-    left:45rem !important;
-    
-} 
 
-.fa-bars:hover{
-    opacity:1;
+/* Map Styling */
+
+#map {
+    height:400px;
+    width:750px;
 }

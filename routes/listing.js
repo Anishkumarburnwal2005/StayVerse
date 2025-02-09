@@ -27,7 +27,7 @@ router
         upload.single('listing[image]'), 
         validateListing, 
         wrapAsync(listingController.update   
-        )); //Update route
+    )); //Update route
 
 
 // Edit Route

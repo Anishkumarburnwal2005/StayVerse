@@ -1,24 +1,28 @@
 
 <%layout("/Layout/boilerplate.ejs")%>
+<script>
+    const mapToken = "<%=process.env.MAP_TOKEN%>";
+    const listing = <%- JSON.stringify(listing)%>;
+</script>
 
 <body>
     <div class="row mt-3">
         <div class="col-8 offset-3">
             <h2><b><%=listing.title%></b></h2>
         </div>
-            <br>
-            <div class="card col-6 offset-3 show-card listing-card">
-                <img src="<%=listing.image.url%>" class="card-img-top show-img" alt="listing_image">
-                <div class="card-body">
-                    <div class="card-text">
-                        <i><b class="boldH">Owned By: </b> <b class="boldP">@<%=listing.owner.username%></b></i><br><br>
-                        <b class="boldH">Description: </b> <b class="boldP"><%=listing.description%></b><br>
-                        <b class="boldH">Price: </b> <b class="boldP">&#8377;<%= listing.price.toLocaleString("en-IN")%>/ Night</b><br>
-                        <b class="boldH">Location: </b> <b class="boldP"><%=listing.location%></b><br>
-                        <b class="boldH">Country: </b> <b class="boldP"><%=listing.country%></b>
-                    </div>
+        <br>
+        <div class="card col-6 offset-3 show-card listing-card">
+            <img src="<%=listing.image.url%>" class="card-img-top show-img" alt="listing_image">
+            <div class="card-body">
+                <div class="card-text">
+                    <i><b class="boldH">Owned By: </b> <b class="boldP">@<%=listing.owner.username%></b></i><br><br>
+                    <b class="boldH">Description: </b> <b class="boldP"><%=listing.description%></b><br>
+                    <b class="boldH">Price: </b> <b class="boldP">&#8377;<%= listing.price.toLocaleString("en-IN")%>/ Night</b><br>
+                    <b class="boldH">Location: </b> <b class="boldP"><%=listing.location%></b><br>
+                    <b class="boldH">Country: </b> <b class="boldP"><%=listing.country%></b>
                 </div>
             </div>
+        </div>
     </div>
 
     <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
@@ -64,22 +68,31 @@
                 </form>
             <% } %>
             <hr>
-            <P><b>All Reviews</b></P>
-            <div class="row">
-                <% for(review of listing.reviews) {%>
-                    <div class="card col-5 ms-3 mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">@<%=review.author.username%></h5>
-                            <p class="starability-result card-text" data-rating= "<%= review.rating%>"></p>
-                            <p class="card-text"><%= review.comment%></p>
+            
+            <%if(listing.reviews.length > 0 ){%>
+                <div class="row">
+                    <P><b>All Reviews</b></P>
+                    <% for(review of listing.reviews) {%>
+                        <div class="card col-5 ms-3 mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">@<%=review.author.username%></h5>
+                                <p class="starability-result card-text" data-rating= "<%= review.rating%>"></p>
+                                <p class="card-text"><%= review.comment%></p>
+                            </div>
+                            <%if(currUser && currUser._id.equals(review.author._id)){%>
+                            <form class="mb-3" method="POST" action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE">
+                                <button class="btn  btn-danger mt-2">Delete</button>
+                            </form>
+                            <%}%>
                         </div>
-                        <%if(currUser && currUser._id.equals(review.author._id)){%>
-                        <form class="mb-3" method="POST" action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE">
-                            <button class="btn  btn-danger mt-2">Delete</button>
-                        </form>
-                        <%}%>
-                    </div>
-                <% } %>
-            </div>
+                    <% } %>
+                </div>
+            <%}%>
         </div>
+       
+    <div class="col-8 offset-3 mb-3 mt-3">
+        <h3>Where you'll be</h3>
+        <div id="map"></div>
+    </div>
+    <script src="/js/map.js"></script>
 </body>
