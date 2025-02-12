@@ -2,136 +2,171 @@
 <%layout("/Layout/boilerplate.ejs")%>
 
 <style>
-    #filters{
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-    }
-    .filters{
-        text-align: center;
-        margin-right:2rem;
-        margin-top: 1rem;
-        opacity: 0.7;
-    }
-    .filters:hover{
-        opacity: 1;
-        cursor: pointer;
-    }
-    .filters p{
-        font-size: 0.8rem;
-    }
+    @media(min-width:300px) and (max-width:700px) {
+        .card-img-top{
+            border-radius: 1.2rem !important;
+            height:10rem !important;
+            max-width: 100% !important;
+            object-fit: cover !important;
+           
+        }
+    
+        .boldTitle, .boldPrice, .GST{
+            font-size: 1rem;
+            font-weight: 700 !important;
+        }
 
-    .GST{
-        display: none;
-    }
+        /* .listing-card, .listing-link{
+            
+           
+        } */
 
-    .tax-toggle{
-        border: 2px solid black !important; 
-        border-radius: 1rem;
-        padding: 1rem;
-        height: 2.8rem;
-        margin-left: auto;
-        display: flex;
-        align-items: center;
-    }
+        .listing-link{
+            height:8rem;
+            width: 10rem;
+            margin-bottom: 7rem !important;
+        }
 
-    .rightAngle, .leftAngle{
-        height:35px;
-        width:35px;
-        border: 2px solid black !important; 
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+        .bebo{
+            display: flex !important;
+            flex-wrap: wrap !important;
+            justify-content: space-evenly;
+            position: absolute;
+            top: 14rem;
+            bottom:5rem;
+            margin-right: 30px;
+            /* gap: 2rem !important; */
+        }
 
-    .rightAngle, .leftAngle, .tax-toggle{
-        background-color: rgb(231, 229, 229);
-    }
+        .rightAngle{
+            height: 55px;
+            width: 55px;
+            position: absolute;
+            left:28.5rem;
+            border-radius: 50%;
+        }
 
-    .fa-angles-right{
-        font-size:1.5rem;
-    }
+        /* .bebo2{
+            margin:5px;
+        } */
+        
+        .listing-card {
+            height: 15rem !important;
+            width:10rem !important;
+            /* margin-bottom: 3rem !important;    */
+            /* gap: 3rem !important; */
+        }
 
-    .leftAngle{
-        font-size:1.5rem;
-        margin-right: 2rem;
+ 
     }
 </style>
 
-<div id="filters">
+<div id="filters-container">
+    <div id="filters">
 
-    <div class="leftAngle">
-        <i class="fa-solid fa-angles-left"></i>
-    </div>
-
-    <div class="filters">
-        <div><i class="fa-solid fa-fire"></i></div>
-        <p>Trending</p>
-    </div>
-
-    <div class="filters">
-        <div><i class="fa-solid fa-bed"></i></div>
-        <p>Rooms</p>
-    </div>
-
-    <div class="filters">
-        <div><i class="fa-solid fa-mountain-city"></i></div>
-        <p>Iconic cities</p>
-    </div>
-
-    <div class="filters">
-        <div><i class="fa-solid fa-mountain-sun"></i></div>
-        <p>Mountain</p>
-    </div>
-
-
-
-    <div class="filters">
-        <div><i class="fa-solid fa-person-swimming"></i></div>
-        <p>Pools</p>
-    </div>
-
-    <div class="filters">
-        <div><i class="fa-solid fa-house"></i></div>
-        <p>Cabins</p>
-    </div>
-
-    <div class="filters">
-        <div><i class="fa-solid fa-snowflake"></i></div>
-        <p>Arctic</p>
-    </div>
-
-    <div class="filters">
-        <div><i class="fa-solid fa-umbrella-beach"></i></div>
-        <p>Beach</p>
-    </div>
-
-    <div class="filters">
-        <div><i class="fa-solid fa-cow"></i></div>
-        <p>Farms</p>
-    </div>
-
-    <div class="rightAngle">
-        <i class="fa-solid fa-angles-right"></i>
-    </div>
-
-    <div class="tax-toggle">
-        <div class="form-check-reverse form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Display Total Taxes</label>
+        <div class="leftAngle">
+            <i class="fa-solid fa-angles-left"></i>
         </div>
+
+        <div class="filters ">
+            <div><i class="fa-solid fa-fire"></i></div>
+            <p>Empty</p>
+        </div>
+
+
+        <div class="filters ">
+            <div><i class="fa-solid fa-fire"></i></div>
+            <p>Trending</p>
+        </div>
+
+        <div class="filters ">
+            <div><i class="fa-solid fa-bed"></i></div>
+            <p>Rooms</p>
+        </div>
+
+        <div class="filters ">
+            <div><i class="fa-solid fa-mountain-city"></i></div>
+            <p>Iconic cities</p>
+        </div>
+
+        <div class="filters ">
+            <div><i class="fa-solid fa-mountain-sun"></i></div>
+            <p>Mountain</p>
+        </div>
+
+
+
+        <div class="filters">
+            <div><i class="fa-solid fa-person-swimming"></i></div>
+            <p>Pools</p>
+        </div>
+
+        <div class="filters">
+            <div><i class="fa-solid fa-house"></i></div>
+            <p>Cabins</p>
+        </div>
+
+        <div class="filters">
+            <div><i class="fa-solid fa-snowflake"></i></div>
+            <p>Arctic</p>
+        </div>
+
+        <div class="filters">
+            <div><i class="fa-solid fa-umbrella-beach"></i></div>
+            <p>Beach</p>
+        </div>
+
+        <div class="filters">
+            <div><i class="fa-solid fa-cow"></i></div>
+            <p>Farms</p>
+        </div>
+
+        <div class="filters">
+            <div><i class="fa-solid fa-umbrella-beach"></i></div>
+            <p>Beach</p>
+        </div>
+
+        <div class="filters">
+            <div><i class="fa-solid fa-snowflake"></i></div>
+            <p>Arctic</p>
+        </div>
+
+        <div class="filters">
+            <div><i class="fa-solid fa-umbrella-beach"></i></div>
+            <p>Beach</p>
+        </div>
+
+        <div class="filters">
+            <div><i class="fa-solid fa-cow"></i></div>
+            <p>Farms</p>
+        </div>
+
+        <div class="filters">
+            <div><i class="fa-solid fa-umbrella-beach"></i></div>
+            <p>Beach</p>
+        </div>
+        
+        <div class="rightAngle">
+            <i class="fa-solid fa-angles-right"></i>
+        </div>
+    </div>
+</div>
+
+<div class="tax-toggle">
+    <div class="form-check-reverse form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Display Total Taxes</label>
     </div>
 </div>
 
 
 <body>
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+    <div class="row row-cols-lg-3 row-cols-md-2 mt-3  bebo">
         <% for(listing of listings){ %>
             <a href="/listings/<%=listing._id%>" class="listing-link">
                 <div class="card col listing-card">
                     <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image" style="height: 20rem;">
-                    <div class="card-img-overlay"></div>
+                    <!-- <div class="card-img-overlay"></div> -->
                     <div class="card-body">
                       <p class="card-text">
                         <b class="boldTitle"><%=listing.title%></b><br>
@@ -156,7 +191,23 @@
                     info.style.display = "none";
                 }
             }
-            
         });
+
+
+        let rightAngle = document.querySelector(".rightAngle");
+        let leftAngle = document.querySelector(".leftAngle");
+
+        let allIcons = document.getElementById("filters");
+        
+        rightAngle.addEventListener("click", () => {
+            // console.log("hello");
+            
+            allIcons.scrollBy({left:-150, behavior:"smooth"});
+        });
+
+        leftAngle.addEventListener("click", () => {
+            //console.log("hello");
+            allIcons.scrollBy({left:150, behavior:"smooth"});
+        })
     </script>
 </body>
