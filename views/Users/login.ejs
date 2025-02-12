@@ -1,7 +1,17 @@
 <% layout("/Layout/boilerplate.ejs")%>
 
+<style>
+    @media(max-width:500px) and (orientation:portrait){
+       .loginPage{
+            margin:4rem 1rem 4rem 2rem !important;
+            width:19rem !important;
+            padding: 0;
+       }
+    }
+</style>
+
     <div class="row">
-        <div class="col-6 offset-3 mt-4">
+        <div class="col-6 offset-3 mt-4 loginPage">
             <h1>Login on Wanderlust</h1>
             <hr>
             <form method="POST" action="/login" class="needs-validation" novalidate>

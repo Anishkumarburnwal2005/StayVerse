@@ -2,10 +2,19 @@
 
 <% layout("/Layout/boilerplate.ejs")%>
 
-<body>
+<style>
+    @media(max-width:500px) and (orientation:portrait){
+       .editPage{
+            margin:0 1rem 4rem 2rem !important;
+            width:19rem !important;
+            padding: 0;
+       }
+    }
+</style>
 
+<body>
      <div class="row container">
-        <div class="col-7 offset-2">
+        <div class="col-7 offset-2 editPage">
             <h2 class="mb-4 mt-3">Edit the listing</h2>
             
             <form method="POST" action="/listings/<%=listing._id%>?_method=PUT" class="needs-validation" novalidate enctype="multipart/form-data">

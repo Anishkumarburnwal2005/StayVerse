@@ -1,3 +1,15 @@
+<style>
+    @media(max-width:500px) and (orientation:portrait){
+       .alert{
+            /* margin:0 15px 0 0 ; 
+            width:30rem;
+            height:3rem;
+            padding: 0; */
+            display: none;
+       }
+    }
+</style>
+
 <% if(success && success.length){ %>
     <div class="alert alert-success  d-flex align-items-center alert-dismissible fade show col-6 offset-3" role="alert">
         <%=success%>

@@ -1,9 +1,22 @@
 
 <% layout("/Layout/boilerplate.ejs")%>
 
+<style>
+    @media(max-width:500px) and (orientation:portrait){
+       
+
+       .newPage{
+            margin:0 1rem 0 2.5rem !important;
+            width:19rem !important;
+            padding: 0;
+       }
+    }
+</style>
+
+
 <body>
     <div class="row container">
-        <div class="col-7 offset-2 mb-3">
+        <div class="col-7 offset-2 mb-3 newPage">
             <h2 class="mt-3 mb-4">Create New Listing: </h2>
             <form method="POST" action="/listings/post" class="needs-validation" novalidate enctype="multipart/form-data">
                 <div class="mb-2">

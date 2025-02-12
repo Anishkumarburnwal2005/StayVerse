@@ -5,10 +5,91 @@
     const listing = <%- JSON.stringify(listing)%>;
 </script>
 
+<style>
+    @media(max-width:500px) and (orientation:portrait){
+       .show-img{
+            height: 25vh !important;
+           width: 20rem!important;
+            object-fit: cover !important;
+       }
+
+       .show-card{
+            height: 25rem;
+            width: 40rem;
+       }
+
+       .card-body{
+            width: 19.5rem;
+            height:1rem !important;
+            margin:0 0 2px 15px;
+       }
+
+       .container{
+            margin:0 0 0 0 !important;
+            padding: 0;
+         
+       }
+
+       .babu{
+            margin: 1.5rem 18rem 0 0 !important;
+       }
+
+       .babuTitle{
+            margin: 0 0 10px 15px;
+            width: 19.5rem;
+       }
+
+       #map {
+            height:200px;
+            width:310px;
+        }
+
+        .mapPage{
+            margin: 0 1rem 0 3rem;
+        }
+
+        .reviewPage{
+            margin: 0  0 0 3rem;
+        }
+
+        .showReviewPage{
+            width:17rem;
+            height:9rem;
+        }
+
+        .deleteBtnReview{
+            font-size: 7px;
+            margin-left: 12.5rem;
+            margin-bottom: 13rem;
+        }
+
+        .reviewText{
+            width:15.8rem;
+            height: 4rem;
+        }
+
+        .editBtn{
+            width: 4rem;
+            margin:0 0 0 45px;
+        }
+
+        .deleteBtn{
+            display: inline-block;
+            width: 4rem;
+            margin:0 0 0 45px;
+        }
+
+        .show-btns{
+            margin:0 0 0 0;
+        }
+    }
+</style>
+
+
 <body>
-    <div class="row mt-3">
+    <div class="row mt-3 babu">
         <div class="col-8 offset-3">
-            <h2><b><%=listing.title%></b></h2>
+            <h2 class="babuTitle"><b><%=listing.title%></b></h2>
         </div>
         <br>
         <div class="card col-6 offset-3 show-card listing-card">
@@ -26,10 +107,15 @@
     </div>
 
     <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
-        <div class="btns">
-            <h4><a href="/listings/<%=listing._id%>/edit" class="btn btn-primary">Edit</a></h4>
-            <div class="deleteBtn">
-                <form method="post" action="/listings/<%=listing._id%>/delete?_method=DELETE">
+        <div class="row show-btns mb-2">
+            <div class="col-md-1 offset-3 editBtn">
+                <form method="GET" action="/listings/<%=listing._id%>/edit">
+                    <button class="btn btn-primary">Edit</button>
+                </form>
+            </div>
+
+            <div class="col-md-1 deleteBtn">
+                <form method="POST" action="/listings/<%=listing._id%>/delete?_method=DELETE">
                     <button class="btn btn-danger">Delete</button>
                 </form>
             </div>
@@ -37,7 +123,7 @@
     <% } %>
 
 
-        <div class="col-8 offset-3 mb-3 mt-1">
+        <div class="col-8 offset-3 mb-3 mt-1 reviewPage">
             <% if(currUser) { %>
                 <hr>
                 <h4>Leave a Review</h4>
@@ -73,15 +159,15 @@
                 <div class="row">
                     <P><b>All Reviews</b></P>
                     <% for(review of listing.reviews) {%>
-                        <div class="card col-5 ms-3 mb-3">
+                        <div class="card col-5 ms-3 mb-3 showReviewPage">
                             <div class="card-body">
                                 <h5 class="card-title">@<%=review.author.username%></h5>
                                 <p class="starability-result card-text" data-rating= "<%= review.rating%>"></p>
-                                <p class="card-text"><%= review.comment%></p>
+                                <p class="card-text reviewText"><%= review.comment%></p>
                             </div>
                             <%if(currUser && currUser._id.equals(review.author._id)){%>
                             <form class="mb-3" method="POST" action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE">
-                                <button class="btn  btn-danger mt-2">Delete</button>
+                                <button class="btn  btn-danger mt-2 deleteBtnReview">Delete</button>
                             </form>
                             <%}%>
                         </div>
@@ -90,7 +176,7 @@
             <%}%>
         </div>
        
-    <div class="col-8 offset-3 mb-3 mt-3">
+    <div class="col-8 offset-3 mb-3 mt-3 mapPage">
         <h3>Where you'll be</h3>
         <div id="map"></div>
     </div>

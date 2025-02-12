@@ -149,7 +149,6 @@ body{
     font-weight: 600 !important;
 }
 
-
 .f-info-links a:hover{
     text-decoration: underline;
     color:black;
@@ -166,6 +165,7 @@ body{
     align-items: space-evenly;
 }
 
+/* navbar */
 
 .listing-card{
     border:none !important;

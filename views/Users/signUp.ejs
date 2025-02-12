@@ -1,8 +1,22 @@
 <% layout("/Layout/boilerplate.ejs")%>
 
+<style>
+    @media(max-width:500px) and (orientation:portrait){
+       .signUpPage{
+            margin:4rem 1rem 4rem 2rem !important;
+            width:19rem !important;
+            padding: 0;
+       }
+
+       .signHeading{
+            width:23rem;
+       }
+    }
+</style>
+
     <div class="row">
-        <div class="col-6 offset-3 mt-4">
-            <h1>SignUp on Wanderlust</h1>
+        <div class="col-6 offset-3 mt-4 signUpPage">
+            <h1 class="signHeading">SignUp on Wanderlust</h1>
             <hr>
             <form method="POST" action="/signUp" class="needs-validation" novalidate>
                 <div class="mb-3">
