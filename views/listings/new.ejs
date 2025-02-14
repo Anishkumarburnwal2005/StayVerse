@@ -38,6 +38,28 @@
                     <label for="image" class="form-label">Upload image:</label>
                     <input type="file" id="image" name="listing[image]" placeholder="Enter your Image/url" class="form-control">
                 </div>
+
+                <div class="mb-2">
+                    <label for="category" class="form-label" >Category:</label>
+                    <select id="category" name="listing[category]" class="form-select" required>
+                        <option selected>Trending</option>
+                        <option >Beach</option>
+                        <option >Cabins</option>
+                        <option >Desert Stays</option>
+                        <option >Farms</option>
+                        <option >Forest Reteats</option>
+                        <option >Hotels</option>
+                        <option >Iconic cities</option>
+                        <option >Igloo</option>
+                        <option >Island</option>
+                        <option >Jungle Lodges</option>
+                        <option >Lakefront</option>
+                        <option >Mountain</option>
+                        <option >Snow</option>
+                        <option >Trending</option>
+                    </select>
+                    <div class="invalid-feedback">Location should be valid</div>
+                </div>
                 
                 <div class="mb-2">
                     <label for="location" class="form-label" >Location:</label>
@@ -60,7 +82,7 @@
                         <div class="invalid-feedback">Country should be valid</div>
                     </div>
                 </div>
-                <button class="btn btn-outline-success" class="mb-3 mt-3">Create</button>
+                <button class="btn btn-outline-primary" class="mb-3 mt-3">Create</button>
             </form>
         </div>
     </div>

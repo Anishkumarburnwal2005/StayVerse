@@ -2,7 +2,7 @@
 <%layout("/Layout/boilerplate.ejs")%>
 
 <style>
-    @media(max-width:500px) and (orientation:portrait){
+     @media(max-width:500px) and (orientation:portrait){
         .card-img-top{
             border-radius: 1.2rem !important;
             height:8rem !important;
@@ -72,12 +72,6 @@
         color: black;
         text-decoration: none;
     }
-
-    .indexImg{
-        height:16rem !important;
-        width:24rem !important;
-    }
-
 </style>
 
 <div id="filters-container">
@@ -147,7 +141,7 @@
         <div class="filters">
             <%category="Igloo"%>
             <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-solid fa-igloo"></i></div>
+                <div><i class="fa-solid fa-snowflake"></i></div>
                 <p>Igloo</p>
             </a>
         </div>
@@ -172,7 +166,7 @@
         <div class="filters">
             <%category="Forest Retreats"%>
             <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-solid fa-tree"></i></div>
+                <div><i class="fa-sharp fa-solid fa-house-tree"></i></div>
                 <p>Forest Retreats</p>
             </a>
         </div>
@@ -180,7 +174,7 @@
         <div class="filters">
             <%category="Lakefront"%>
             <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-duotone fa-solid fa-house-tsunami"></i></div>
+                <div><i class="fa-sharp fa-solid fa-house-flood-water"></i></div>
                 <p>Lakefront</p>
             </a>
         </div>
@@ -188,7 +182,7 @@
         <div class="filters">
             <%category="Jungle Lodges"%>
             <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-regular fa-tree-city"></i></div>
+                <div><i class="fa-duotone fa-regular fa-tree-city"></i></div>
                 <p>Jungle Lodges</p>
             </a>
         </div>
@@ -196,7 +190,7 @@
         <div class="filters">
             <%category="Desert Stays"%>
             <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-sharp fa-solid fa-house-flood-water"></i></div>
+                <div><i class="fa-solid fa-island-tropical"></i></div>
                 <p>Desert Stays</p>
             </a>
         </div>
@@ -225,16 +219,17 @@
 
 <body>
     <div class="row row-cols-lg-3 row-cols-md-2 row-cols-md-1 mt-3  bebo">
-        <% for(listing of listings){ %>
+        <% for(listing of locationListings){ %>
             <a href="/listings/<%=listing._id%>" class="listing-link">
                 <div class="card col listing-card">
-                    <img src="<%=listing.image.url%>" class="card-img-top indexImg" alt="listing_image" style="height: 20rem;">
+                    <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image" style="height: 20rem;">
                     <!-- <div class="card-img-overlay"></div> -->
                     <div class="card-body">
                       <p class="card-text">
                         <b class="boldTitle"><%=listing.title%></b><br>
                         <b class="boldPrice">&#8377;<%= (listing.price != null ? listing.price.toLocaleString("en-IN") : "N/A")%>/Night</b>
-                        <i class="boldPrice GST">&nbsp; &nbsp; &nbsp; &nbsp; +18% GST</i>
+                        <i class="boldPrice GST">&nbsp; &nbsp; &nbsp; &nbsp; +18% GST</i><br>
+                        <b class="boldH">Location: </b> <b class="boldP"><%=listing.location%></b>
                       </p>
                     </div>
                 </div>

@@ -31,6 +31,7 @@ const flash = require("connect-flash");
 const passPort = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
+const Listing = require('./models/listing.js');
 
 const dbUrl = process.env.ATLASDB_URL;
 
@@ -90,6 +91,27 @@ app.use((req, res, next) => {
     res.locals.error = req.flash("error");
     res.locals.currUser = req.user; 
     next();
+});
+
+app.get("/listings/page/:category", async(req, res) => {
+    let {category:categListing} = req.params;
+    let categoryListings = await Listing.find({category:categListing});
+    if(categoryListings.length==0){
+        req.flash("error", `Listings are not exist for ${categListing}!`);
+        return res.redirect("/listings");
+    }
+    res.render("listings/categoryPage", {categoryListings});
+});
+
+app.get("/listings/search", async(req, res) => {
+    let {search:locateListing} = req.query;
+    let locationListings = await Listing.find({location:locateListing});
+    //console.log(locateListing);
+    if(locationListings.length==0){
+        req.flash("error", `Listings are not exist for ${locateListing}!`);
+        return res.redirect("/listings");
+    }
+    res.render("listings/locationPage", {locationListings});
 });
 
 app.use("/listings", listingRouters);

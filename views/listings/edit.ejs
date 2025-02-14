@@ -10,6 +10,10 @@
             padding: 0;
        }
     }
+
+    .editPage{
+        margin-bottom: 1.5rem;
+    }
 </style>
 
 <body>
@@ -41,6 +45,28 @@
                     <div class="invalid-feedback">Enter a valid image url</div>
                 </div>
                 
+                <div class="mb-2">
+                    <label for="category" class="form-label" >Category:</label>
+                    <select id="category" name="listing[category]" class="form-select" required>
+                        <option selected><%=listing.category%></option>
+                        <option >Beach</option>
+                        <option >Cabins</option>
+                        <option >Desert Stays</option>
+                        <option >Farms</option>
+                        <option >Forest Reteats</option>
+                        <option >Hotels</option>
+                        <option >Iconic cities</option>
+                        <option >Igloo</option>
+                        <option >Island</option>
+                        <option >Jungle Lodges</option>
+                        <option >Lakefront</option>
+                        <option >Mountain</option>
+                        <option >Snow</option>
+                        <option >Trending</option>
+                    </select>
+                    <div class="invalid-feedback">Location should be valid</div>
+                </div>
+
                 <div class="mb-3">
                     <label for="location" class="form-label"><b>Location: </b></label>
                     <input type="text" id="locaiton" name="listing[location]" value="<%=listing.location%>" class="form-control" required>
@@ -60,7 +86,7 @@
                         <div class="invalid-feedback">Country should be valid</div>
                     </div>
                 </div>
-                <button class="btn btn-outline-success">Edit</button>
+                <button class="btn btn-outline-primary">Update</button>
             </form>
         </div>
     </div>

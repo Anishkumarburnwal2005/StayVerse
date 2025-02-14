@@ -84,6 +84,11 @@
             margin:0 0 0 0;
         }
     }
+
+    .deleteBtn{
+        margin:0 0 0 35px;
+    }
+
 </style>
 
 
@@ -98,6 +103,7 @@
             <div class="card-body">
                 <div class="card-text">
                     <i><b class="boldH">Owned By: </b> <b class="boldP">@<%=listing.owner.username%></b></i><br><br>
+                    <b class="boldH">Category: </b> <b class="boldP"><%=listing.category%></b><br>
                     <b class="boldH">Description: </b> <b class="boldP"><%=listing.description%></b><br>
                     <b class="boldH">Price: </b> <b class="boldP">&#8377;<%= listing.price.toLocaleString("en-IN")%>/ Night</b><br>
                     <b class="boldH">Location: </b> <b class="boldP"><%=listing.location%></b><br>
@@ -111,13 +117,13 @@
         <div class="row show-btns mb-2">
             <div class="col-md-1 offset-3 editBtn">
                 <form method="GET" action="/listings/<%=listing._id%>/edit">
-                    <button class="btn btn-primary">Edit</button>
+                    <button class="btn btn-outline-primary">Update</button>
                 </form>
             </div>
 
             <div class="col-md-1 deleteBtn">
                 <form method="POST" action="/listings/<%=listing._id%>/delete?_method=DELETE">
-                    <button class="btn btn-danger">Delete</button>
+                    <button class="btn btn-outline-danger">Delete</button>
                 </form>
             </div>
         </div>

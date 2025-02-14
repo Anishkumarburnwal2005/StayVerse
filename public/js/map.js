@@ -18,5 +18,5 @@ map.addControl(new maplibregl.NavigationControl());
 const marker = new maplibregl.Marker({color:"red"})
     .setLngLat(listing.geometry.coordinates)
     .setPopup(new maplibregl.Popup({offset:25})
-    .setHTML(`<h5>${listing.location} (${listing.country})</h5><B><h6>Exact location wll br provided provided after booking!</h6></B>`))
+    .setHTML(`<h6>${listing.title}</h6><b><p>${listing.location} (${listing.country})</p></b><B><p>Exact location wll br provided provided after booking!</p></B>`))
     .addTo(map);
