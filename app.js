@@ -105,7 +105,7 @@ app.get("/listings/page/:category", async(req, res) => {
 
 app.get("/listings/search", async(req, res) => {
     let {search:locateListing} = req.query;
-    let locationListings = await Listing.find({location:locateListing});
+    let locationListings = await Listing.find({country:locateListing});
     //console.log(locateListing);
     if(locationListings.length==0){
         req.flash("error", `Listings are not exist for ${locateListing}!`);
