@@ -18,6 +18,7 @@ const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
 
 const ExpressError = require("./utils/ExpressError.js");
+const wrapAsync = require("./utils/wrapAsync.js");
 const mongoose = require("mongoose");
 
 const listingRouters = require("./routes/listing.js");
@@ -93,7 +94,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get("/listings/page/:category", async(req, res) => {
+app.get("/listings/page/:category", wrapAsync(async(req, res) => {
     let {category:categListing} = req.params;
     let categoryListings = await Listing.find({category:categListing});
     if(categoryListings.length==0){
@@ -101,19 +102,19 @@ app.get("/listings/page/:category", async(req, res) => {
         return res.redirect("/listings");
     }
     res.render("listings/categoryPage", {categoryListings});
-});
+}));
 
-app.get("/listings/search", async(req, res) => {
+app.get("/listings/search", wrapAsync(async(req, res) => {
     let {search:locateListing} = req.query;
     let locationListings = await Listing.find({country:{ $regex: new RegExp(`^${locateListing}$`, "i")}});
-    //console.log(locateListing);
+    console.log(locationListings);
     if(locationListings.length==0){
         const redirectUrl = req.rawHeaders[25];
-        req.flash("error", `Listings are not exist for ${locateListing}!`);
+        await req.flash("error", `Listings are not exist for ${locateListing}!`);
         return res.redirect(`${redirectUrl}`);
     }
     res.render("listings/locationPage", {locationListings});
-});
+}));
 
 app.use("/listings", listingRouters);
 app.use("/listings/:id/reviews", reviewRouters);
