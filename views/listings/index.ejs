@@ -188,7 +188,7 @@
         <div class="filters">
             <%category="Jungle Lodges"%>
             <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-regular fa-tree-city"></i></div>
+                <div><i class="fa-sharp fa-solid fa-mountain-city"></i></div>
                 <p>Jungle Lodges</p>
             </a>
         </div>
@@ -196,8 +196,16 @@
         <div class="filters">
             <%category="Desert Stays"%>
             <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-sharp fa-solid fa-house-flood-water"></i></div>
+                <div><i class="fa-solid fa-tent"></i></div>
                 <p>Desert Stays</p>
+            </a>
+        </div>
+
+        <div class="filters">
+            <%category="Snow"%>
+            <a href="/listings/page/<%=category%>" class="iconColor">
+                <div><i class="fa-sharp fa-solid fa-snowman"></i></div>
+                <p>Snow</p>
             </a>
         </div>
 
@@ -265,12 +273,12 @@
         rightAngle.addEventListener("click", () => {
             // console.log("hello");
             
-            allIcons.scrollBy({left:150, behavior:"smooth"});
+            allIcons.scrollBy({left:-150, behavior:"smooth"});
         });
 
         leftAngle.addEventListener("click", () => {
             //console.log("hello");
-            allIcons.scrollBy({left:-150, behavior:"smooth"});
+            allIcons.scrollBy({left:150, behavior:"smooth"});
         })
     </script>
 </body>

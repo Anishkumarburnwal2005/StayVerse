@@ -75,9 +75,15 @@ body{
 }
 
 .searchInput{
+    width: 20rem !important;
     border-radius: 25px !important;
     padding: 0.5rem 3rem 0.5rem 3rem !important;
-    font-size: 1.2rem !important;
+    font-size: 1.15rem !important;
+}
+
+.searchInput:active{
+    width: 23rem !important;
+    font-size: 1.25rem !important;
 }
 
 .searchBtn i{
@@ -204,7 +210,8 @@ body{
 }
 
 .show-img{
-    height:55vh;
+    height: 26.5rem;
+    width: 47rem !important;
 }
 
 .btns{
@@ -213,7 +220,7 @@ body{
 }
 
 .deleteBtn{
-    margin-left:2rem
+    margin-left:1.5rem !important;
 }
 
 /* Index.ejs */
@@ -229,7 +236,8 @@ body{
 
 #map {
     height:400px;
-    width:750px;
+    width:850px;
+    margin-bottom: 5rem;
 }
 
 /* Navbar2 */
