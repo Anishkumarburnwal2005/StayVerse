@@ -19,34 +19,7 @@ body{
     flex: 1;
 }
 
-/* .navbar {
-    height:4.6rem;
-    background-color: rgb(238, 237, 237);
-}
-
-.navbar, .container-fluid{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navbar .search-container {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.navbar .right-section {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-left: auto; /* Right align karega */
-/* }
-
-
-.nav-link{
-    color:#222222 !important;
-} */ 
+/* .navbar */
 
 .navbar {
     height: 4.6rem;

@@ -25,12 +25,12 @@
         .bebo{
             display: flex !important;
             flex-wrap: wrap !important;
-            justify-content: space-evenly;
+            justify-content: center;
+            justify-content: space-around;
             position: absolute;
             top: 15rem;
             bottom:5rem;
-            margin-right: 20px;
-            /* gap: 2rem !important; */
+            margin-right: 10px;
         }
 
         .rightAngle{
@@ -55,8 +55,6 @@
         .listing-card {
             height: 15rem !important;
             width:10rem !important;
-            /* margin-bottom: 3rem !important;    */
-            /* gap: 3rem !important; */
         }
 
         .tax-toggle{
@@ -65,6 +63,10 @@
 
         .filters-container{
             margin: 3.5rem 0 0 0;
+        }
+
+        .boldH{
+            display: none;
         }
     }
 
@@ -237,7 +239,7 @@
                         <b class="boldTitle"><%=listing.title%></b><br>
                         <b class="boldPrice">&#8377;<%= (listing.price != null ? listing.price.toLocaleString("en-IN") : "N/A")%>/Night</b>
                         <i class="boldPrice GST">&nbsp; &nbsp; &nbsp; &nbsp; +18% GST</i><br>
-                        <b class="boldH">Category: </b> <b class="boldP"><%=listing.category%></b>
+                        <b class="boldH">Category: </b> <b class="boldP boldH"><%=listing.category%></b>
                       </p>
                     </div>
                 </div>

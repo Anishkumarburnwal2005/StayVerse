@@ -106,10 +106,15 @@ app.get("/listings/page/:category", wrapAsync(async(req, res) => {
 
 app.get("/listings/search", wrapAsync(async(req, res) => {
     let {search:locateListing} = req.query;
-    let locationListings = await Listing.find({country:{ $regex: new RegExp(`^${locateListing}$`, "i")}});
-    console.log(locationListings);
-    if(locationListings.length==0){
-        const redirectUrl = req.rawHeaders[25];
+    if(locateListing ===""){
+        const redirectUrl = req.headers.referer || "/listing";
+        await req.flash("error", "Enter a valid location!");
+        return res.redirect(`${redirectUrl}`);
+    }
+    let locationListings = await Listing.find({location:{ $regex: new RegExp(locateListing, "i")}});
+   
+    if(locationListings.length===0){
+        const redirectUrl = req.headers.referer || "/listing";
         await req.flash("error", `Listings are not exist for ${locateListing}!`);
         return res.redirect(`${redirectUrl}`);
     }

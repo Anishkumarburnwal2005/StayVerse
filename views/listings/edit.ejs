@@ -5,9 +5,14 @@
 <style>
     @media(max-width:500px) and (orientation:portrait){
        .editPage{
-            margin:0 1rem 4rem 2rem !important;
+            margin:0 1rem 4rem 1.5rem !important;
             width:19rem !important;
             padding: 0;
+       }
+
+       .oldImg{
+            width: 11rem !important;
+            height: 7rem !important;
        }
     }
 
@@ -36,7 +41,7 @@
                 </div>
                 
                 <div class="mb-3">
-                    <img src="<%=listing.image.url%>" alt="listing_img" style="height: 12rem; width: 20rem; border-radius: 0.8rem;"/>
+                    <img class="oldImg" src="<%=listing.image.url%>" alt="listing_img" style="height: 12rem; width: 20rem; border-radius: 0.8rem;"/>
                 </div>
                 
                 <div class="mb-3">
