@@ -16,6 +16,23 @@
        }
     }
 
+    @media(max-width:800px) and (orientation:landscape){
+       .editPage{
+            margin:0 1rem 2rem 1.5rem !important;
+            width:32rem !important;
+            padding: 0;
+       }
+
+       .oldImg{
+            width: 14rem !important;
+            height: 8rem !important;
+       }
+
+       /* .body{
+            width: 45rem;
+       } */
+    }
+
     .editPage{
         margin-bottom: 1.5rem;
     }
@@ -36,7 +53,7 @@
                 
                 <div class="mb-3">
                     <label for="description" class="form-label"><b>Description: </b></label>
-                    <input type="text" id="description" name="listing[description]" value="<%=listing.description%>" class="form-control" required>
+                    <textarea id="description" name="listing[description]" class="form-control" required rows="6" cols="30"><%=listing.description%></textarea>
                     <div class="invalid-feedback">please enter a short description!!</div>
                 </div>
                 

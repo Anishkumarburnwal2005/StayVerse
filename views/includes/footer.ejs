@@ -1,15 +1,23 @@
 <style>
-    @media(max-width:768px) and (orientation:portrait){
+    @media(max-width:500px) and (orientation:portrait){
         .f-info{
-            height:5rem !important;
-            position: absolute;
-            margin-top: 1rem !important;
             display: none !important;
+        }
+    }
+
+    @media(max-width:800px) and (orientation:landscape){
+        .f-info{
+            /* width: 43.7rem;
+            height:6.5rem !important; */
+            display: none;
+        }
+
+        /* .faceB, .insraG, .linkedIn{
+            text-decoration: none;
         }
 
         .f-info-socials i{
-           font-size: 1.3rem !important;
-            /* margin-top: 4rem !important; */
+           font-size: 2rem !important;
             display:flex;
             justify-content: center;
             align-items:center;
@@ -29,7 +37,7 @@
             display:flex;
             justify-content: center;
             align-items:center;
-        }
+        } */
     }
 </style>
 
@@ -39,11 +47,11 @@
 <footer>
     <div class="f-info">
         <div class="f-info-socials mt-2">
-            <a href="/#"><i class="fa-brands fa-square-facebook"></i></a>
-            <a href="/#"><i class="fa-brands fa-square-instagram"></i></a>
-            <a href="/#"><i class="fa-brands fa-linkedin"></i> </a>
+            <a href="/#" class="faceB"><i class="fa-brands fa-square-facebook"></i></a>
+            <a href="/#" class="insraG"><i class="fa-brands fa-square-instagram"></i></a>
+            <a href="/#" class="linkedIn"><i class="fa-brands fa-linkedin"></i> </a>
         </div>
-        <div class="f-info-brand" ><b class="boldB">&copy;Wanderlust Private Limited</b></div>
+        <div class="f-info-brand" ><b class="boldB">&copy;StayVerse Private Limited</b></div>
         <div class="f-info-links">
             <b class="boldC"><a href="/privacy">Privacy</a></b>&nbsp; &nbsp;
             <b class="boldC"><a href="/terms">Terms</a></b>

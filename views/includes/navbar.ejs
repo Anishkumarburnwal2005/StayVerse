@@ -1,20 +1,17 @@
 
 <style>
-    @media(max-width:768px) and (orientation:portrait){
+    @media(max-width:500px) and (orientation:portrait){
         .explore, .navbar-toggler{
             display: none;
         }
 
         .container-fluid{
             display: flex;
-            /* align-items: center;
-            align-items: center;
-            justify-content: center; */
         }
 
         .fa-compass{
             margin-left: 10px;
-            font-size: 3.7rem;
+            font-size: 3rem;
         }
 
         .text{
@@ -31,6 +28,39 @@
 
         .navbar{
             height: 5.5rem;
+            
+        }
+    }
+
+    @media(max-width:800px) and (orientation:landscape){
+        .explore, .navbar-toggler{
+            display: none;
+        }
+
+        .container-fluid{
+            display: flex;
+        }
+
+        .fa-compass{
+            /* margin-left: 10px; */
+            font-size: 3rem;
+        }
+
+        .text{
+            margin-right: 30rem !important;
+        }
+
+        .buttonTog{
+            display: none !important;
+        }
+
+        .buttonTogler{
+            display: flex;
+            
+        }
+
+        .navbar{
+            height: 6rem;
             
         }
     }
@@ -60,7 +90,7 @@
         <!-- Navbar Content -->
         <div class="collapse navbar-collapse justify-content-center searchBar" id="navbarNavAltMarkup">
             <!-- Middle: Search Bar -->
-            <form class="d-flex mx-auto" role="search" style="width: 40%;" action="/listings/search">
+            <form class="d-flex" role="search" style="width: 40%;" action="/listings/search">
                 <input class="form-control me-2 searchInput" type="search" placeholder="Search destinations" name="search">
                 <button class="btn searchBtn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
             </form>

@@ -90,6 +90,10 @@ body{
 
 /* Footer Styling */
 
+.f-info-links{
+    margin-bottom: 10px;
+}
+
 .f-info-links a{
     color:#111111;
     text-decoration: none;
@@ -136,7 +140,7 @@ body{
 
 .f-info{
     text-align: center;
-    height:7rem;
+    height:8rem;
     background-color: #dddada;
     display:flex;
     flex-wrap:wrap;

@@ -8,17 +8,11 @@
 <style>
     @media(max-width:500px) and (orientation:portrait){
        .show-img{
-            height: 10rem !important;
-           width: 17rem!important;
-           margin:0 0 0 20px;
+            height: 13rem !important;
+            width: 20rem!important;
+            margin:0 0 0.2rem 10px;
             object-fit: cover !important;
        }
-
-       .show-card{
-            height: 25rem;
-            width: 37rem;
-       }
-
        .card-body{
             width: 19rem;
             height:1rem !important;
@@ -28,20 +22,20 @@
        .container{
             margin:0 3rem 0 0 !important;
             padding: 0;
-         
        }
 
        .babu{
-            margin: 1.5rem 20rem 12rem 0 !important;
+            height: 25rem;
+            margin: 0 20rem 30rem 0 !important;
        }
 
        .babuTitle{
-            margin: 0 0 10px 22px;
+            margin: 2.5rem 0 0 1rem !important;
             width: 19.3rem;
        }
 
        #map {
-            height:200px;
+            height:250px !important;
             width:300px;
         }
 
@@ -50,7 +44,7 @@
         }
 
         .reviewPage{
-            margin: 0 0 0 2.3rem;
+            margin: 5rem 0 0 2.3rem;
         }
 
         .showReviewPage{
@@ -85,51 +79,117 @@
             margin:2rem 0 0 0 !important;
         }
 
-        .listing-card{
-            margin-bottom: 5rem !important;
-            margin-right: 3rem !important;
+        .editBtn{
+            margin-left: 1.9rem;
+        }
+        
+    }
+
+
+    @media(max-width:800px) and (orientation:landscape){
+       .show-img{
+            height: 19rem !important;
+            width: 32rem!important;
+            margin:0 0 0.5rem 10px;
+            object-fit: cover !important;
+       }
+       .card-body{
+            width: 30rem;
+            height:30rem !important;
+            margin:0 0 2px 15px;
+       }
+
+       .container{
+            margin:0 3rem 0 0 !important;
+            padding: 0;
+       }
+
+       .babu{
+            height: 25rem;
+            width:40rem;
+            margin: 1rem 4rem 27rem 0 !important;
+       }
+
+       .show-card{
+            margin-left: 5rem;
+            height: 19rem !important;
+            width: 32rem!important;
+       }
+
+       .babuTitle{
+            margin: 0 0 0.2rem 3rem !important;
+            width: 30rem;
+       }
+
+       #map {
+            height:20rem !important;
+            width:35rem;
+        }
+
+        .mapPage{
+            margin: 0 0 0 7rem;
+        }
+
+        .reviewPage{
+            margin: 5rem 0 0 7rem;
+            width: 32rem;
+        }
+
+        .showReviewPage{
+            width:15rem;
+            height:10rem;
+            padding:0 1rem 0 0;
+        }
+
+        .deleteBtnReview{
+            font-size: 12px;
+        }
+
+        .editR{
+            font-size: 1rem;
+        }
+
+        /* .reviewText{
+            width:14rem;
+            height:3rem;
+        } */
+
+        .editBtn{
+            width: 4rem;
+            margin:0 0 0 45px;
+        }
+
+        .deleteBtn{
+            display: inline-block;
+            width: 4rem;
+            margin:0 0 0 45px;
+        }
+
+        .show-btns{
+            margin:2rem 0 0 4.5rem !important;
         }
 
         .editBtn{
             margin-left: 1.9rem;
         }
+        
     }
 
     .deleteBtn{
         margin:0 0 0 35px;
     }
 
-    /* .babu{
-        width:80rem;
-        margin-right: 8rem !important;
+    #map{
+        height: 450px;
     }
 
-    .listing-card{
-        margin-right: 15rem !important;
-    }
-
-    .reviewPage{
-        margin-right: 15rem !important;
-    }
-
-    .mapPage{
-        margin-right: 15rem !important;
-    }
-
-    .container{
-        margin-right: 15rem !important;
-    }
-
-    .babuTitle{
-        margin: 0 0 1rem 0;
-    } */
 
 </style>
 
 
 <body>
     <div class="row mt-3 babu">
-        <div class="col-8 offset-3">
+        <div class="col-8 offset-3 babuTitle">
             <h2 class="babuTitle"><b><%=listing.title%></b></h2>
         </div>
         <br>
@@ -203,7 +263,7 @@
                     <% for(review of listing.reviews) {%>
                         <div class="card col-5 ms-3 mb-3 showReviewPage">
                             <div class="card-body">
-                                <h5 class="card-title">@<%=review.author.username%></h5>
+                                <h5 class="card-title editR">@<%=review.author.username%></h5>
                                 <p class="starability-result card-text" data-rating= "<%= review.rating%>"></p>
                                 <p class="card-text reviewText"><%= review.comment%></p>
                             </div>
