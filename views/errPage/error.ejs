@@ -1,5 +1,26 @@
 <% layout("/Layout/boilerplate.ejs")%>
 
+<style>
+    body{
+        background-color: rgb(12, 56, 70);
+    }
+
+    .img{
+        height:40rem;
+        width:40rem;
+        margin: 1.5rem 0 3rem 0;
+    }
+    .img2{
+        height:40rem;
+        width:40rem;
+        margin: 1.5rem 0 3rem 0;
+    }
+</style>
+
+<%if(message && message=="Page not found!!"){%>
+    <img class="img" src="../images/error.jpg" alt="errorImg">
+    <img class="img2" src="../images/error2.jpg" alt="errorImg">
+<%}%>
 <div class="row">
     <div class="alert alert-danger col-6 offset-3" role="alert">
         <h4 class="alert-heading"><%=message%></h4>
