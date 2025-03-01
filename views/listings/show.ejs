@@ -30,8 +30,9 @@
        }
 
        .babuTitle{
-            margin: 2.5rem 0 0 1rem !important;
-            width: 19.3rem;
+            margin: 0.8rem  0 0 0.9rem !important;
+            width: 20rem;
+            height:0.5rem;    
        }
 
        #map {
@@ -189,10 +190,11 @@
 
 <body>
     <div class="row mt-3 babu">
+        
         <div class="col-8 offset-3 babuTitle">
             <h2 class="babuTitle"><b><%=listing.title%></b></h2>
         </div>
-        <br>
+
         <div class="card col-6 offset-3 show-card listing-card">
             <img src="<%=listing.image.url%>" class="card-img-top show-img" alt="listing_image">
             <div class="card-body">
@@ -248,7 +250,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="comment" class="form-label">Comments: </label>
-                        <textarea id="comment" class="form-control" name="review[comment]" cols="30" rows="5" required></textarea>
+                        <textarea id="comment" class="form-control" name="review[comment]" cols="30" rows="3" required></textarea>
                         <div class="invalid-feedback">Please enter some comments for review.</div>
                     </div>
                     <br>

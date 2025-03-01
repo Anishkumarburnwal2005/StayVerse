@@ -1,6 +1,3 @@
-
-
-
 var API_TOKEN = mapToken;
 
 var map = new maplibregl.Map({
