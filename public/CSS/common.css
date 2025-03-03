@@ -24,7 +24,7 @@
         justify-content: center;
         justify-content: space-around;
         position: absolute;
-        top: 15rem;
+        top: 16.5rem;
         bottom:5rem;
         margin-right: 10px;
     }
@@ -59,11 +59,38 @@
     }
 
     .tax-toggle{
-        top:11.3rem
+        top:13rem;
     }
 
     .filters-container{
         margin: 3.5rem 0 0 0;
+    }
+
+    .searchMob{
+        width: 13rem !important;
+        height: 2.1rem;
+        font-size: 20px;
+        padding: 0 0 0 0.7rem !important;
+        margin-top: 1rem;
+        margin-left: 0.9rem;
+    }
+
+    .searchI{
+        display: inline;
+        margin-top: 2rem;
+    }
+
+    .searchBtn{
+        color: white;
+        background-color: red;
+        border-radius: 30px;
+        width: 6.5rem;
+        height: 2.1rem;
+        margin-top: 1rem;
+    }
+
+    .cat{
+        display: none;
     }
 }
 
@@ -147,6 +174,33 @@
     .filters{
         margin-right: 0.4rem;
         margin-left: 0.3rem;
+    }
+
+    .searchMob{
+        width: 15rem !important;
+        height: 2.4rem;
+        font-size: 20px;
+        padding: 0 0 0 0.7rem !important;
+        margin-top: 1rem;
+        margin-left: 10rem;
+    }
+
+    .searchI{
+        display: inline;
+        margin-top: 2rem;
+    }
+
+    .searchBtn{
+        color: white;
+        background-color: red;
+        border-radius: 30px;
+        width: 6.5rem;
+        height: 2.4rem;
+        margin-top: 1rem;
+    }
+
+    .cat{
+        display: none;
     }
 }
 

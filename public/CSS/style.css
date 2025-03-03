@@ -54,10 +54,10 @@ body{
     font-size: 1.15rem !important;
 }
 
-.searchInput:active{
+/* .searchInput:active{
     width: 23rem !important;
     font-size: 1.25rem !important;
-}
+} */
 
 .searchBtn i{
     display: inline;
@@ -307,3 +307,9 @@ body{
 /* ✅ Fix button positions */
 .leftAngle { left: 10px; }
 .rightAngle { right: 10rem; }
+
+
+/* Common Search Input */
+.searchI{
+    display: none;
+}
