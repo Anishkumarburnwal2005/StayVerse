@@ -33,6 +33,7 @@ const passPort = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 const Listing = require('./models/listing.js');
+const { Console } = require('console');
 
 const dbUrl = process.env.ATLASDB_URL;
 
@@ -120,6 +121,15 @@ app.get("/listings/search", wrapAsync(async(req, res) => {
     }
     res.render("listings/locationPage", {locationListings});
 }));
+
+app.get("/showPhotos/:id", wrapAsync(async(req, res) => {
+    let {id} = req.params;
+    let listing = await Listing.findById(id);
+    const redirectUrl = req.headers.referer || "/listing";
+    res.render("listings/showPhotos.ejs", {listing, redirectUrl});
+}));
+
+
 
 app.use("/listings", listingRouters);
 app.use("/listings/:id/reviews", reviewRouters);

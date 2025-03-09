@@ -56,12 +56,15 @@ module.exports.create = async(req, res) => {
     let newListing = new Listing(req.body.listing);
     newListing.owner = req.user._id;
     
-    if(req.file){
-        const url = req.file.path;
-        const filename = req.file.filename;
-        newListing.image = {filename, url};
-        //console.log(newListing);
-    }else{
+    if(req.files){
+        // const url = req.file.path;
+        // const filename = req.file.filename;
+        newListing.image = req.files.map(file => ({
+            filename: file.filename,
+            url: file.path
+        }));    
+    }
+    else{
         const url = "https://media.audleytravel.com/-/media/images/home/europe/uk/overview-letterboxes/istock_509915554_uk_antrim_coast_3000x1000.jpg?q=79&w=1920&h=685";
         const filename = "listingImg";
         newListing.image = {filename, url};
@@ -107,10 +110,14 @@ module.exports.update = async (req, res) => {
     //console.log(path, "...", filename);
     let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing});
 
-    if(typeof req.file !== "undefined"){
-        let {path, filename} = req.file;
-        listing.image.url = path;
-        listing.image.filename = filename;
+    if(req.files && req.files.length>0){
+        // let {path, filename} = req.file;
+        // listing.image.url = path;
+        // listing.image.filename = filename;
+        listing.image = req.files.map(file => ({
+            filename: file.filename,
+            url: file.path
+        }));
         await listing.save();
     }
     req.flash("success", "Listing Updated!")

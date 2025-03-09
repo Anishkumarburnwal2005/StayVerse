@@ -1,5 +1,6 @@
 
 <%layout("/Layout/boilerplate.ejs")%>
+
 <script>
     const mapToken = "<%=process.env.MAP_TOKEN%>";
     const listing = <%- JSON.stringify(listing)%>;
@@ -8,7 +9,7 @@
 <style>
     @media(max-width:500px) and (orientation:portrait){
        .show-img{
-            height: 13rem !important;
+            height: 15rem !important;
             width: 20rem!important;
             margin:0 0 0.2rem 10px;
             object-fit: cover !important;
@@ -25,26 +26,33 @@
        }
 
        .babu{
-            height: 25rem;
-            margin: 0 20rem 30rem 0 !important;
+            height: 27rem;
+            margin: -2.5rem 20rem 37rem 0 !important;
        }
 
        .babuTitle{
-            margin: 0.5rem  0 0 0.9rem !important;
+            margin: 0 0 1rem 0.9rem !important;
             width: 20.6rem;
-            height:2.3rem;    
+            height:3rem;    
+       }
+
+       .heading{
+            height: 3rem;
+            margin-top: 3rem;
        }
 
        #map {
-            height:250px !important;
+            height:200px !important;
             width:300px;
         }
 
         .mapPage{
-            margin: 0 0 0 2.3rem;
+            margin: 0 0 -5rem 2.3rem;
+            width: 19rem;
         }
 
         .reviewPage{
+            width: 19rem;
             margin: 5rem 0 0 2.3rem;
         }
 
@@ -84,11 +92,25 @@
             margin-left: 1.9rem;
         }
 
-        .heading{
-            height: 0rem;
-            margin-top: 0.5rem;
+        .show-card{
+            height: 16rem !important;
         }
-        
+
+        .photos{
+        font-size: 2.5rem !important;
+        margin-top: 4rem !important;
+        }
+
+        .huu{
+        height: 15rem !important;
+        width: 20rem !important;
+        margin-left: -2rem;
+        }
+
+        .P{
+            font-size: 0.8rem;
+            font-weight: 500 !important;
+        }
     }
 
 
@@ -123,7 +145,7 @@
        }
 
        .babuTitle{
-            margin: 0 0 0.2rem 3rem !important;
+            margin: 0 0 0.2rem -4rem !important;
             width: 30rem;
        }
 
@@ -155,11 +177,6 @@
             font-size: 1rem;
         }
 
-        /* .reviewText{
-            width:14rem;
-            height:3rem;
-        } */
-
         .editBtn{
             width: 4rem;
             margin:0 0 0 45px;
@@ -178,18 +195,56 @@
         .editBtn{
             margin-left: 1.9rem;
         }
+        .photos{
+            font-size: 2.5rem !important;
+            margin-top: 5.5rem !important;
+            margin-right: 20rem !important;
+        }
+
+        .huu{
+            height: 19rem !important;
+            width: 35.4rem !important;
+            margin-left: -2rem;
+        }
+
+        .P{
+            font-size: 3rem;
+            font-weight: 600 !important;
+        }
         
     }
 
+    .container{
+        margin-right: 10rem;
+    }
     .deleteBtn{
         margin:0 0 0 35px;
     }
-
     #map{
         height: 450px;
     }
-
-
+    .photos{
+        font-size: 5.5rem;
+        margin-left: 17rem !important;
+        margin-top: 8rem;
+        border: white;
+        background-color: white;
+    }
+    .P{
+        font-size: 1.4rem;
+        font-weight: 600 !important;
+    }
+    .haha{
+        display: flex;
+    }
+    .huu{
+        height: 27rem;
+        width: 48rem;
+    }
+    .huu:hover{
+        opacity: 0.65;
+        background-color: white;
+    }
 </style>
 
 
@@ -201,7 +256,17 @@
         </div>
 
         <div class="card col-6 offset-3 show-card listing-card">
-            <img src="<%=listing.image.url%>" class="card-img-top show-img" alt="listing_image">
+            <div class="haha">
+                <a href="<%=listing.image[0].url%>"><img src="<%=listing.image[0].url%>" class="card-img-top show-img" alt="listing_image"></a>
+                <div class="card-img-overlay huu">
+                    <%if(listing.image.length>1){%>
+                        <form method="GET" action="/showPhotos/<%=listing._id%>">
+                            <button class="photos"><i class="fa-duotone fa-solid fa-images"></i><p class="P"><%=listing.image.length%> More Photos</p></button>
+                        </form>
+                    <%}%>
+                </div>
+            </div>
+
             <div class="card-body">
                 <div class="card-text">
                     <i><b class="boldH">Owned By: </b> <b class="boldP">@<%=listing.owner.username%></b></i><br><br>
@@ -289,5 +354,18 @@
         <h3>Where you'll be</h3>
         <div id="map"></div>
     </div>
+
     <script src="/js/map.js"></script>
 </body>
+
+
+<!-- Maithon, near Maithon Dam, Asansol, West Bengal, India
+Lakefront
+Maithon Lake Retreat
+A peaceful lakeside resort offering breathtaking views of Maithon Dam. Guests can enjoy boating, fishing, and sunset walks along the shore. The resort features cozy cottages with a serene environment, making it perfect for a weekend getaway. A great spot for nature lovers and families. -->
+
+
+<!-- Luxury Mountain Chalet
+Escape to this stunning Swiss Alps chalet, featuring floor-to-ceiling windows, a private hot tub, and breathtaking mountain views. Perfect for ski lovers and those seeking a peaceful getaway in nature.
+Zermatt, Switzerland
+Snow 9000 -->

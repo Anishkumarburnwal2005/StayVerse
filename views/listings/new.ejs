@@ -28,6 +28,11 @@
        }
     }
 
+    .limit{
+        font-size: 17.5px;
+        font-weight:400;
+    }
+
 </style>
 
 
@@ -53,7 +58,8 @@
                 
                 <div class="mb-2">
                     <label for="image" class="form-label">Upload image:</label>
-                    <input type="file" id="image" name="listing[image]" placeholder="Enter your Image/url" class="form-control">
+                    <input type="file" id="image" name="listing[image]" placeholder="Enter your Image/url" class="form-control" multiple>
+                    <p class="limit">Only 5 images can be uploaded for a listing!</p>
                 </div>
 
                 <div class="mb-2">
@@ -67,7 +73,7 @@
                         <option >Forest Retreats</option>
                         <option >Hotels</option>
                         <option >Iconic cities</option>
-                        <option >Igloo</option>
+                        <option >igloo</option>
                         <option >Island</option>
                         <option >Jungle Lodges</option>
                         <option >Lakefront</option>

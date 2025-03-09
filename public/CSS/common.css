@@ -67,12 +67,12 @@
     }
 
     .searchMob{
-        width: 13rem !important;
-        height: 2.1rem;
-        font-size: 20px;
-        padding: 0 0 0 0.7rem !important;
+        width: 10rem !important;
+        height: 1.8rem;
+        font-size: 15px !important;
+        padding: 0 0 0 1rem !important;
         margin-top: 1rem;
-        margin-left: 0.9rem;
+        margin-left: 3rem;
     }
 
     .searchI{
@@ -84,9 +84,11 @@
         color: white;
         background-color: red;
         border-radius: 30px;
-        width: 6.5rem;
-        height: 2.1rem;
+        width: 5.6rem !important;
+        height: 1.8rem !important;
         margin-top: 1rem;
+        font-size: 15px;
+        padding: 0 0.3rem 0 0 !important;
     }
 
     .cat{

@@ -18,13 +18,13 @@ router.get("/new", isLoggedIn, listingController.renderNewForm);
 router.get("/", listingController.index);
 
 // Create Route
-router.post("/post", isLoggedIn, upload.single('listing[image]'), validateListing, wrapAsync(listingController.create));
+router.post("/post", isLoggedIn, upload.array('listing[image]', 5), validateListing, wrapAsync(listingController.create));
 
 router
     .route("/:id")
     .get(listingController.renderShowForm) //Show route
     .put(isLoggedIn, isOwner,  
-        upload.single('listing[image]'), 
+        upload.array('listing[image]', 5),
         validateListing, 
         wrapAsync(listingController.update   
     )); //Update route
