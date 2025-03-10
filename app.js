@@ -129,7 +129,13 @@ app.get("/showPhotos/:id", wrapAsync(async(req, res) => {
     res.render("listings/showPhotos.ejs", {listing, redirectUrl});
 }));
 
+app.get("/listing/privacy", (req, res) => {
+    res.render("Users/privacy.ejs");
+});
 
+app.get("/listing/terms", (req, res) => {
+    res.render("Users/terms.ejs");
+});
 
 app.use("/listings", listingRouters);
 app.use("/listings/:id/reviews", reviewRouters);
