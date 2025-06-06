@@ -103,13 +103,17 @@
 
         .huu{
         height: 15rem !important;
-        width: 20rem !important;
-        margin-left: -2rem;
+        width: 21.5rem !important;
         }
 
         .P{
             font-size: 0.8rem;
             font-weight: 500 !important;
+            margin-left: -14rem !important;
+        }
+
+        .i{
+            margin-left: -14rem !important;        
         }
     }
 
@@ -210,6 +214,11 @@
         .P{
             font-size: 3rem;
             font-weight: 600 !important;
+            margin-left: -2rem !important;   
+        }
+
+        .i{
+            margin-left: -2rem !important;        
         }
         
     }
@@ -261,7 +270,7 @@
                 <div class="card-img-overlay huu">
                     <%if(listing.image.length>1){%>
                         <form method="GET" action="/showPhotos/<%=listing._id%>">
-                            <button class="photos"><i class="fa-duotone fa-solid fa-images"></i><p class="P"><%=listing.image.length%> More Photos</p></button>
+                            <button class="photos"><i class="fa-duotone fa-solid fa-images i"></i><p class="P"><%=listing.image.length%> More Photos</p></button>
                         </form>
                     <%}%>
                 </div>

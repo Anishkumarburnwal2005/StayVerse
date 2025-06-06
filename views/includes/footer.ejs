@@ -1,43 +1,45 @@
 <style>
     @media(max-width:500px) and (orientation:portrait){
         .f-info{
-            display: none !important;
-        }
-    }
-
-    @media(max-width:800px) and (orientation:landscape){
-        .f-info{
-            /* width: 43.7rem;
-            height:6.5rem !important; */
-            display: none;
+            position: fixed;
+            bottom: 0;
+            width: 23rem;
+            height:4.5rem !important;
+            justify-content: space-between !important;
         }
 
-        /* .faceB, .insraG, .linkedIn{
+        .faceB, .insraG, .linkedIn{
             text-decoration: none;
         }
 
         .f-info-socials i{
-           font-size: 2rem !important;
+           font-size: 1.2rem !important;
             display:flex;
             justify-content: center;
             align-items:center;
         }
 
         .f-info-brand{
-            font-size: 1.3rem;
-            font-weight: 300;
+            font-size: 1rem !important;
+        }
+
+        .f-info-links{
+            font-size: 1rem !important;
+            margin-bottom: 4rem !important;
             display:flex;
             justify-content: center;
             align-items:center;
         }
 
-        .f-info-links{
-            font-size: 0.8rem;
-            margin-bottom: 0.7rem !important;
-            display:flex;
-            justify-content: center;
-            align-items:center;
-        } */
+        .anchor{
+            font-size: 1rem !important;
+        }
+    }
+
+    @media(max-width:800px) and (orientation:landscape){
+        .f-info{
+            display: none;
+        }
     }
 </style>
 
@@ -53,8 +55,8 @@
         </div>
         <div class="f-info-brand" ><b class="boldB">&copy;StayVerse Private Limited</b></div>
         <div class="f-info-links">
-            <b class="boldC"><a href="/listing/privacy">Privacy</a></b>&nbsp; &nbsp;
-            <b class="boldC"><a href="/listing/terms">Terms</a></b>
+            <b class="boldC"><a href="/listing/privacy" class="anchor">Privacy</a></b>&nbsp; &nbsp;
+            <b class="boldC"><a href="/listing/terms" class="anchor">Terms</a></b>
         </div>
     </div>
 </footer>

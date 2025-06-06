@@ -12,8 +12,15 @@ const listingSchema = new Schema({
     },
     image: [
         {
-        filename: String,
-        url: String,
+            filename: {
+                type: String,
+                default: "default.img"
+            },
+
+            url: {
+                type: String,
+                default: "https://media.istockphoto.com/id/472899538/photo/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab.webp?s=1024x1024&w=is&k=20&c=ryknwrnjVy-mkmHvN-6lG2my5hbpDn2h3AHa76_BX28="
+            },
         },
     ],
 

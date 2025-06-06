@@ -1,15 +1,9 @@
 <% layout("/Layout/boilerplate.ejs")%>
 
-<title>Terms & Conditions - StayVerse</title>
     <style>
-        body {
+        .terms{
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
             text-align: center;
-        }
-        .container {
             max-width: 900px;
             margin: 0 auto;
             background: white;
@@ -38,14 +32,19 @@
         strong {
             color: #000;
         }
-    </style>
-</head>
-<body>
 
-    <div class="container">
+        @media(max-width:500px) and (orientation:portrait){
+            footer{
+                display: none;
+            }
+        }
+    </style>
+
+
+    <div class="terms">
         <h1>Terms & Conditions</h1>
         <p><strong>Effective Date:</strong> Oct 08, 2024</p>
-        <p><strong>Last Updated:</strong> March 10, 2025</p>
+        <p><strong>Last Updated:</strong> June 6, 2025</p>
         
         <p>Welcome to <strong>StayVerse</strong>. These Terms & Conditions outline the rules and regulations for using our platform. By accessing or using our services, you agree to comply with these terms.</p>
 
@@ -140,5 +139,3 @@
             <li><strong>Support Page:</strong>  <b>https://stayverse.onrender.com</b></li>
         </ul>
     </div>
-
-</body>
