@@ -1,62 +1,75 @@
 <style>
-    @media(max-width:500px) and (orientation:portrait){
-        .f-info{
-            position: fixed;
-            bottom: 0;
-            width: 23rem;
-            height:4.5rem !important;
-            justify-content: space-between !important;
-        }
-
-        .faceB, .insraG, .linkedIn{
-            text-decoration: none;
-        }
-
-        .f-info-socials i{
-           font-size: 1.2rem !important;
-            display:flex;
-            justify-content: center;
-            align-items:center;
-        }
-
-        .f-info-brand{
-            font-size: 1rem !important;
-        }
-
-        .f-info-links{
-            font-size: 1rem !important;
-            margin-bottom: 4rem !important;
-            display:flex;
-            justify-content: center;
-            align-items:center;
-        }
-
-        .anchor{
-            font-size: 1rem !important;
-        }
+  @media (max-width: 500px) and (orientation: portrait) {
+    .f-info {
+      position: fixed;
+      bottom: 0;
+      width: 23rem;
+      height: 4.5rem !important;
+      justify-content: space-between !important;
     }
 
-    @media(max-width:800px) and (orientation:landscape){
-        .f-info{
-            display: none;
-        }
+    .faceB,
+    .insraG,
+    .linkedIn {
+      text-decoration: none;
     }
+
+    .f-info-socials i {
+      font-size: 1.2rem !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .f-info-brand {
+      font-size: 1rem !important;
+    }
+
+    .f-info-links {
+      font-size: 1rem !important;
+      margin-bottom: 4rem !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .anchor {
+      font-size: 1rem !important;
+    }
+  }
+
+  @media (max-width: 800px) and (orientation: landscape) {
+    .f-info {
+      display: none;
+    }
+  }
+
+  .anchor,
+  .boldB {
+    font-family: "Roboto Condensed", sans-serif !important;
+    font-weight: 500;
+    font-size: 28px !important;
+  }
 </style>
 
-
-
-
 <footer>
-    <div class="f-info">
-        <div class="f-info-socials mt-2">
-            <a href="/#" class="faceB"><i class="fa-brands fa-square-facebook"></i></a>
-            <a href="/#" class="insraG"><i class="fa-brands fa-square-instagram"></i></a>
-            <a href="/#" class="linkedIn"><i class="fa-brands fa-linkedin"></i> </a>
-        </div>
-        <div class="f-info-brand" ><b class="boldB">&copy;StayVerse Private Limited</b></div>
-        <div class="f-info-links">
-            <b class="boldC"><a href="/listing/privacy" class="anchor">Privacy</a></b>&nbsp; &nbsp;
-            <b class="boldC"><a href="/listing/terms" class="anchor">Terms</a></b>
-        </div>
+  <div class="f-info">
+    <div class="f-info-socials mt-2">
+      <a href="/#" class="faceB"
+        ><i class="fa-brands fa-square-facebook"></i
+      ></a>
+      <a href="/#" class="insraG"
+        ><i class="fa-brands fa-square-instagram"></i
+      ></a>
+      <a href="/#" class="linkedIn"><i class="fa-brands fa-linkedin"></i> </a>
     </div>
+    <div class="f-info-brand">
+      <b class="boldB">&copy;StayVerse Private Limited</b>
+    </div>
+    <div class="f-info-links">
+      <b class="boldC"><a href="/listing/privacy" class="anchor">Privacy</a></b
+      >&nbsp; &nbsp;
+      <b class="boldC"><a href="/listing/terms" class="anchor">Terms</a></b>
+    </div>
+  </div>
 </footer>

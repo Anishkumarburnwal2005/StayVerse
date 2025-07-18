@@ -1,71 +1,72 @@
 <%layout("/Layout/boilerplate.ejs")%>
 
 <style>
+  @media (max-width: 500px) and (orientation: portrait) {
+    .showP {
+      margin-left: 1rem !important;
+      margin-bottom: 2rem !important;
+      border-radius: 20px 20px 20px 20px;
+      max-width: 20rem !important;
+      max-height: 15rem !important;
+    }
+    .backBtn {
+      font-size: 1rem !important;
+    }
+  }
 
-    @media(max-width:500px) and (orientation:portrait){
-        .showP{
-            margin-left: 1rem !important;
-            margin-bottom: 2rem !important;
-            border-radius: 20px 20px 20px 20px;
-            max-width: 20rem !important;
-            max-height: 15rem !important;
-        }
-        .backBtn{
-            font-size: 1rem !important;
-        }
+  @media (max-width: 800px) and (orientation: landscape) {
+    .showP {
+      margin-left: 3rem !important;
+      margin-bottom: 2rem !important;
+      border-radius: 20px 20px 20px 20px;
+      max-width: 35rem !important;
+      max-height: 25rem !important;
     }
+    .backBtn {
+      font-size: 1.5rem !important;
+    }
+  }
 
-    @media(max-width:800px) and (orientation:landscape){
-        .showP{
-            margin-left: 3rem !important;
-            margin-bottom: 2rem !important;
-            border-radius: 20px 20px 20px 20px;
-            max-width: 35rem !important;
-            max-height: 25rem !important;
-        }
-        .backBtn{
-            font-size: 1.5rem !important;
-        }
-    }
+  body {
+    background-color: #222222;
+  }
+  .black {
+    display: inline-block;
+  }
+  .showP {
+    margin-left: 9rem;
+    margin-bottom: 4rem;
+    border-radius: 20px 20px 20px 20px;
+    max-width: 60rem;
+    max-height: 45rem;
+  }
 
-    body{
-        background-color: #222222;
-    }
-    .black{
-        display: inline-block;
-    }
-    .showP{
-        margin-left: 9rem;
-        margin-bottom: 4rem;
-        border-radius: 20px 20px 20px 20px;
-        max-width: 60rem;
-        max-height: 45rem;
-    }
-   
-    .backBtn{
-        font-size: 2rem;
-    }
+  .backBtn {
+    font-size: 2rem;
+  }
 
-    .btn:active{
-        background-color:rgb(253, 5, 5) !important;
-    }
-    .btnP{
-        margin-top: 1rem !important;
-        margin-bottom: 1rem !important;
-    }
+  .btn:active {
+    background-color: rgb(253, 5, 5) !important;
+  }
+  .btnP {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
 </style>
 
 <body>
-    <form action="<%=redirectUrl%>">
-        <div class="btnP">
-            <button class="btn btn-success backBtn">Back</button>
-        </div>
-    </form>
-    <div class="blackD">
-        <%for(let img of listing.image){%>
-            <div class="black">
-                <a href="<%=img.url%>"><img src="<%=img.url%>" alt="showing_Img" class="showP"></a>
-            </div>
-        <%}%>
+  <form action="<%=redirectUrl%>">
+    <div class="btnP">
+      <button class="btn btn-success backBtn">Back</button>
     </div>
+  </form>
+  <div class="blackD">
+    <%for(let img of listing.image){%>
+    <div class="black">
+      <a href="<%=img.url%>"
+        ><img src="<%=img.url%>" alt="showing_Img" class="showP"
+      /></a>
+    </div>
+    <%}%>
+  </div>
 </body>

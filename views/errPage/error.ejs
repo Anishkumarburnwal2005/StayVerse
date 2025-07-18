@@ -1,73 +1,74 @@
 <% layout("/Layout/boilerplate.ejs")%>
 
 <style>
-    body{
-        background-color: rgb(13, 45, 54);
+  body {
+    background-color: rgb(13, 45, 54);
+  }
+
+  .img {
+    height: 40rem;
+    width: 40rem;
+    margin: 1.5rem 0 3rem 0;
+  }
+  .img2 {
+    height: 40rem;
+    width: 40rem;
+    margin: 1.5rem 0 3rem 0;
+  }
+
+  @media (max-width: 500px) and (orientation: portrait) {
+    .img2 {
+      display: none;
+    }
+    .img {
+      display: cover;
+      width: 22rem;
+      height: 28rem;
+    }
+    .container {
+      height: 30rem !important;
     }
 
-    .img{
-        height:40rem;
-        width:40rem;
-        margin: 1.5rem 0 3rem 0;
+    .error {
+      margin-left: 0.8rem;
     }
-    .img2{
-        height:40rem;
-        width:40rem;
-        margin: 1.5rem 0 3rem 0;
+  }
+
+  @media (max-width: 800px) and (orientation: landscape) {
+    .img {
+      display: none;
     }
-
-    @media(max-width:500px) and (orientation:portrait){
-        .img2{
-            display: none;
-        }
-        .img{
-            display: cover;
-            width: 22rem;
-            height: 28rem;
-        }
-        .container{
-            height: 30rem !important;
-        }
-
-        .error{
-            margin-left: 0.8rem;
-        } 
+    .img2 {
+      display: cover;
+      width: 35rem;
+      height: 28rem;
+      margin-left: 1rem;
     }
-
-    @media(max-width:800px) and (orientation:landscape){
-        
-        .img{
-            display: none;
-        }
-        .img2{
-            display: cover;
-            width: 35rem;
-            height: 28rem;
-            margin-left: 1rem;
-        }
-        .container{
-            height: 30rem !important;
-        }
-        .error{
-            justify-content: center;
-        }
+    .container {
+      height: 30rem !important;
     }
-
-    .alert-danger{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .error {
+      justify-content: center;
     }
+  }
 
+  .alert-danger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
 
 <%if(message && message=="Page not found!!"){%>
-    <img class="img" src="../images/error.jpg" alt="errorImg">
-    <img class="img2" src="../images/error2.jpg" alt="errorImg">
+<img
+  class="img"
+  src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDV5NTMyZmc0eTdtOXYzN3dueDZsbHN6ZDlkbXJtb3F0eXNtNDQybyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/9dgnO4jts7kmsFcSPq/giphy.webp"
+  alt="errorImg"
+/>
+
 <%}%>
 <div class="row error">
-    <div class="alert alert-danger col-6 offset-3" role="alert">
-        <h4 class="alert-heading"><%=message%></h4>
-    </div>
+  <div class="alert alert-danger col-6 offset-3" role="alert">
+    <h4 class="alert-heading"><%=message%></h4>
+  </div>
 </div>
-  

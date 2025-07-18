@@ -1,158 +1,189 @@
 <div class="searchI">
-    <form class="d-flex" role="search" style="width: 40%;" action="/listings/search">
-        <input class="form-control me-2 searchInput searchMob" type="search" placeholder="Search destinations" name="search">
-        <button class="btn searchBtn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
-    </form>
+  <form
+    class="d-flex"
+    role="search"
+    style="width: 40%"
+    action="/listings/search"
+  >
+    <input
+      class="form-control me-2 searchInput searchMob"
+      type="search"
+      placeholder="Search destinations"
+      name="search"
+    />
+    <button class="btn searchBtn" type="submit">
+      <i class="fa-solid fa-magnifying-glass"></i>Search
+    </button>
+  </form>
 </div>
 
-
+<style>
+  .Trending,
+  .Hotels,
+  .IconiCities,
+  .Mountain,
+  .Island,
+  .igloo,
+  .Cabins,
+  .Lakefront,
+  .Beach,
+  .Farms,
+  .Snow,
+  .ForestRetreats,
+  .JungleLodges,
+  .DesertStays {
+    font-family: "Roboto Condensed", sans-serif !important;
+    font-weight: 500;
+    font-size: 16px !important;
+  }
+</style>
 
 <div id="filters-container">
-    <div id="filters">
-
-        <div class="leftAngle">
-            <i class="fa-solid fa-angles-left"></i>
-        </div>
-
-        <div class="filters ">
-            <div><i class="fa-sharp fa-regular fa-folder-open"></i></div>
-            <p>Empty</p>
-        </div>
-
-
-        <div class="filters">
-            <%category="Trending"%>
-            <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-solid fa-fire"></i></div>
-                <p>Trending</p>
-            </a>
-        </div>
-
-        <div class="filters ">
-            <%category="Hotels"%>
-            <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-solid fa-bed"></i></div>
-                <p>Hotels</p>
-            </a>
-        </div>
-
-        <div class="filters ">
-            <%category="Iconic cities"%>
-            <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-solid fa-mountain-city"></i></div>
-                <p>Iconic cities</p>
-            </a>
-        </div>
-
-        <div class="filters ">
-            <%category="Mountain"%>
-            <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-solid fa-mountain-sun"></i></div>
-                <p>Mountain</p>
-            </a>
-        </div>
-
-
-
-        <div class="filters">
-            <%category="Island"%>
-            <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-solid fa-person-swimming"></i></div>
-                <p>Island</p>
-            </a>
-        </div>
-
-        <div class="filters">
-            <%category="Cabins"%>
-            <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-solid fa-house"></i></div>
-                <p>Cabins</p>
-            </a>
-            
-        </div>
-
-        <div class="filters">
-            <%category="Igloo"%>
-            <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-solid fa-igloo"></i></div>
-                <p>igloo</p>
-            </a>
-        </div>
-
-        <div class="filters">
-            <%category="Beach"%>
-            <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-solid fa-umbrella-beach"></i></div>
-                <p>Beach</p>
-            </a>
-        </div>
-
-        <div class="filters">
-            <%category="Farms"%>
-            <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-solid fa-cow"></i></div>
-                <p>Farms</p>
-            </a>
-        </div>
-
-
-        <div class="filters">
-            <%category="Forest Retreats"%>
-            <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-solid fa-tree"></i></div>
-                <p>Forest Retreats</p>
-            </a>
-        </div>
-
-        <div class="filters">
-            <%category="Lakefront"%>
-            <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-duotone fa-solid fa-house-tsunami"></i></div>
-                <p>Lakefront</p>
-            </a>
-        </div>
-
-        <div class="filters">
-            <%category="Jungle Lodges"%>
-            <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-sharp fa-solid fa-mountain-city"></i></div>
-                <p>Jungle Lodges</p>
-            </a>
-        </div>
-
-        <div class="filters">
-            <%category="Desert Stays"%>
-            <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-solid fa-tent"></i></div>
-                <p>Desert Stays</p>
-            </a>
-        </div>
-
-        <div class="filters">
-            <%category="Snow"%>
-            <a href="/listings/page/<%=category%>" class="iconColor">
-                <div><i class="fa-sharp fa-solid fa-snowman"></i></div>
-                <p>Snow</p>
-            </a>
-        </div>
-
-        <div class="filters">
-            <div><i class="fa-sharp fa-regular fa-folder-open"></i></div>
-            <p>Empty</p>
-        </div>
-
-        
-        <div class="rightAngle">
-            <i class="fa-solid fa-angles-right"></i>
-        </div>
+  <div id="filters">
+    <div class="leftAngle">
+      <i class="fa-solid fa-angles-left"></i>
     </div>
+
+    <div class="filters">
+      <div><i class="fa-sharp fa-regular fa-folder-open"></i></div>
+      <p>Empty</p>
+    </div>
+
+    <div class="filters">
+      <%category="Trending"%>
+      <a href="/listings/page/<%=category%>" class="iconColor">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p class="Trending">Trending</p>
+      </a>
+    </div>
+
+    <div class="filters">
+      <%category="Hotels"%>
+      <a href="/listings/page/<%=category%>" class="iconColor">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p class="Hotels">Hotels</p>
+      </a>
+    </div>
+
+    <div class="filters">
+      <%category="Iconic cities"%>
+      <a href="/listings/page/<%=category%>" class="iconColor">
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p class="IconiCities">Iconic cities</p>
+      </a>
+    </div>
+
+    <div class="filters">
+      <%category="Mountain"%>
+      <a href="/listings/page/<%=category%>" class="iconColor">
+        <div><i class="fa-solid fa-mountain-sun"></i></div>
+        <p class="Mountain">Mountain</p>
+      </a>
+    </div>
+
+    <div class="filters">
+      <%category="Island"%>
+      <a href="/listings/page/<%=category%>" class="iconColor">
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p class="Island">Island</p>
+      </a>
+    </div>
+
+    <div class="filters">
+      <%category="Cabins"%>
+      <a href="/listings/page/<%=category%>" class="iconColor">
+        <div><i class="fa-solid fa-house"></i></div>
+        <p class="Cabins">Cabins</p>
+      </a>
+    </div>
+
+    <div class="filters">
+      <%category="Igloo"%>
+      <a href="/listings/page/<%=category%>" class="iconColor">
+        <div><i class="fa-solid fa-igloo"></i></div>
+        <p class="igloo">Igloo</p>
+      </a>
+    </div>
+
+    <div class="filters">
+      <%category="Beach"%>
+      <a href="/listings/page/<%=category%>" class="iconColor">
+        <div><i class="fa-solid fa-umbrella-beach"></i></div>
+        <p class="Beach">Beach</p>
+      </a>
+    </div>
+
+    <div class="filters">
+      <%category="Farms"%>
+      <a href="/listings/page/<%=category%>" class="iconColor">
+        <div><i class="fa-solid fa-cow"></i></div>
+        <p class="Farms">Farms</p>
+      </a>
+    </div>
+
+    <div class="filters">
+      <%category="Forest Retreats"%>
+      <a href="/listings/page/<%=category%>" class="iconColor">
+        <div><i class="fa-solid fa-tree"></i></div>
+        <p class="ForestRetreats">Forest Retreats</p>
+      </a>
+    </div>
+
+    <div class="filters">
+      <%category="Lakefront"%>
+      <a href="/listings/page/<%=category%>" class="iconColor">
+        <div><i class="fa-duotone fa-solid fa-house-tsunami"></i></div>
+        <p class="Lakefront">Lakefront</p>
+      </a>
+    </div>
+
+    <div class="filters">
+      <%category="Jungle Lodges"%>
+      <a href="/listings/page/<%=category%>" class="iconColor">
+        <div><i class="fa-sharp fa-solid fa-mountain-city"></i></div>
+        <p class="JungleLodges">Jungle Lodges</p>
+      </a>
+    </div>
+
+    <div class="filters">
+      <%category="Desert Stays"%>
+      <a href="/listings/page/<%=category%>" class="iconColor">
+        <div><i class="fa-solid fa-tent"></i></div>
+        <p class="DesertStays">Desert Stays</p>
+      </a>
+    </div>
+
+    <div class="filters">
+      <%category="Snow"%>
+      <a href="/listings/page/<%=category%>" class="iconColor">
+        <div><i class="fa-sharp fa-solid fa-snowman"></i></div>
+        <p class="Snow">Snow</p>
+      </a>
+    </div>
+
+    <div class="filters">
+      <div><i class="fa-sharp fa-regular fa-folder-open"></i></div>
+      <p>Empty</p>
+    </div>
+
+    <div class="rightAngle">
+      <i class="fa-solid fa-angles-right"></i>
+    </div>
+  </div>
 </div>
 
-<br>
+<br />
 
 <div class="tax-toggle">
-    <div class="form-check-reverse form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-        <label class="form-check-label" for="flexSwitchCheckDefault">All Taxes</label>
-    </div>
+  <div class="form-check-reverse form-switch">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      role="switch"
+      id="flexSwitchCheckDefault"
+    />
+    <label class="form-check-label" for="flexSwitchCheckDefault"
+      >All Taxes</label
+    >
+  </div>
 </div>

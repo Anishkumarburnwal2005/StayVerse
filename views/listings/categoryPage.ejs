@@ -1,25 +1,32 @@
-<%layout("/Layout/boilerplate.ejs")%>
-
-<%-include("../includes/icons.ejs")%>
+<%layout("/Layout/boilerplate.ejs")%> <%-include("../includes/icons.ejs")%>
 
 <body>
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-md-1 mt-3  bebo">
-        <% for(listing of categoryListings){ %>
-            <a href="/listings/<%=listing._id%>" class="listing-link">
-                <div class="card col listing-card">
-                    <img src="<%=listing.image[0].url%>" class="card-img-top" alt="listing_image" style="height: 20rem;">
-                    <div class="card-img-overlay"></div>
-                    <div class="card-body">
-                      <p class="card-text">
-                        <b class="boldTitle"><%=listing.title%></b><br>
-                        <b class="boldPrice">&#8377;<%= (listing.price != null ? listing.price.toLocaleString("en-IN") : "N/A")%>/Night</b>
-                        <i class="boldPrice GST">&nbsp; &nbsp; +18% GST</i><br>
-                        <b class="boldH cat">Category: </b> <b class="boldP boldH cat"><%=listing.category%></b>
-                      </p>
-                    </div>
-                </div>
-            </a>
-        <%}%>
-    </div>
-    <script src="/js/icons.js"></script>
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-md-1 mt-3 bebo">
+    <% for(listing of categoryListings){ %>
+    <a href="/listings/<%=listing._id%>" class="listing-link">
+      <div class="card col listing-card">
+        <img
+          src="<%=listing.image[0].url%>"
+          class="card-img-top"
+          alt="listing_image"
+          style="height: 20rem"
+        />
+        <div class="card-img-overlay"></div>
+        <div class="card-body">
+          <p class="card-text">
+            <b class="boldTitle"><%=listing.title%></b><br />
+            <b class="boldPrice"
+              >&#8377;<%= (listing.price != null ?
+              listing.price.toLocaleString("en-IN") : "N/A")%>/Night</b
+            >
+            <i class="boldPrice GST">&nbsp; &nbsp; +18% GST</i><br />
+            <b class="boldH cat">Category: </b>
+            <b class="boldP boldH cat"><%=listing.category%></b>
+          </p>
+        </div>
+      </div>
+    </a>
+    <%}%>
+  </div>
+  <script src="/js/icons.js"></script>
 </body>

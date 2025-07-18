@@ -1,115 +1,184 @@
 <% layout("/Layout/boilerplate.ejs")%>
 
 <style>
-    @media(max-width:500px) and (orientation:portrait){
-       .editPage{
-            margin:0 1rem 4rem 1.5rem !important;
-            width:19rem !important;
-            padding: 0;
-       }
-
-       .oldImg{
-            width: 11rem !important;
-            height: 7rem !important;
-       }
+  @media (max-width: 500px) and (orientation: portrait) {
+    .editPage {
+      margin: 0 1rem 4rem 1.5rem !important;
+      width: 19rem !important;
+      padding: 0;
     }
 
-    @media(max-width:800px) and (orientation:landscape){
-       .editPage{
-            margin:0 1rem 2rem 1.5rem !important;
-            width:32rem !important;
-            padding: 0;
-       }
+    .oldImg {
+      width: 11rem !important;
+      height: 7rem !important;
+    }
+  }
 
-       .oldImg{
-            width: 14rem !important;
-            height: 8rem !important;
-       }
+  @media (max-width: 800px) and (orientation: landscape) {
+    .editPage {
+      margin: 0 1rem 2rem 1.5rem !important;
+      width: 32rem !important;
+      padding: 0;
     }
 
-    .editPage{
-        margin-bottom: 1.5rem;
+    .oldImg {
+      width: 14rem !important;
+      height: 8rem !important;
     }
-    .limit{
-        font-size: 17.5px;
-        font-weight:400;
-    }
+  }
+
+  .editPage {
+    margin-bottom: 1.5rem;
+  }
+  .limit {
+    font-size: 17.5px;
+    font-weight: 500;
+  }
+
+  .title,
+  .description,
+  .image,
+  .location,
+  .country,
+  .category,
+  .price {
+    font-weight: 550 !important;
+  }
 </style>
 
 <body>
-     <div class="row container">
-        <div class="col-7 offset-2 editPage">
-            <h2 class="mb-4 mt-3">Edit the listing</h2>
-            
-            <form method="POST" action="/listings/<%=listing._id%>?_method=PUT" class="needs-validation" novalidate enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label for="title" class="form-label"><b>Title:</b></label>
-                    <input type="text" id="title" name="listing[title]" value="<%=listing.title%>" class="form-control" required>
-                    <div class="valid-feedback">Title looks good!!</div>
-                    <div class="invalid-feedback">Enter a suitable Title.</div>
-                </div>
-                
-                <div class="mb-3">
-                    <label for="description" class="form-label"><b>Description: </b></label>
-                    <textarea id="description" name="listing[description]" class="form-control" required rows="6" cols="30"><%=listing.description%></textarea>
-                    <div class="invalid-feedback">please enter a short description!!</div>
-                </div>
-                
-                <div class="mb-3">
-                    <img class="oldImg" src="<%=listing.image[0].url%>" alt="listing_img" style="height: 12rem; width: 20rem; border-radius: 0.8rem;"/>
-                </div>
-                
-                <div class="mb-3">
-                    <label for="image" class="form-label"><b>Upload new image: </b></label>
-                    <input type="file" id="image" name="listing[image]" class="form-control" multiple>
-                    <div class="invalid-feedback">Enter a valid image url</div>
-                    <p class="limit">Only 5 images can be uploaded for a listing!</p>
-                </div>
-                
-                <div class="mb-2">
-                    <label for="category" class="form-label"><b>Category:</b></label>
-                    <select id="category" name="listing[category]" class="form-select" required>
-                        <option><%=listing.category%></option>
-                        <option >Beach</option>
-                        <option >Cabins</option>
-                        <option >Desert Stays</option>
-                        <option >Farms</option>
-                        <option >Forest Retreats</option>
-                        <option >Hotels</option>
-                        <option >Iconic cities</option>
-                        <option >igloo</option>
-                        <option >Island</option>
-                        <option >Jungle Lodges</option>
-                        <option >Lakefront</option>
-                        <option >Mountain</option>
-                        <option >Snow</option>
-                        <option >Trending</option>
-                    </select>
-                    <div class="invalid-feedback">Location should be valid</div>
-                </div>
+  <div class="row container">
+    <div class="col-7 offset-2 editPage">
+      <h2 class="mb-4 mt-3 fs-3"><u>Edit the listing</u></h2>
 
-                <div class="mb-3">
-                    <label for="location" class="form-label"><b>Location: </b></label>
-                    <input type="text" id="locaiton" name="listing[location]" value="<%=listing.location%>" class="form-control" required>
-                    <div class="invalid-feedback">Location should be valid</div>
-                </div>
-            
-                <div class="row">
-                    <div class="mb-3 col-md-4">
-                        <label for="price" class="form-label"><b>Price: </b></label>
-                        <input id="price" name="listing[price]" value="<%=listing.price%>" class="form-control" required>
-                        <div class="invalid-feedback">Price should be valid</div>
-                    </div>
-                    
-                    <div class="mb-3 col-md-8">
-                        <label for="country" class="form-label"><b>Country: </b></label>
-                        <input type="text" id="country" name="listing[country]" value="<%=listing.country%>" class="form-control" required>
-                        <div class="invalid-feedback">Country should be valid</div>
-                    </div>
-                </div>
-                <button class="btn btn-outline-primary">Update</button>
-            </form>
+      <form
+        method="POST"
+        action="/listings/<%=listing._id%>?_method=PUT"
+        class="needs-validation"
+        novalidate
+        enctype="multipart/form-data"
+      >
+        <div class="mb-3">
+          <label for="title" class="form-label title">Title:</label>
+          <input
+            type="text"
+            id="title"
+            name="listing[title]"
+            value="<%=listing.title%>"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Title looks good!!</div>
+          <div class="invalid-feedback">Enter a suitable Title.</div>
         </div>
-    </div>
-</body>
 
+        <div class="mb-3">
+          <label for="description" class="form-label description"
+            >Description:
+          </label>
+          <textarea
+            id="description"
+            name="listing[description]"
+            class="form-control"
+            required
+            rows="6"
+            cols="30"
+          >
+<%=listing.description%></textarea
+          >
+          <div class="invalid-feedback">please enter a short description!!</div>
+        </div>
+
+        <div class="mb-3">
+          <img
+            class="oldImg"
+            src="<%=listing.image[0].url%>"
+            alt="listing_img"
+            style="height: 12rem; width: 20rem; border-radius: 0.8rem"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="image" class="form-label image">Upload new image: </label>
+          <input
+            type="file"
+            id="image"
+            name="listing[image]"
+            class="form-control"
+            multiple
+          />
+          <div class="invalid-feedback">Enter a valid image url</div>
+          <p class="limit">Only 5 images can be uploaded for a listing!</p>
+        </div>
+
+        <div class="mb-2">
+          <label for="category" class="form-label category">Category:</label>
+          <select
+            id="category"
+            name="listing[category]"
+            class="form-select"
+            required
+          >
+            <option><%=listing.category%></option>
+            <option>Beach</option>
+            <option>Cabins</option>
+            <option>Desert Stays</option>
+            <option>Farms</option>
+            <option>Forest Retreats</option>
+            <option>Hotels</option>
+            <option>Iconic cities</option>
+            <option>igloo</option>
+            <option>Island</option>
+            <option>Jungle Lodges</option>
+            <option>Lakefront</option>
+            <option>Mountain</option>
+            <option>Snow</option>
+            <option>Trending</option>
+          </select>
+          <div class="invalid-feedback">Category should be valid</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="location" class="form-label locaiton">Location: </label>
+          <input
+            type="text"
+            id="locaiton"
+            name="listing[location]"
+            value="<%=listing.location%>"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Location should be valid</div>
+        </div>
+
+        <div class="row">
+          <div class="mb-3 col-md-4">
+            <label for="price" class="form-label price">Price: </label>
+            <input
+              id="price"
+              name="listing[price]"
+              value="<%=listing.price%>"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Price should be valid</div>
+          </div>
+
+          <div class="mb-3 col-md-8">
+            <label for="country" class="form-label country">Country: </label>
+            <input
+              type="text"
+              id="country"
+              name="listing[country]"
+              value="<%=listing.country%>"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Country should be valid</div>
+          </div>
+        </div>
+        <button class="btn btn-outline-primary">Update</button>
+      </form>
+    </div>
+  </div>
+</body>

@@ -1,378 +1,445 @@
-
 <%layout("/Layout/boilerplate.ejs")%>
 
 <script>
-    const mapToken = "<%=process.env.MAP_TOKEN%>";
-    const listing = <%- JSON.stringify(listing)%>;
+  const mapToken = "<%=process.env.MAP_TOKEN%>";
+  const listing = <%- JSON.stringify(listing)%>;
 </script>
 
 <style>
-    @media(max-width:500px) and (orientation:portrait){
-       .show-img{
-            height: 15rem !important;
-            width: 20rem!important;
-            margin:0 0 0.2rem 10px;
-            object-fit: cover !important;
-       }
-       .card-body{
-            width: 19rem;
-            height:1rem !important;
-            margin:0 0 2px 15px;
-       }
-
-       .container{
-            margin:0 3rem 0 0 !important;
-            padding: 0;
-       }
-
-       .babu{
-            height: 27rem;
-            margin: -2.5rem 20rem 37rem 0 !important;
-       }
-
-       .babuTitle{
-            margin: 0 0 1rem 0.9rem !important;
-            width: 20.6rem;
-            height:3rem;    
-       }
-
-       .heading{
-            height: 3rem;
-            margin-top: 3rem;
-       }
-
-       #map {
-            height:200px !important;
-            width:300px;
-        }
-
-        .mapPage{
-            margin: 0 0 -5rem 2.3rem;
-            width: 19rem;
-        }
-
-        .reviewPage{
-            width: 19rem;
-            margin: 5rem 0 0 2.3rem;
-        }
-
-        .showReviewPage{
-            width:17rem;
-            height:9rem;
-            padding:0 1rem 0 0;
-        }
-
-        .deleteBtnReview{
-            font-size: 7px;
-            margin-left: 12.5rem;
-            margin-bottom: 13rem;
-        }
-
-        .reviewText{
-            width:15.8rem;
-            height: 4rem;
-        }
-
-        .editBtn{
-            width: 4rem;
-            margin:0 0 0 45px;
-        }
-
-        .deleteBtn{
-            display: inline-block;
-            width: 4rem;
-            margin:0 0 0 45px;
-        }
-
-        .show-btns{
-            margin:2rem 0 0 0 !important;
-        }
-
-        .editBtn{
-            margin-left: 1.9rem;
-        }
-
-        .show-card{
-            height: 16rem !important;
-        }
-
-        .photos{
-        font-size: 2.5rem !important;
-        margin-top: 4rem !important;
-        }
-
-        .huu{
-        height: 15rem !important;
-        width: 21.5rem !important;
-        }
-
-        .P{
-            font-size: 0.8rem;
-            font-weight: 500 !important;
-            margin-left: -14rem !important;
-        }
-
-        .i{
-            margin-left: -14rem !important;        
-        }
+  @media (max-width: 500px) and (orientation: portrait) {
+    .show-img {
+      height: 15rem !important;
+      width: 20rem !important;
+      margin: 0 0 0.2rem 10px;
+      object-fit: cover !important;
+    }
+    .card-body {
+      width: 19rem;
+      height: 1rem !important;
+      margin: 0 0 2px 15px;
     }
 
-
-    @media(max-width:800px) and (orientation:landscape){
-       .show-img{
-            height: 19rem !important;
-            width: 32rem!important;
-            margin:0 0 0.5rem 10px;
-            object-fit: cover !important;
-       }
-       .card-body{
-            width: 30rem;
-            height:30rem !important;
-            margin:0 0 2px 15px;
-       }
-
-       .container{
-            margin:0 3rem 0 0 !important;
-            padding: 0;
-       }
-
-       .babu{
-            height: 25rem;
-            width:40rem;
-            margin: 1rem 4rem 27rem 0 !important;
-       }
-
-       .show-card{
-            margin-left: 5rem;
-            height: 19rem !important;
-            width: 32rem!important;
-       }
-
-       .babuTitle{
-            margin: 0 0 0.2rem -4rem !important;
-            width: 30rem;
-       }
-
-       #map {
-            height:20rem !important;
-            width:35rem;
-        }
-
-        .mapPage{
-            margin: 0 0 0 7rem;
-        }
-
-        .reviewPage{
-            margin: 5rem 0 0 7rem;
-            width: 32rem;
-        }
-
-        .showReviewPage{
-            width:15rem;
-            height:10rem;
-            padding:0 1rem 0 0;
-        }
-
-        .deleteBtnReview{
-            font-size: 12px;
-        }
-
-        .editR{
-            font-size: 1rem;
-        }
-
-        .editBtn{
-            width: 4rem;
-            margin:0 0 0 45px;
-        }
-
-        .deleteBtn{
-            display: inline-block;
-            width: 4rem;
-            margin:0 0 0 45px;
-        }
-
-        .show-btns{
-            margin:2rem 0 0 4.5rem !important;
-        }
-
-        .editBtn{
-            margin-left: 1.9rem;
-        }
-        .photos{
-            font-size: 2.5rem !important;
-            margin-top: 5.5rem !important;
-            margin-right: 20rem !important;
-        }
-
-        .huu{
-            height: 19rem !important;
-            width: 35.4rem !important;
-            margin-left: -2rem;
-        }
-
-        .P{
-            font-size: 3rem;
-            font-weight: 600 !important;
-            margin-left: -2rem !important;   
-        }
-
-        .i{
-            margin-left: -2rem !important;        
-        }
-        
+    .container {
+      margin: 0 3rem 0 0 !important;
+      padding: 0;
     }
 
-    .container{
-        margin-right: 10rem;
+    .babu {
+      height: 27rem;
+      margin: -2.5rem 20rem 37rem 0 !important;
     }
-    .deleteBtn{
-        margin:0 0 0 35px;
+
+    .babuTitle {
+      margin: 0 0 1rem 0.9rem !important;
+      width: 20.6rem;
+      height: 3rem;
     }
-    #map{
-        height: 450px;
+
+    .heading {
+      height: 3rem;
+      margin-top: 3rem;
     }
-    .photos{
-        font-size: 5.5rem;
-        margin-left: 17rem !important;
-        margin-top: 8rem;
-        border: white;
-        background-color: white;
+
+    #map {
+      height: 200px !important;
+      width: 300px;
     }
-    .P{
-        font-size: 1.4rem;
-        font-weight: 600 !important;
+
+    .mapPage {
+      margin: 0 0 -5rem 2.3rem;
+      width: 19rem;
     }
-    .haha{
-        display: flex;
+
+    .reviewPage {
+      width: 19rem;
+      margin: 5rem 0 0 2.3rem;
     }
-    .huu{
-        height: 27rem;
-        width: 48rem;
+
+    .showReviewPage {
+      width: 17rem;
+      height: 9rem;
+      padding: 0 1rem 0 0;
     }
-    .huu:hover{
-        opacity: 0.65;
-        background-color: white;
+
+    .deleteBtnReview {
+      font-size: 7px;
+      margin-left: 12.5rem;
+      margin-bottom: 13rem;
     }
+
+    .reviewText {
+      width: 15.8rem;
+      height: 4rem;
+    }
+
+    .editBtn {
+      width: 4rem;
+      margin: 0 0 0 45px;
+    }
+
+    .deleteBtn {
+      display: inline-block;
+      width: 4rem;
+      margin: 0 0 0 45px;
+    }
+
+    .show-btns {
+      margin: 2rem 0 0 0 !important;
+    }
+
+    .editBtn {
+      margin-left: 1.9rem;
+    }
+
+    .show-card {
+      height: 16rem !important;
+    }
+
+    .photos {
+      font-size: 2.5rem !important;
+      margin-top: 4rem !important;
+    }
+
+    .huu {
+      height: 15rem !important;
+      width: 21.5rem !important;
+    }
+
+    .P {
+      font-size: 0.8rem;
+      font-weight: 500 !important;
+      margin-left: -14rem !important;
+    }
+
+    .i {
+      margin-left: -14rem !important;
+    }
+  }
+
+  @media (max-width: 800px) and (orientation: landscape) {
+    .show-img {
+      height: 19rem !important;
+      width: 32rem !important;
+      margin: 0 0 0.5rem 10px;
+      object-fit: cover !important;
+    }
+    .card-body {
+      width: 30rem;
+      height: 30rem !important;
+      margin: 0 0 2px 15px;
+    }
+
+    .container {
+      margin: 0 3rem 0 0 !important;
+      padding: 0;
+    }
+
+    .babu {
+      height: 25rem;
+      width: 40rem;
+      margin: 1rem 4rem 27rem 0 !important;
+    }
+
+    .show-card {
+      margin-left: 5rem;
+      height: 19rem !important;
+      width: 32rem !important;
+    }
+
+    .babuTitle {
+      margin: 0 0 0.2rem -4rem !important;
+      width: 30rem;
+    }
+
+    #map {
+      height: 20rem !important;
+      width: 35rem;
+    }
+
+    .mapPage {
+      margin: 0 0 0 7rem;
+    }
+
+    .reviewPage {
+      margin: 5rem 0 0 7rem;
+      width: 32rem;
+    }
+
+    .showReviewPage {
+      width: 15rem;
+      height: 10rem;
+      padding: 0 1rem 0 0;
+    }
+
+    .deleteBtnReview {
+      font-size: 12px;
+    }
+
+    .editR {
+      font-size: 1rem;
+    }
+
+    .editBtn {
+      width: 4rem;
+      margin: 0 0 0 45px;
+    }
+
+    .deleteBtn {
+      display: inline-block;
+      width: 4rem;
+      margin: 0 0 0 45px;
+    }
+
+    .show-btns {
+      margin: 2rem 0 0 4.5rem !important;
+    }
+
+    .editBtn {
+      margin-left: 1.9rem;
+    }
+    .photos {
+      font-size: 2.5rem !important;
+      margin-top: 5.5rem !important;
+      margin-right: 20rem !important;
+    }
+
+    .huu {
+      height: 19rem !important;
+      width: 35.4rem !important;
+      margin-left: -2rem;
+    }
+
+    .P {
+      font-size: 3rem;
+      font-weight: 600 !important;
+      margin-left: -2rem !important;
+    }
+
+    .i {
+      margin-left: -2rem !important;
+    }
+  }
+
+  .container {
+    margin-right: 10rem;
+  }
+  .deleteBtn {
+    margin: 0 0 0 35px;
+  }
+  #map {
+    height: 450px;
+  }
+  .photos {
+    font-size: 5.5rem;
+    margin-left: 17rem !important;
+    margin-top: 8rem;
+    border: white;
+    background-color: white;
+  }
+  .P {
+    font-size: 1.4rem;
+    font-weight: 600 !important;
+  }
+  .haha {
+    display: flex;
+  }
+  .huu {
+    height: 27rem;
+    width: 48rem;
+  }
+  .huu:hover {
+    opacity: 0.65;
+    background-color: white;
+  }
 </style>
 
-
 <body>
-    <div class="row mt-3 babu">
-        
-        <div class="col-8 offset-3 heading">
-            <h2 class="babuTitle"><b><%=listing.title%></b></h2>
-        </div>
-
-        <div class="card col-6 offset-3 show-card listing-card">
-            <div class="haha">
-                <a href="<%=listing.image[0].url%>"><img src="<%=listing.image[0].url%>" class="card-img-top show-img" alt="listing_image"></a>
-                <div class="card-img-overlay huu">
-                    <%if(listing.image.length>1){%>
-                        <form method="GET" action="/showPhotos/<%=listing._id%>">
-                            <button class="photos"><i class="fa-duotone fa-solid fa-images i"></i><p class="P"><%=listing.image.length%> More Photos</p></button>
-                        </form>
-                    <%}%>
-                </div>
-            </div>
-
-            <div class="card-body">
-                <div class="card-text">
-                    <i><b class="boldH">Owned By: </b> <b class="boldP">@<%=listing.owner.username%></b></i><br><br>
-                    <b class="boldH">Category: </b> <b class="boldP"><%=listing.category%></b><br>
-                    <b class="boldH">Description: </b> <b class="boldP"><%=listing.description%></b><br>
-                    <b class="boldH">Price: </b> <b class="boldP">&#8377;<%= listing.price.toLocaleString("en-IN")%>/ Night</b><br>
-                    <b class="boldH">Location: </b> <b class="boldP"><%=listing.location%></b><br>
-                    <b class="boldH">Country: </b> <b class="boldP"><%=listing.country%></b>
-                </div>
-            </div>
-        </div>
+  <div class="row mt-3 babu">
+    <div class="col-8 offset-3 heading">
+      <h2 class="babuTitle"><b><%=listing.title%></b></h2>
     </div>
 
-    <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
-        <div class="row show-btns mb-2">
-            <div class="col-md-1 offset-3 editBtn">
-                <form method="GET" action="/listings/<%=listing._id%>/edit">
-                    <button class="btn btn-outline-primary">Edit</button>
-                </form>
-            </div>
-
-            <div class="col-md-1 deleteBtn">
-                <form method="POST" action="/listings/<%=listing._id%>/delete?_method=DELETE">
-                    <button class="btn btn-outline-danger">Delete</button>
-                </form>
-            </div>
+    <div class="card col-6 offset-3 show-card listing-card">
+      <div class="haha">
+        <a href="<%=listing.image[0].url%>"
+          ><img
+            src="<%=listing.image[0].url%>"
+            class="card-img-top show-img"
+            alt="listing_image"
+        /></a>
+        <div class="card-img-overlay huu">
+          <%if(listing.image.length>1){%>
+          <form method="GET" action="/showPhotos/<%=listing._id%>">
+            <button class="photos">
+              <i class="fa-duotone fa-solid fa-images i"></i>
+              <p class="P"><%=listing.image.length%> More Photos</p>
+            </button>
+          </form>
+          <%}%>
         </div>
+      </div>
+
+      <div class="card-body">
+        <div class="card-text">
+          <i
+            ><b class="boldH">Owned By: </b>
+            <b class="boldP">@<%=listing.owner.username%></b></i
+          ><br /><br />
+          <b class="boldH">Category: </b>
+          <b class="boldP"><%=listing.category%></b><br />
+          <b class="boldH">Description: </b>
+          <b class="boldP"><%=listing.description%></b><br />
+          <b class="boldH">Price: </b>
+          <b class="boldP"
+            >&#8377;<%= listing.price.toLocaleString("en-IN")%>/ Night</b
+          ><br />
+          <b class="boldH">Location: </b>
+          <b class="boldP"><%=listing.location%></b><br />
+          <b class="boldH">Country: </b>
+          <b class="boldP"><%=listing.country%></b>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
+  <div class="row show-btns mb-2">
+    <div class="col-md-1 offset-3 editBtn">
+      <form method="GET" action="/listings/<%=listing._id%>/edit">
+        <button class="btn btn-outline-primary">Edit</button>
+      </form>
+    </div>
+
+    <div class="col-md-1 deleteBtn">
+      <form
+        method="POST"
+        action="/listings/<%=listing._id%>/delete?_method=DELETE"
+      >
+        <button class="btn btn-outline-danger">Delete</button>
+      </form>
+    </div>
+  </div>
+  <% } %>
+
+  <div class="col-8 offset-3 mb-3 mt-1 reviewPage">
+    <% if(currUser) { %>
+    <hr />
+    <h4>Leave a Review</h4>
+    <form
+      method="POST"
+      action="/listings/<%=listing._id%>/reviews"
+      novalidate
+      class="needs-validation"
+    >
+      <div class="mt-3">
+        <label for="rating" class="form-label">Rating: </label>
+        <fieldset class="starability-slot" id="rating">
+          <input
+            type="radio"
+            id="no-rate"
+            class="input-no-rate"
+            name="review[rating]"
+            value="1"
+            checked
+            aria-label="No rating."
+          />
+          <input
+            type="radio"
+            id="first-rate1"
+            name="review[rating]"
+            value="1"
+          />
+          <label for="first-rate1" title="Terrible">1 star</label>
+          <input
+            type="radio"
+            id="first-rate2"
+            name="review[rating]"
+            value="2"
+          />
+          <label for="first-rate2" title="Not good">2 stars</label>
+          <input
+            type="radio"
+            id="first-rate3"
+            name="review[rating]"
+            value="3"
+          />
+          <label for="first-rate3" title="Average">3 stars</label>
+          <input
+            type="radio"
+            id="first-rate4"
+            name="review[rating]"
+            value="4"
+          />
+          <label for="first-rate4" title="Very good">4 stars</label>
+          <input
+            type="radio"
+            id="first-rate5"
+            name="review[rating]"
+            value="5"
+          />
+          <label for="first-rate5" title="Amazing">5 stars</label>
+        </fieldset>
+      </div>
+      <div class="mb-3">
+        <label for="comment" class="form-label">Comments: </label>
+        <textarea
+          id="comment"
+          class="form-control"
+          name="review[comment]"
+          cols="30"
+          rows="3"
+          required
+        ></textarea>
+        <div class="invalid-feedback">
+          Please enter some comments for review.
+        </div>
+      </div>
+      <br />
+      <button class="btn btn-outline-primary">Comment</button>
+    </form>
     <% } %>
+    <hr />
 
-
-        <div class="col-8 offset-3 mb-3 mt-1 reviewPage">
-            <% if(currUser) { %>
-                <hr>
-                <h4>Leave a Review</h4>
-                <form method="POST" action="/listings/<%=listing._id%>/reviews" novalidate class="needs-validation">
-                    <div class=" mt-3">
-                        <label for="rating" class="form-label">Rating: </label>
-                        <fieldset class="starability-slot" id="rating">
-                            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
-                            <input type="radio" id="first-rate1" name="review[rating]" value="1" />
-                            <label for="first-rate1" title="Terrible">1 star</label>
-                            <input type="radio" id="first-rate2" name="review[rating]" value="2" />
-                            <label for="first-rate2" title="Not good">2 stars</label>
-                            <input type="radio" id="first-rate3" name="review[rating]" value="3" />
-                            <label for="first-rate3" title="Average">3 stars</label>
-                            <input type="radio" id="first-rate4" name="review[rating]" value="4" />
-                            <label for="first-rate4" title="Very good">4 stars</label>
-                            <input type="radio" id="first-rate5" name="review[rating]" value="5" />
-                            <label for="first-rate5" title="Amazing">5 stars</label>
-                        </fieldset>
-                    </div>
-                    <div class="mb-3">
-                        <label for="comment" class="form-label">Comments: </label>
-                        <textarea id="comment" class="form-control" name="review[comment]" cols="30" rows="3" required></textarea>
-                        <div class="invalid-feedback">Please enter some comments for review.</div>
-                    </div>
-                    <br>
-                    <button class="btn btn-outline-primary">Comment</button>
-                </form>
-            <% } %>
-            <hr>
-            
-            <%if(listing.reviews.length > 0 ){%>
-                <div class="row">
-                    <P><b>All Reviews</b></P>
-                    <% for(review of listing.reviews) {%>
-                        <div class="card col-5 ms-3 mb-3 showReviewPage">
-                            <div class="card-body">
-                                <h5 class="card-title editR">@<%=review.author.username%></h5>
-                                <p class="starability-result card-text" data-rating= "<%= review.rating%>"></p>
-                                <p class="card-text reviewText"><%= review.comment%></p>
-                            </div>
-                            <%if(currUser && currUser._id.equals(review.author._id)){%>
-                            <form class="mb-3" method="POST" action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE">
-                                <button class="btn  btn-danger mt-2 deleteBtnReview">Delete</button>
-                            </form>
-                            <%}%>
-                        </div>
-                    <% } %>
-                </div>
-            <%}%>
+    <%if(listing.reviews.length > 0 ){%>
+    <div class="row">
+      <P><b>All Reviews</b></P>
+      <% for(review of listing.reviews) {%>
+      <div class="card col-5 ms-3 mb-3 showReviewPage">
+        <div class="card-body">
+          <h5 class="card-title editR">@<%=review.author.username%></h5>
+          <p
+            class="starability-result card-text"
+            data-rating="<%= review.rating%>"
+          ></p>
+          <p class="card-text reviewText"><%= review.comment%></p>
         </div>
-       
-    <div class="col-8 offset-3 mb-3 mt-3 mapPage">
-        <h3>Where you'll be</h3>
-        <div id="map"></div>
+        <%if(currUser && currUser._id.equals(review.author._id)){%>
+        <form
+          class="mb-3"
+          method="POST"
+          action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE"
+        >
+          <button class="btn btn-danger mt-2 deleteBtnReview">Delete</button>
+        </form>
+        <%}%>
+      </div>
+      <% } %>
     </div>
+    <%}%>
+  </div>
 
-    <script src="/js/map.js"></script>
+  <div class="col-8 offset-3 mb-3 mt-3 mapPage">
+    <h3>Where you'll be</h3>
+    <div id="map"></div>
+  </div>
+
+  <script src="/js/map.js"></script>
 </body>
-
 
 <!-- Maithon, near Maithon Dam, Asansol, West Bengal, India
 Lakefront
 Maithon Lake Retreat
 A peaceful lakeside resort offering breathtaking views of Maithon Dam. Guests can enjoy boating, fishing, and sunset walks along the shore. The resort features cozy cottages with a serene environment, making it perfect for a weekend getaway. A great spot for nature lovers and families. -->
-
 
 <!-- Luxury Mountain Chalet
 Escape to this stunning Swiss Alps chalet, featuring floor-to-ceiling windows, a private hot tub, and breathtaking mountain views. Perfect for ski lovers and those seeking a peaceful getaway in nature.

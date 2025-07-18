@@ -1,64 +1,84 @@
 <% layout("/Layout/boilerplate.ejs")%>
 
 <style>
-    @media(max-width:500px) and (orientation:portrait){
-       .signUpPage{
-            margin:2.5rem 1rem 4rem 2rem !important;
-            width:20rem !important;
-            padding: 0;
-       }
-
-       .signHeading{
-            width:20rem;
-       }
-
-       body{
-            width: 22.7rem;
-       }
+  @media (max-width: 500px) and (orientation: portrait) {
+    .signUpPage {
+      margin: 2.5rem 1rem 4rem 2rem !important;
+      width: 20rem !important;
+      padding: 0;
     }
 
-    @media(max-width:800px) and (orientation:landscape){
-       .signUpPage{
-            margin:1.5rem 1rem 2rem 2rem !important;
-            width:30rem !important;
-            padding: 0;
-       }
-
-       .signHeading{
-            width:30rem;
-       }
-
-       body{
-            width: 46rem;
-       }
+    .signHeading {
+      width: 20rem;
     }
 
+    body {
+      width: 22.7rem;
+    }
+  }
+
+  @media (max-width: 800px) and (orientation: landscape) {
+    .signUpPage {
+      margin: 1.5rem 1rem 2rem 2rem !important;
+      width: 30rem !important;
+      padding: 0;
+    }
+
+    .signHeading {
+      width: 30rem;
+    }
+
+    body {
+      width: 46rem;
+    }
+  }
 </style>
 
-    <div class="row">
-        <div class="col-6 offset-3 mt-4 signUpPage">
-            <h1 class="signHeading">SignUp on StayVerse</h1>
-            <hr>
-            <form method="POST" action="/signUp" class="needs-validation" novalidate>
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username : </label>
-                    <input type="text" id="username" name="username" placeholder="Enter your username" class="form-control" required>
-                    <div class="invalid-feedback">Enter a valid Username.</div>
-                </div>
-                
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email : </label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" class="form-control" required>
-                    <div class="invalid-feedback">Enter a valid Email.</div>
-                </div>
-                
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password : </label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password" class="form-control" required>
-                    <div class="invalid-feedback">Enter a stronger password.</div>
-                </div>
-                
-                <button class="btn btn-outline-success ">SignUp</button>
-            </form>
-        </div>
-    </div>
+<div class="row">
+  <div class="col-6 offset-3 mt-4 signUpPage">
+    <h1 class="signHeading">SignUp on StayVerse</h1>
+    <hr />
+    <form method="POST" action="/signUp" class="needs-validation" novalidate>
+      <div class="mb-3">
+        <label for="username" class="form-label">Username : </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Enter your username"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Enter a valid Username.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email : </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Enter a valid Email.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password : </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Enter a stronger password.</div>
+      </div>
+
+      <button class="btn btn-outline-success">SignUp</button>
+    </form>
+  </div>
+</div>
