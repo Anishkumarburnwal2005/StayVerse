@@ -93,40 +93,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get(
-  "/listings/page/:category",
-  wrapAsync(async (req, res) => {
-    let { category: categListing } = req.params;
-    let categoryListings = await Listing.find({ category: categListing });
-    if (categoryListings.length == 0) {
-      req.flash("error", `Listings are not exist for ${categListing}!`);
-      return res.redirect("/listings");
-    }
-    res.render("listings/categoryPage", { categoryListings });
-  })
-);
-
-app.get(
-  "/listings/search",
-  wrapAsync(async (req, res) => {
-    let { search: locateListing } = req.query;
-    if (locateListing === "") {
-      const redirectUrl = req.headers.referer || "/listing";
-      await req.flash("error", "Enter a valid location!");
-      return res.redirect(`${redirectUrl}`);
-    }
-    let locationListings = await Listing.find({
-      location: { $regex: new RegExp(locateListing, "i") },
-    });
-
-    if (locationListings.length === 0) {
-      const redirectUrl = req.headers.referer || "/listing";
-      await req.flash("error", `Listings are not exist for ${locateListing}!`);
-      return res.redirect(`${redirectUrl}`);
-    }
-    res.render("listings/locationPage", { locationListings });
-  })
-);
+app.use("/listings", listingRouters);
+app.use("/listings/:id/reviews", reviewRouters);
+app.use("/", userRouters);
 
 app.get(
   "/showPhotos/:id",
@@ -137,18 +106,6 @@ app.get(
     res.render("listings/showPhotos.ejs", { listing, redirectUrl });
   })
 );
-
-app.get("/listing/privacy", (req, res) => {
-  res.render("Users/privacy.ejs");
-});
-
-app.get("/listing/terms", (req, res) => {
-  res.render("Users/terms.ejs");
-});
-
-app.use("/listings", listingRouters);
-app.use("/listings/:id/reviews", reviewRouters);
-app.use("/", userRouters);
 
 app.all("*", (req, res, next) => {
   throw new ExpressError(404, "Page not found!!");

@@ -130,3 +130,40 @@ module.exports.delete = async (req, res) => {
   req.flash("success", "Listing Deleted!");
   res.redirect("/listings");
 };
+
+module.exports.privacy = (req, res) => {
+  res.render("Users/privacy.ejs");
+};
+
+module.exports.terms = (req, res) => {
+  res.render("Users/terms.ejs");
+};
+
+module.exports.category = async (req, res) => {
+  let { category: categListing } = req.params;
+  let categoryListings = await Listing.find({ category: categListing });
+  if (categoryListings.length == 0) {
+    req.flash("error", `Listings are not exist for ${categListing}!`);
+    return res.redirect("/listings");
+  }
+  res.render("listings/categoryPage", { categoryListings });
+};
+
+module.exports.search = async (req, res) => {
+  let { search: locateListing } = req.query;
+  if (locateListing === "") {
+    const redirectUrl = req.headers.referer || "/listing";
+    await req.flash("error", "Enter a valid location!");
+    return res.redirect(`${redirectUrl}`);
+  }
+  let locationListings = await Listing.find({
+    location: { $regex: new RegExp(locateListing, "i") },
+  });
+
+  if (locationListings.length === 0) {
+    const redirectUrl = req.headers.referer || "/listing";
+    await req.flash("error", `Listings are not exist for ${locateListing}!`);
+    return res.redirect(`${redirectUrl}`);
+  }
+  res.render("listings/locationPage", { locationListings });
+};

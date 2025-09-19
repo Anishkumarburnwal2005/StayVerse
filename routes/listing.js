@@ -25,17 +25,29 @@ router.post(
   wrapAsync(listingController.create)
 );
 
+//Privacy route
+router.get("/privacy", wrapAsync(listingController.privacy));
+
+//Terms route
+router.get("/terms", wrapAsync(listingController.terms));
+
+//Search
+router.get("/search", wrapAsync(listingController.search));
+
 router
   .route("/:id")
-  .get(listingController.renderShowForm) //Show route
+
+  //Show route
+  .get(listingController.renderShowForm)
+
+  //Update route
   .put(
     isLoggedIn,
     isOwner,
     upload.array("listing[image]", 5),
     validateListing,
     wrapAsync(listingController.update)
-  ); //Update route
-
+  );
 // Edit Route
 router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(listingController.edit));
 
@@ -46,6 +58,9 @@ router.delete(
   isOwner,
   wrapAsync(listingController.delete)
 );
+
+//Category
+router.get("/page/:category", wrapAsync(listingController.category));
 
 module.exports = router;
 
