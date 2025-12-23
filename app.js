@@ -33,8 +33,6 @@ const passPort = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 const Listing = require("./models/listing.js");
-const { Console } = require("console");
-
 const dbUrl = process.env.ATLASDB_URL;
 
 main()

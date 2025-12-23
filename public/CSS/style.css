@@ -5,8 +5,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-
-.boldH {
+.card-img-overlay .boldH {
   font-weight: 650 !important;
 }
 
@@ -21,55 +20,17 @@ body {
 /* .navbar */
 
 .navbar {
-  height: 4.6rem;
-  background-color: rgb(238, 237, 237);
-}
-
-.navbar-brand {
-  font-size: 2rem;
+  height: 5rem;
+  background-color: rgb(250, 244, 244);
 }
 
 .fa-compass {
   color: #fe424d;
-  font-size: 3.5rem;
+  font-size: 2rem;
 }
 
 .navbar .form-control {
   width: 100%;
-}
-
-.navbar .searchBtn {
-  background-color: #fe424d;
-  color: white;
-  border-radius: 25px;
-  padding: 0 1rem 0 1rem;
-}
-
-.searchInput {
-  width: 20rem !important;
-  border-radius: 25px !important;
-  padding: 0.5rem 3rem 0.5rem 3rem !important;
-  font-size: 1.15rem !important;
-}
-
-/* .searchInput:active{
-    width: 23rem !important;
-    font-size: 1.25rem !important;
-} */
-
-.searchBtn i {
-  display: inline;
-  margin-right: 0.5rem;
-}
-
-.searchBtn:hover {
-  background-color: #fe424d !important;
-  color: white !important;
-}
-
-.searchBtn:active {
-  background-color: #fff !important;
-  color: #fe424d !important;
 }
 
 .navbar .dropdown-menu {
@@ -123,6 +84,7 @@ body {
   color: #181818;
   opacity: 0.8;
 }
+
 .boldB {
   font-weight: 600 !important;
 }
@@ -151,7 +113,11 @@ body {
 
 .listing-card {
   border: none !important;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
+}
+
+.sizeFit {
+  height: 20rem;
 }
 
 .card-img-top {
@@ -168,8 +134,18 @@ body {
   font-weight: 400 !important;
 }
 
+.indexP {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .listing-link {
   text-decoration: none;
+}
+
+.bebo {
+  height: 15rem;
 }
 
 .card-img-overlay {
@@ -207,110 +183,29 @@ body {
   font-weight: 500 !important;
 }
 
+.likeBtn {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.likeBtn i {
+  font-size: 1.8rem;
+  color: black;
+  transition: color 0.2s;
+}
+
+.likeBtn i.fa-solid {
+  color: red;
+}
+
 /* Map Styling */
 
 #map {
   height: 400px;
-  width: 850px;
+  width: 750px;
   margin-bottom: 5rem;
-}
-
-/* Navbar2 */
-
-#filters-container {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-#filters {
-  display: flex;
-  align-items: center;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  white-space: nowrap;
-  gap: 1.8rem;
-  width: 1000px; /* ✅ Fix width */
-}
-
-/* ✅ Hide scrollbar */
-#filters::-webkit-scrollbar {
-  display: none;
-}
-
-.filters {
-  width: 150px;
-  text-align: center;
-  margin-right: 2rem;
-  margin-top: 1rem;
-  opacity: 0.3;
-}
-.filters:hover {
-  opacity: 1;
-  cursor: pointer;
-}
-
-.filters p {
-  font-size: 0.8rem;
-}
-
-.GST {
-  display: none;
-}
-
-.tax-toggle {
-  position: absolute;
-  right: 20px;
-  top: 5.7rem;
-  border: 2px solid black !important;
-  border-radius: 1rem;
-  padding: 1rem;
-  height: 2.8rem;
-  margin-right: 8rem;
-  display: flex;
-  align-items: center;
-}
-
-/* Scroll Buttons को filters-container में अंदर करो */
-.rightAngle,
-.leftAngle {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  z-index: 10;
-  background: white;
-  padding: 0.5rem 1rem;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-  border: 2px solid black !important;
-}
-
-.rightAngle,
-.leftAngle,
-.tax-toggle {
-  background-color: rgb(236, 236, 236);
-}
-
-.rightAngle {
-  font-size: 1.45rem;
-  margin-right: 8.7rem;
-}
-
-.leftAngle {
-  font-size: 1.45rem;
-  margin-right: 2rem;
-}
-
-/* ✅ Fix button positions */
-.leftAngle {
-  left: 10px;
-}
-.rightAngle {
-  right: 10rem;
-}
-
-/* Common Search Input */
-.searchI {
-  display: none;
 }

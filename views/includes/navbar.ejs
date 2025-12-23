@@ -1,156 +1,97 @@
 <style>
-  @media (max-width: 500px) and (orientation: portrait) {
-    .explore,
-    .navbar-toggler {
-      display: none;
-    }
-
-    .container-fluid {
-      display: flex;
-    }
-
-    .fa-compass {
-      margin-left: 10px;
-      font-size: 3rem;
-    }
-
-    .text {
-      margin-left: 5rem !important;
-    }
-
-    .buttonTog,
-    .searchBar {
-      display: none !important;
-    }
-
-    .buttonTogler {
-      display: flex;
-    }
-
-    .navbar {
-      height: 3.8rem;
-    }
-  }
-
-  @media (max-width: 800px) and (orientation: landscape) {
-    .explore,
-    .navbar-toggler {
-      display: none;
-    }
-
-    .container-fluid {
-      display: flex;
-    }
-
-    .fa-compass {
-      font-size: 3rem;
-    }
-
-    .text {
-      margin-right: 30rem !important;
-    }
-
-    .buttonTog {
-      display: none !important;
-    }
-
-    .buttonTogler {
-      display: flex;
-    }
-
-    .navbar {
-      height: 3.8rem;
-    }
-  }
-
-  .searchBar {
-    margin-right: 25rem;
-  }
-
-  .explore,
   .text {
     font-family: "Roboto Condensed", sans-serif !important;
-    font-weight: 400;
-    font-size: 27px;
+    font-weight: 450;
+    font-size: 1.4rem;
+    opacity: 0.6;
+  }
+
+  .text:hover {
+    opacity: 0.9;
+  }
+
+  .title {
+    font-family: "Roboto Condensed", sans-serif !important;
+    font-weight: 500;
+    color: #fe424d;
+    font-size: 1.8rem;
+  }
+
+  .navbar a {
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .menu-pill {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    background: white;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  }
+
+  .menu-pill i.fa-bars {
+    font-size: 20px;
+    color: #222;
+  }
+
+  .menu-pill i.fa-user {
+    font-size: 22px;
+  }
+
+  .menu-pill:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .menu-pill::after {
+    display: none; /* remove default bootstrap arrow */
   }
 </style>
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
-    <!-- Left Side: Brand Logo -->
-    <a class="navbar-brand" href="/listings">
-      <i class="fa-sharp fa-regular fa-compass"></i>
-    </a>
-    &nbsp;
-    <a class="navbar-brand explore" href="/listings">Explore</a>
-    &nbsp;&nbsp;&nbsp;
-    <a class="nav-link me-3 text" href="/listings/new">Add Elite Place</a>
+    <!-- LEFT GROUP -->
+    <div class="d-flex align-items-center gap-4">
+      <!-- Brand -->
+      <a class="title nav-link" href="/listings">
+        <i class="fa-sharp fa-regular fa-compass"></i> StayVerse
+      </a>
 
-    <!-- Toggle Button for Mobile View -->
-    <button
-      class="navbar-toggler buttonTog"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- Navbar Content -->
-    <div
-      class="collapse navbar-collapse justify-content-center searchBar"
-      id="navbarNavAltMarkup"
-    >
-      <!-- Middle: Search Bar -->
-      <form
-        class="d-flex"
-        role="search"
-        style="width: 40%"
-        action="/listings/search"
-      >
-        <input
-          class="form-control me-2 searchInput"
-          type="search"
-          placeholder="Search destinations"
-          name="search"
-        />
-        <button class="btn searchBtn" type="submit">
-          <i class="fa-solid fa-magnifying-glass"></i>Search
-        </button>
-      </form>
+      <!-- Links -->
+      <a class="nav-link text" href="/listings/index">Places to stay</a>
+      <a class="nav-link text" href="/listings/new">Become a Host</a>
     </div>
 
-    <!-- Right Side: Airbnb your home & User Menu -->
-    <div class="d-flex align-items-center buttonTogler">
-      <div class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <i class="fa-solid fa-bars" style="font-size: 28px"></i>
-        </a>
+    <!-- RIGHT GROUP -->
+    <div class="dropdown">
+      <button
+        class="menu-pill dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <i class="fa-solid fa-bars"></i>
+        <i class="fa-solid fa-user"></i>
+      </button>
 
-        <ul class="dropdown-menu dropdown-menu-end">
-          <% if (!currUser) { %>
-          <li>
-            <a class="dropdown-item" href="/signUp"><b>Sign Up</b></a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="/login"><b>Login</b></a>
-          </li>
-          <% } %> <% if (currUser) { %>
-          <li>
-            <a class="dropdown-item" href="/logout"><b>Logout</b></a>
-          </li>
-          <% } %>
-        </ul>
-      </div>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <% if (!currUser) { %>
+        <li>
+          <a class="dropdown-item" href="/signUp"><b>Sign Up</b></a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="/login"><b>Login</b></a>
+        </li>
+        <% } %> <% if (currUser) { %>
+        <li>
+          <a class="dropdown-item" href="/logout"><b>Logout</b></a>
+        </li>
+        <% } %>
+      </ul>
     </div>
   </div>
 </nav>

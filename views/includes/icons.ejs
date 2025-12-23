@@ -1,22 +1,3 @@
-<div class="searchI">
-  <form
-    class="d-flex"
-    role="search"
-    style="width: 40%"
-    action="/listings/search"
-  >
-    <input
-      class="form-control me-2 searchInput searchMob"
-      type="search"
-      placeholder="Search destinations"
-      name="search"
-    />
-    <button class="btn searchBtn" type="submit">
-      <i class="fa-solid fa-magnifying-glass"></i>Search
-    </button>
-  </form>
-</div>
-
 <style>
   .Trending,
   .Hotels,
@@ -34,21 +15,153 @@
   .DesertStays {
     font-family: "Roboto Condensed", sans-serif !important;
     font-weight: 500;
-    font-size: 16px !important;
+    font-size: 19px !important;
+  }
+
+  #filters-container {
+    overflow: hidden;
+    width: 45rem;
+  }
+
+  #filters {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    gap: 1.8rem;
+    width: 1000px; /* ✅ Fix width */
+  }
+
+  /* ✅ Hide scrollbar */
+  #filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filters {
+    width: 150px;
+    text-align: center;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    opacity: 0.3;
+  }
+  .filters:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  .filters p {
+    font-size: 0.8rem;
+  }
+
+  /* .tax-toggle {
+  position: absolute;
+  right: 20px;
+  top: 5.7rem;
+  border: 2px solid black !important;
+  border-radius: 1rem;
+  padding: 1rem;
+  height: 2.8rem;
+  margin-right: 8rem;
+  display: flex;
+  align-items: center;
+} */
+
+  /* Search bar */
+
+  .search-bar {
+    width: 49rem;
+    background: #fff;
+  }
+
+  .search-bar input:focus {
+    box-shadow: none;
+  }
+
+  .divider {
+    width: 1px;
+    height: 40px;
+    background-color: #ddd;
+  }
+
+  .search-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Heading */
+
+  .heading {
+    text-align: center;
   }
 </style>
 
+<div class="heading mt-4">
+  <h1>Find your next stay</h1>
+  <p>Search deals on hotels, homes, and much more...</p>
+</div>
+
+<div class="container mt-4 search-container mb-3">
+  <form action="/listings/search">
+    <div class="search-bar d-flex align-items-center shadow rounded-pill p-2">
+      <div class="px-3 flex-fill">
+        <small class="text-muted">Where</small>
+        <input
+          type="text"
+          class="form-control border-0 p-0"
+          placeholder="Search destinations"
+          name="search"
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="px-3">
+        <small class="text-muted">Check in</small>
+        <input
+          type="date"
+          class="form-control border-0 p-0"
+          placeholder="Add dates"
+          name="checkIn"
+        />
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="px-3">
+        <small class="text-muted">Check out</small>
+        <input
+          type="date"
+          class="form-control border-0 p-0"
+          placeholder="Add dates"
+          name="checkOut"
+        />
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="px-3">
+        <small class="text-muted">Guests</small>
+        <input
+          type="text"
+          class="form-control border-0 p-0"
+          placeholder="Add guests"
+          name="guestNo"
+          autocomplete="off"
+        />
+      </div>
+
+      <button class="btn btn-danger rounded-circle ms-2">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+  </form>
+</div>
+
 <div id="filters-container">
   <div id="filters">
-    <div class="leftAngle">
-      <i class="fa-solid fa-angles-left"></i>
-    </div>
-
-    <div class="filters">
-      <div><i class="fa-sharp fa-regular fa-folder-open"></i></div>
-      <p>Empty</p>
-    </div>
-
     <div class="filters">
       <%category="Trending"%>
       <a href="/listings/page/<%=category%>" class="iconColor">
@@ -160,30 +273,7 @@
         <p class="Snow">Snow</p>
       </a>
     </div>
-
-    <div class="filters">
-      <div><i class="fa-sharp fa-regular fa-folder-open"></i></div>
-      <p>Empty</p>
-    </div>
-
-    <div class="rightAngle">
-      <i class="fa-solid fa-angles-right"></i>
-    </div>
   </div>
 </div>
 
-<br />
-
-<div class="tax-toggle">
-  <div class="form-check-reverse form-switch">
-    <input
-      class="form-check-input"
-      type="checkbox"
-      role="switch"
-      id="flexSwitchCheckDefault"
-    />
-    <label class="form-check-label" for="flexSwitchCheckDefault"
-      >All Taxes</label
-    >
-  </div>
-</div>
+<hr class="mb-5" />

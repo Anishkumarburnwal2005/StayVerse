@@ -10,11 +10,14 @@ const { isLoggedIn, isOwner, validateListing } = require("../middleware.js");
 
 const listingController = require("../controller/listing.js");
 
+//Home route
+router.get("/", listingController.home);
+
 // New Route
 router.get("/new", isLoggedIn, listingController.renderNewForm);
 
 // Index Route
-router.get("/", listingController.index);
+router.get("/index", listingController.index);
 
 // Create Route
 router.post(

@@ -1,0 +1,80 @@
+<%layout("/Layout/boilerplate.ejs")%>
+
+<style>
+  .home_listings {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 1rem;
+    width: 100%;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .home_listings::-webkit-scrollbar {
+    display: none;
+  }
+
+  .home_card {
+    min-width: 17rem;
+    height: 17rem;
+    margin-bottom: 2rem;
+    border-radius: 5%;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .home_card:hover {
+    opacity: 0.5;
+  }
+
+  .home_img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .heading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+</style>
+
+<body>
+  <div class="heading">
+    <div><h1>Find your next stay</h1></div>
+    <br />
+    <div><p>Search deals on hotels, homes, and much more...</p></div>
+  </div>
+
+  <div>
+    <% categories = ["Hotels", "Forest Retreats", "Mountain", "Island"]; %>
+    <%categories.forEach((category) => { %>
+    <h2><a href="/listings/page/<%=category%>"><%= category%></a></h2>
+    <div class="home_listings">
+      <% for(listing of listings){ %> <%if(listing.category == category){%>
+      <a href="/listings/<%=listing._id%>">
+        <div class="home_card">
+          <img
+            src="<%=listing.image[0].url%>"
+            class="home_img"
+            alt="listing_image"
+          />
+        </div>
+      </a>
+      <%}%> <%}%>
+    </div>
+    <%})%>
+  </div>
+  <script>
+    document.querySelectorAll(".home_listings").forEach((slider) => {
+      slider.addEventListener("wheel", (e) => {
+        e.preventDefault(); // stop vertical scroll
+        slider.scrollLeft += e.deltaY * 4.5; // wheel → horizontal
+        ease = 0.08;
+      });
+    });
+  </script>
+</body>

@@ -1,0 +1,63 @@
+@media (max-width: 500px) and (orientation: portrait) {
+  .explore,
+  .navbar-toggler {
+    display: none;
+  }
+
+  .container-fluid {
+    display: flex;
+  }
+
+  .fa-compass {
+    margin-left: 10px;
+    font-size: 3rem;
+  }
+
+  .text {
+    margin-left: 5rem !important;
+  }
+
+  .buttonTog,
+  .searchBar {
+    display: none !important;
+  }
+
+  .buttonTogler {
+    display: flex;
+  }
+
+  .navbar {
+    height: 3.8rem;
+  }
+}
+
+@media (max-width: 800px) and (orientation: landscape) {
+  .explore,
+  .navbar-toggler {
+    display: none;
+  }
+
+  .container-fluid {
+    display: flex;
+  }
+
+  .fa-compass {
+    font-size: 3rem;
+  }
+
+  .text {
+    margin-right: 30rem !important;
+  }
+
+  .buttonTog {
+    display: none !important;
+  }
+
+  .buttonTogler {
+    display: flex;
+  }
+
+  .navbar {
+    height: 3.8rem;
+  }
+}

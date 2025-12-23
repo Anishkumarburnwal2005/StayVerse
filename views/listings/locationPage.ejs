@@ -1,33 +1,60 @@
-<%layout("/Layout/boilerplate.ejs")%> <%-include("../includes/icons.ejs")%>
+<%layout("/Layout/boilerplate.ejs")%>
+
+<style>
+  .user {
+    font-size: 21px;
+    color: rgb(25, 25, 134);
+  }
+</style>
 
 <body>
   <div class="row row-cols-lg-3 row-cols-md-2 row-cols-md-1 mt-3 bebo">
     <% for(listing of locationListings){ %>
-    <a href="/listings/<%=listing._id%>" class="listing-link">
-      <div class="card col listing-card">
+    <div class="card col listing-card">
+      <a href="/listings/<%=listing._id%>" class="listing-link">
         <img
           src="<%=listing.image[0].url%>"
-          class="card-img-top"
+          class="card-img-top indexImg"
           alt="listing_image"
           style="height: 20rem"
         />
-        <div class="card-img-overlay"></div>
-        <div class="card-body">
-          <p class="card-text">
+        <div class="card-img-overlay sizeFit"></div>
+      </a>
+
+      <div class="card-body">
+        <p class="card-text indexP">
+          <span>
             <b class="boldTitle"><%=listing.title%></b><br />
-            <b class="boldPrice"
-              >&#8377;<%= (listing.price != null ?
-              listing.price.toLocaleString("en-IN") : "N/A")%>/Night</b
-            >
-            <i class="boldPrice GST">&nbsp; &nbsp; &nbsp; &nbsp; +18% GST</i
-            ><br />
+            <b class="boldPrice">
+              &#8377;<%= (listing.price && nights) ? (listing.price *
+              nights).toLocaleString("en-IN"): "N/A"%>/total
+            </b>
+            <br />
             <b class="boldH cat">Location: </b>
-            <b class="boldP boldH cat"><%=listing.location%></b>
-          </p>
-        </div>
+            <b class="boldP boldH cat"><%=listing.location%></b><br />
+
+            <% if(guestNo) { %>
+            <b class="boldTitle"
+              ><i class="fa-solid fa-user user"></i>
+              &nbsp; <%= guestNo %> guests
+            </b>
+            <% } %>
+          </span>
+          <button class="likeBtn"><i class="fa-regular fa-heart"></i></button>
+        </p>
       </div>
-    </a>
+    </div>
     <%}%>
   </div>
-  <script src="/js/icons.js"></script>
+  <script>
+    const likeBtn = document.querySelectorAll(".likeBtn");
+    likeBtn.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const icon = btn.querySelector("i");
+
+        icon.classList.toggle("fa-regular");
+        icon.classList.toggle("fa-solid");
+      });
+    });
+  </script>
 </body>

@@ -25,6 +25,11 @@ async function getCoordinates(address) {
   }
 }
 
+module.exports.home = async (req, res) => {
+  let listings = await Listing.find({});
+  res.render("listings/home.ejs", { listings });
+};
+
 module.exports.index = async (req, res) => {
   let listings = await Listing.find({});
   res.render("listings/index.ejs", { listings });
@@ -150,7 +155,7 @@ module.exports.category = async (req, res) => {
 };
 
 module.exports.search = async (req, res) => {
-  let { search: locateListing } = req.query;
+  let { search: locateListing, checkIn, checkOut, guestNo } = req.query;
   if (locateListing === "") {
     const redirectUrl = req.headers.referer || "/listing";
     await req.flash("error", "Enter a valid location!");
@@ -165,5 +170,17 @@ module.exports.search = async (req, res) => {
     await req.flash("error", `Listings are not exist for ${locateListing}!`);
     return res.redirect(`${redirectUrl}`);
   }
-  res.render("listings/locationPage", { locationListings });
+
+  const date1 = new Date(checkIn);
+  const date2 = new Date(checkOut);
+  const oneday = 1000 * 60 * 60 * 24;
+  const nights = (date2 - date1) / oneday;
+
+  if (nights <= 0 || isNaN(nights)) {
+    const redirectUrl = req.headers.referer || "/listing";
+    await req.flash("error", `Invalid dates selected`);
+    return res.redirect(`${redirectUrl}`);
+  }
+
+  res.render("listings/locationPage", { locationListings, guestNo, nights });
 };
