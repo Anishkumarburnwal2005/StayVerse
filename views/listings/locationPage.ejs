@@ -11,7 +11,7 @@
   <div class="row row-cols-lg-3 row-cols-md-2 row-cols-md-1 mt-3 bebo">
     <% for(listing of locationListings){ %>
     <div class="card col listing-card">
-      <a href="/listings/<%=listing._id%>" class="listing-link">
+      <a href="/listings/<%=listing._id%>/location" class="listing-link">
         <img
           src="<%=listing.image[0].url%>"
           class="card-img-top indexImg"

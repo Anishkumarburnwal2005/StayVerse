@@ -91,6 +91,7 @@
     height: 15rem;
     width: 16rem;
     margin: 0;
+    margin-left: 0.5rem;
     margin-bottom: 11rem !important;
   }
 
@@ -296,9 +297,9 @@
 
     <div class="part2">
       <div class="mt-3 rightScroll">
-        <% for(listing of categoryListings){ %>
+        <% for(listing of nearListings){ %>
         <div class="card listing-card sizeFit">
-          <a href="/listings/<%=listing._id%>" class="listing-link">
+          <a href="/listings/<%=listing._id%>/location" class="listing-link">
             <img
               src="<%=listing.image[0].url%>"
               class="card-img-top indexImg"
@@ -307,7 +308,7 @@
             <div class="card-img-overlay sizeFit2"></div>
           </a>
 
-          <div class="card-body">
+          <div class="card-body fix">
             <p class="card-text indexP">
               <span>
                 <b class="boldTitle"><%=listing.title%></b><br />
@@ -340,13 +341,3 @@
 
   <script src="/js/map.js"></script>
 </body>
-
-<!-- Maithon, near Maithon Dam, Asansol, West Bengal, India
-Lakefront
-Maithon Lake Retreat
-A peaceful lakeside resort offering breathtaking views of Maithon Dam. Guests can enjoy boating, fishing, and sunset walks along the shore. The resort features cozy cottages with a serene environment, making it perfect for a weekend getaway. A great spot for nature lovers and families. -->
-
-<!-- Luxury Mountain Chalet
-Escape to this stunning Swiss Alps chalet, featuring floor-to-ceiling windows, a private hot tub, and breathtaking mountain views. Perfect for ski lovers and those seeking a peaceful getaway in nature.
-Zermatt, Switzerland
-Snow 9000 -->

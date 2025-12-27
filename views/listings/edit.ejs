@@ -1,65 +1,223 @@
-<% layout("/Layout/boilerplate.ejs")%>
+<% layout("/Layout/boilerplate.ejs") %>
 
 <style>
-  @media (max-width: 500px) and (orientation: portrait) {
-    .editPage {
-      margin: 0 1rem 4rem 1.5rem !important;
-      width: 19rem !important;
-      padding: 0;
-    }
+  .stepper {
+    font-weight: 600;
+  }
 
-    .oldImg {
-      width: 11rem !important;
-      height: 7rem !important;
+  .step {
+    color: #aaa;
+  }
+
+  .step.active {
+    color: #dc3545;
+  }
+
+  .line {
+    flex: 1;
+    height: 2px;
+    background: #ddd;
+    margin: 0 10px;
+  }
+
+  .step-content {
+    display: none;
+  }
+
+  .step-content.active {
+    display: block;
+  }
+
+  /* ========== PAGE BASE ========== */
+  body {
+    background: linear-gradient(135deg, #fff5f0, #ffffff);
+    font-family: "Inter", "Segoe UI", sans-serif;
+  }
+
+  /* ========== MAIN CARD ========== */
+  .newPage {
+    max-width: 720px;
+    background: #ffffff;
+    padding: 2.2rem 2.5rem;
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  }
+
+  /* ========== HEADING ========== */
+  .newPage h2 {
+    color: #2d2d2d;
+    letter-spacing: 0.5px;
+  }
+
+  .newPage p {
+    font-size: 0.95rem;
+  }
+
+  /* ========== STEPPER ========== */
+  .stepper {
+    margin-top: 2rem;
+  }
+
+  .step {
+    font-size: 0.95rem;
+    color: #b5b5b5;
+    transition: 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .step.active {
+    color: #ff385c;
+    font-weight: 700;
+  }
+
+  .line {
+    flex: 1;
+    height: 2px;
+    background: #e6e6e6;
+    margin: 0 12px;
+    border-radius: 10px;
+  }
+
+  /* ========== FORM FIELDS ========== */
+  .form-label {
+    font-size: 0.95rem;
+    color: #333;
+  }
+
+  .form-control,
+  .form-select {
+    border-radius: 10px;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ddd;
+    transition: all 0.2s ease;
+  }
+
+  .form-control:focus,
+  .form-select:focus {
+    border-color: #ff385c;
+    box-shadow: 0 0 0 3px rgba(255, 56, 92, 0.15);
+  }
+
+  /* TEXTAREA */
+  textarea.form-control {
+    resize: none;
+  }
+
+  /* HELP TEXT */
+  .text-muted {
+    font-size: 0.8rem;
+  }
+
+  /* ========== BUTTONS ========== */
+  .btn {
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 0.55rem 1.3rem;
+  }
+
+  .btn-danger {
+    background: #ff385c;
+    border: none;
+  }
+
+  .btn-danger:hover {
+    background: #e0314f;
+  }
+
+  .btn-outline-secondary {
+    border: 1.5px solid #ccc;
+  }
+
+  .btn-outline-secondary:hover {
+    background: #f8f8f8;
+  }
+
+  .btn-success {
+    background: #2da44e;
+    border: none;
+  }
+
+  .btn-success:hover {
+    background: #248943;
+  }
+
+  /* ========== STEP CONTENT ========== */
+  .step-content {
+    animation: fadeSlide 0.35s ease;
+  }
+
+  /* ========== ANIMATION ========== */
+  @keyframes fadeSlide {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
-  @media (max-width: 800px) and (orientation: landscape) {
-    .editPage {
-      margin: 0 1rem 2rem 1.5rem !important;
-      width: 32rem !important;
-      padding: 0;
+  /* ========== IMAGE INPUT ========== */
+  input[type="file"] {
+    cursor: pointer;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 576px) {
+    .newPage {
+      padding: 1.6rem 1.4rem;
     }
 
-    .oldImg {
-      width: 14rem !important;
-      height: 8rem !important;
+    .stepper {
+      font-size: 0.8rem;
     }
-  }
 
-  .editPage {
-    margin-bottom: 1.5rem;
-  }
-  .limit {
-    font-size: 17.5px;
-    font-weight: 500;
-  }
+    .line {
+      margin: 0 6px;
+    }
 
-  .title,
-  .description,
-  .image,
-  .location,
-  .country,
-  .category,
-  .price {
-    font-weight: 550 !important;
+    .btn {
+      width: 100%;
+    }
+
+    .d-flex.justify-content-between {
+      flex-direction: column;
+      gap: 0.7rem;
+    }
   }
 </style>
 
 <body>
-  <div class="row container">
-    <div class="col-7 offset-2 editPage">
-      <h2 class="mb-4 mt-3 fs-3"><u>Edit the listing</u></h2>
+  <div class="container newPage mt-4">
+    <h2 class="text-center fw-bold">Edit Your Listing</h2>
+    <p class="text-center text-muted">
+      Share your space with millions of travelers
+    </p>
 
-      <form
-        method="POST"
-        action="/listings/<%=listing._id%>?_method=PUT"
-        class="needs-validation"
-        novalidate
-        enctype="multipart/form-data"
-      >
+    <!-- STEPPER -->
+    <div class="stepper d-flex justify-content-between align-items-center my-4">
+      <div class="step active">Basic Info</div>
+      <div class="line"></div>
+      <div class="step">Images</div>
+      <div class="line"></div>
+      <div class="step">Location & Price</div>
+    </div>
+
+    <!-- FORM -->
+    <form
+      method="POST"
+      action="/listings/<%=listing._id%>?_method=PUT"
+      class="needs-validation"
+      novalidate
+      enctype="multipart/form-data"
+    >
+      <!-- STEP 1 -->
+      <div class="step-content active">
         <div class="mb-3">
-          <label for="title" class="form-label title">Title:</label>
+          <label for="title" class="form-label fw-semibold"
+            >Property Title *</label
+          >
           <input
             type="text"
             id="title"
@@ -68,27 +226,64 @@
             class="form-control"
             required
           />
+          <small class="text-muted">Make it catchy and descriptive!</small>
           <div class="valid-feedback">Title looks good!!</div>
           <div class="invalid-feedback">Enter a suitable Title.</div>
         </div>
 
         <div class="mb-3">
-          <label for="description" class="form-label description"
-            >Description:
-          </label>
+          <label for="description" class="form-label fw-semibold"
+            >Describe Your Place *</label
+          >
           <textarea
             id="description"
             name="listing[description]"
+            rows="4"
+            maxlength="500"
             class="form-control"
             required
-            rows="6"
-            cols="30"
           >
 <%=listing.description%></textarea
           >
-          <div class="invalid-feedback">please enter a short description!!</div>
+          <small class="text-muted">0 / 500 characters</small>
+          <div class="invalid-feedback">Please enter a short description!!</div>
         </div>
 
+        <div class="mb-4">
+          <label for="category" class="form-label fw-semibold"
+            >Category *</label
+          >
+          <select
+            id="category"
+            name="listing[category]"
+            class="form-select"
+            required
+          >
+            <option><%=listing.category%></option>
+            <option>Trending</option>
+            <option>Beach</option>
+            <option>Cabins</option>
+            <option>Desert Stays</option>
+            <option>Farms</option>
+            <option>Forest Retreats</option>
+            <option>Hotels</option>
+            <option>Iconic cities</option>
+            <option>Igloo</option>
+            <option>Island</option>
+            <option>Jungle Lodges</option>
+            <option>Lakefront</option>
+            <option>Mountain</option>
+            <option>Snow</option>
+          </select>
+        </div>
+
+        <div class="text-end">
+          <button type="button" class="btn btn-danger next">Next Step</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step-content">
         <div class="mb-3">
           <img
             class="oldImg"
@@ -97,52 +292,37 @@
             style="height: 12rem; width: 20rem; border-radius: 0.8rem"
           />
         </div>
-
         <div class="mb-3">
-          <label for="image" class="form-label image">Upload new image: </label>
+          <label for="image" class="form-label fw-semibold"
+            >Upload New Images *</label
+          >
           <input
             type="file"
             id="image"
             name="listing[image]"
+            placeholder="Maximum 5 images • JPG, PNG up to 10MB each"
             class="form-control"
             multiple
           />
-          <div class="invalid-feedback">Enter a valid image url</div>
-          <p class="limit">Only 5 images can be uploaded for a listing!</p>
+          <small class="text-muted">You can upload up to 5 images</small>
+          <div class="invalid-feedback">Please upload a valid image!!</div>
         </div>
 
-        <div class="mb-2">
-          <label for="category" class="form-label category">Category:</label>
-          <select
-            id="category"
-            name="listing[category]"
-            class="form-select"
-            required
-          >
-            <option><%=listing.category%></option>
-            <option>Beach</option>
-            <option>Cabins</option>
-            <option>Desert Stays</option>
-            <option>Farms</option>
-            <option>Forest Retreats</option>
-            <option>Hotels</option>
-            <option>Iconic cities</option>
-            <option>igloo</option>
-            <option>Island</option>
-            <option>Jungle Lodges</option>
-            <option>Lakefront</option>
-            <option>Mountain</option>
-            <option>Snow</option>
-            <option>Trending</option>
-          </select>
-          <div class="invalid-feedback">Category should be valid</div>
+        <div class="d-flex justify-content-between">
+          <button type="button" class="btn btn-secondary prev">Previous</button>
+          <button type="button" class="btn btn-danger next">Next Step</button>
         </div>
+      </div>
 
+      <!-- STEP 3 -->
+      <div class="step-content">
         <div class="mb-3">
-          <label for="location" class="form-label locaiton">Location: </label>
+          <label for="location" class="form-label fw-semibold"
+            >Location *</label
+          >
           <input
             type="text"
-            id="locaiton"
+            id="location"
             name="listing[location]"
             value="<%=listing.location%>"
             class="form-control"
@@ -151,34 +331,69 @@
           <div class="invalid-feedback">Location should be valid</div>
         </div>
 
-        <div class="row">
-          <div class="mb-3 col-md-4">
-            <label for="price" class="form-label price">Price: </label>
-            <input
-              id="price"
-              name="listing[price]"
-              value="<%=listing.price%>"
-              class="form-control"
-              required
-            />
-            <div class="invalid-feedback">Price should be valid</div>
-          </div>
-
-          <div class="mb-3 col-md-8">
-            <label for="country" class="form-label country">Country: </label>
-            <input
-              type="text"
-              id="country"
-              name="listing[country]"
-              value="<%=listing.country%>"
-              class="form-control"
-              required
-            />
-            <div class="invalid-feedback">Country should be valid</div>
-          </div>
+        <div class="mb-3">
+          <label for="price" class="form-label fw-semibold">Price *</label>
+          <input
+            id="price"
+            name="listing[price]"
+            value="<%=listing.price%>"
+            class="form-control"
+            required
+          />
+          <small class="text-muted"
+            >Set a competitive price for your property</small
+          >
+          <div class="invalid-feedback">Price should be valid</div>
         </div>
-        <button class="btn btn-outline-primary">Update</button>
-      </form>
-    </div>
+
+        <div class="mb-3">
+          <label for="country" class="form-label fw-semibold">Country *</label>
+          <input
+            type="text"
+            id="country"
+            name="listing[country]"
+            value="<%=listing.country%>"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Country should be valid</div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <button type="button" class="btn btn-secondary prev">Previous</button>
+          <button type="submit" class="btn btn-success">Edit Listing</button>
+        </div>
+      </div>
+    </form>
   </div>
+
+  <script>
+    const steps = document.querySelectorAll(".step");
+    const contents = document.querySelectorAll(".step-content");
+    let currentStep = 0;
+
+    document.querySelectorAll(".next").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (currentStep < contents.length - 1) {
+          contents[currentStep].classList.remove("active");
+          steps[currentStep].classList.remove("active");
+          currentStep++;
+          contents[currentStep].classList.add("active");
+          steps[currentStep].classList.add("active");
+        }
+      });
+    });
+
+    document.querySelectorAll(".prev").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (currentStep > 0) {
+          contents[currentStep].classList.remove("active");
+          steps[currentStep].classList.remove("active");
+          currentStep--;
+          contents[currentStep].classList.add("active");
+          steps[currentStep].classList.add("active");
+        }
+      });
+    });
+  </script>
 </body>

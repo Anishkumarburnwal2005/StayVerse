@@ -51,6 +51,10 @@ router
     validateListing,
     wrapAsync(listingController.update)
   );
+
+// Edit Route
+router.get("/:id/location", wrapAsync(listingController.renderShowForm2));
+
 // Edit Route
 router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(listingController.edit));
 

@@ -51,9 +51,38 @@ module.exports.renderShowForm = async (req, res) => {
     .populate("owner");
   if (!listing) {
     req.flash("error", "Listing you requested for does not exist!");
-    res.redirect("/listings");
+    res.redirect("/listings/index");
   }
-  res.render("listings/show.ejs", { listing });
+
+  let categoryListings = await Listing.find({
+    category: listing.category,
+    _id: { $ne: listing._id }, // current listing exclude
+  }).limit(6);
+
+  res.render("listings/show.ejs", { listing, categoryListings });
+};
+
+module.exports.renderShowForm2 = async (req, res) => {
+  let { id } = req.params;
+  const listing = await Listing.findById(id)
+    .populate({
+      path: "reviews",
+      populate: {
+        path: "author",
+      },
+    })
+    .populate("owner");
+  if (!listing) {
+    req.flash("error", "Listing you requested for does not exist!");
+    res.redirect("/listings/index");
+  }
+
+  let nearListings = await Listing.find({
+    country: listing.country,
+    _id: { $ne: listing._id }, // current listing exclude
+  }).limit(8);
+
+  res.render("listings/show2.ejs", { listing, nearListings });
 };
 
 module.exports.create = async (req, res) => {
@@ -93,10 +122,10 @@ module.exports.create = async (req, res) => {
     res.redirect("/listings/new");
   }
 
-  const updatedListing = await newListing.save();
-  console.log(updatedListing);
+  const createdListing = await newListing.save();
+  console.log(createdListing);
   req.flash("success", "New Listing Created!");
-  res.redirect("/listings");
+  res.redirect("/listings/index");
 };
 
 module.exports.edit = async (req, res) => {
@@ -104,7 +133,7 @@ module.exports.edit = async (req, res) => {
   const listing = await Listing.findById(id);
   if (!listing) {
     req.flash("error", "Listing you requested for edit does not exist!");
-    res.redirect("/listings");
+    res.redirect("/listings/index");
   }
   res.render("listings/edit.ejs", { listing });
 };
@@ -112,7 +141,39 @@ module.exports.edit = async (req, res) => {
 module.exports.update = async (req, res) => {
   let { id } = req.params;
   //console.log(path, "...", filename);
-  let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+
+  let listing = await Listing.findById(id);
+
+  if (!listing) {
+    req.flash("error", "Listing not found!!");
+    return res.redirect("/listings/index");
+  }
+
+  // let listing = await Listing.findByIdAndUpdate(
+  //   id,
+  //   { ...req.body.listing },
+  //   { new: true }
+  // );
+
+  try {
+    const address = req.body.listing.location; // Form se mila Address
+    const geometry = await getCoordinates(address);
+
+    if (!geometry) {
+      req.flash("error", "Invalid address! Please enter a valid location.");
+      return res.redirect(`/listings/${listing._id}/edit`);
+    }
+
+    // Update all fields at a time
+    listing.set(req.body.listing);
+    listing.geometry = geometry;
+  } catch (err) {
+    console.error(err);
+    req.flash("error", "Geocoding failed!");
+    res.redirect(`/listings/${listing._id}/edit`);
+  }
+
+  console.log(listing);
 
   if (req.files && req.files.length > 0) {
     // let {path, filename} = req.file;
@@ -122,8 +183,9 @@ module.exports.update = async (req, res) => {
       filename: file.filename,
       url: file.path,
     }));
-    await listing.save();
   }
+  await listing.save();
+
   req.flash("success", "Listing Updated!");
   res.redirect(`/listings/${id}`);
 };
@@ -133,7 +195,7 @@ module.exports.delete = async (req, res) => {
   let result = await Listing.findByIdAndDelete(id);
   console.log(result);
   req.flash("success", "Listing Deleted!");
-  res.redirect("/listings");
+  res.redirect("/listings/index");
 };
 
 module.exports.privacy = (req, res) => {
@@ -157,7 +219,7 @@ module.exports.category = async (req, res) => {
 module.exports.search = async (req, res) => {
   let { search: locateListing, checkIn, checkOut, guestNo } = req.query;
   if (locateListing === "") {
-    const redirectUrl = req.headers.referer || "/listing";
+    const redirectUrl = req.headers.referer || "/listing/index";
     await req.flash("error", "Enter a valid location!");
     return res.redirect(`${redirectUrl}`);
   }
@@ -166,7 +228,7 @@ module.exports.search = async (req, res) => {
   });
 
   if (locationListings.length === 0) {
-    const redirectUrl = req.headers.referer || "/listing";
+    const redirectUrl = req.headers.referer || "/listing/index";
     await req.flash("error", `Listings are not exist for ${locateListing}!`);
     return res.redirect(`${redirectUrl}`);
   }
@@ -177,7 +239,7 @@ module.exports.search = async (req, res) => {
   const nights = (date2 - date1) / oneday;
 
   if (nights <= 0 || isNaN(nights)) {
-    const redirectUrl = req.headers.referer || "/listing";
+    const redirectUrl = req.headers.referer || "/listing/index";
     await req.flash("error", `Invalid dates selected`);
     return res.redirect(`${redirectUrl}`);
   }
