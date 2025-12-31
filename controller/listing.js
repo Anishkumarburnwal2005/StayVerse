@@ -57,7 +57,7 @@ module.exports.renderShowForm = async (req, res) => {
   let categoryListings = await Listing.find({
     category: listing.category,
     _id: { $ne: listing._id }, // current listing exclude
-  }).limit(6);
+  }).limit(8);
 
   res.render("listings/show.ejs", { listing, categoryListings });
 };
@@ -245,4 +245,11 @@ module.exports.search = async (req, res) => {
   }
 
   res.render("listings/locationPage", { locationListings, guestNo, nights });
+};
+
+module.exports.showAllImgPage = async (req, res) => {
+  let { id } = req.params;
+  let listing = await Listing.findById(id);
+  const redirectUrl = req.headers.referer || "/listing";
+  res.render("listings/showPhotos.ejs", { listing, redirectUrl });
 };

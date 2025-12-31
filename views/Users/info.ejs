@@ -1,0 +1,56 @@
+<% layout("/Layout/boilerplate.ejs")%>
+
+<style>
+  .profileCard {
+    width: 25rem !important;
+    padding-bottom: 1rem;
+    margin-top: 2rem;
+    border-radius: 15px !important;
+    margin-bottom: 2rem;
+  }
+
+  .profilePic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0 !important;
+  }
+
+  .profileInfo {
+    margin-left: 1rem;
+  }
+
+  .ownListingWay {
+    text-decoration: none;
+    font-weight: 500;
+    font-family: "Roboto Condensed", sans-serif !important;
+    font-size: 1.3rem;
+    color: #222;
+  }
+</style>
+
+<div class="card profileCard" style="width: 20rem">
+  <img
+    src="<%= user.profilePic %>"
+    class="card-img-top profilePic"
+    alt="profile_img"
+  />
+  <div class="card-body profileInfo">
+    <h5 class="card-title"><i>@<%= user.username %></i></h5>
+    <p class="card-text">
+      <i><b>Email: </b><%= user.email %></i>
+    </p>
+    <% if(user.gender){ %>
+    <p class="card-text">
+      <i><b>gender: </b><%= user.gender %></i>
+    </p>
+    <% } %> <% if(user.about){ %>
+    <p class="card-text">
+      <i><b>about: </b><%= user.about %></i>
+    </p>
+    <% } %>
+    <a href="/auth/google/ownListings/<%= user._id%>" class="ownListingWay">
+      <i>All Listings</i>
+    </a>
+  </div>
+</div>

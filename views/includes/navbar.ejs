@@ -50,6 +50,18 @@
   .menu-pill::after {
     display: none; /* remove default bootstrap arrow */
   }
+
+  .profileImg {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 10px;
+  }
+
+  .username {
+    font-family: "Roboto Condensed", sans-serif !important;
+    font-weight: 500;
+    font-size: 1.24rem;
+  }
 </style>
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
@@ -87,8 +99,41 @@
           <a class="dropdown-item" href="/login"><b>Login</b></a>
         </li>
         <% } %> <% if (currUser) { %>
+        <a href="/auth/google/info/<%=currUser._id%>">
+          <li>
+            <img
+              class="profileImg mx-auto d-block img-thumbnail"
+              src="<%=currUser.profilePic%>"
+              alt="profile_img"
+            />
+          </li>
+        </a>
+        <a href="/auth/google/info/<%=currUser._id%>">
+          <% if (currUser.profilenName) { %>
+          <li>
+            <i
+              ><p class="username dropdown-item">
+                @<%=currUser.profilenName%>
+              </p></i
+            >
+          </li>
+          <% } else { %>
+          <li>
+            <p class="username dropdown-item"><i>@<%=currUser.username%></i></p>
+          </li>
+          <% } %>
+        </a>
         <li>
-          <a class="dropdown-item" href="/logout"><b>Logout</b></a>
+          <a
+            class="dropdown-item"
+            href="/auth/google/ownListings/<%= currUser._id %>"
+            ><i><b>Show Listings</b></i>
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="/logout"
+            ><i><b>Logout</b></i></a
+          >
         </li>
         <% } %>
       </ul>

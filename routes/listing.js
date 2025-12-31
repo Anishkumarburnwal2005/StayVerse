@@ -69,6 +69,10 @@ router.delete(
 //Category
 router.get("/page/:category", wrapAsync(listingController.category));
 
+//Show Photos
+
+router.get("/showPhotos/:id", wrapAsync(listingController.showAllImgPage));
+
 module.exports = router;
 
 // // Show Route

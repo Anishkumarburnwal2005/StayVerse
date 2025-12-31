@@ -1,51 +1,17 @@
 <% layout("/Layout/boilerplate.ejs")%>
 
-<style>
-  @media (max-width: 500px) and (orientation: portrait) {
-    .signUpPage {
-      margin: 2.5rem 1rem 4rem 2rem !important;
-      width: 20rem !important;
-      padding: 0;
-    }
-
-    .signHeading {
-      width: 20rem;
-    }
-
-    body {
-      width: 22.7rem;
-    }
-  }
-
-  @media (max-width: 800px) and (orientation: landscape) {
-    .signUpPage {
-      margin: 1.5rem 1rem 2rem 2rem !important;
-      width: 30rem !important;
-      padding: 0;
-    }
-
-    .signHeading {
-      width: 30rem;
-    }
-
-    body {
-      width: 46rem;
-    }
-  }
-</style>
-
 <div class="row">
   <div class="col-6 offset-3 mt-4 signUpPage">
     <h1 class="signHeading">SignUp on StayVerse</h1>
     <hr />
     <form method="POST" action="/signUp" class="needs-validation" novalidate>
       <div class="mb-3">
-        <label for="username" class="form-label">Username : </label>
+        <label for="username" class="form-label fw-semibold">Username : </label>
         <input
           type="text"
           id="username"
           name="username"
-          placeholder="Enter your username"
+          placeholder="e.g. Nishu Parsad"
           class="form-control"
           required
         />
@@ -53,12 +19,12 @@
       </div>
 
       <div class="mb-3">
-        <label for="email" class="form-label">Email : </label>
+        <label for="email" class="form-label fw-semibold">Email : </label>
         <input
           type="email"
           id="email"
           name="email"
-          placeholder="Enter your email"
+          placeholder="nishu@gmail.com"
           class="form-control"
           required
         />
@@ -66,7 +32,17 @@
       </div>
 
       <div class="mb-3">
-        <label for="password" class="form-label">Password : </label>
+        <label for="gender" class="form-label fw-semibold">Gender: </label>
+        <select name="gender" id="gender" class="form-control">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="others">Others</option>
+          <!-- <div class="invalid-feedback">Enter a valid Email.</div> -->
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label fw-semibold">Password : </label>
         <input
           type="password"
           id="password"
@@ -78,7 +54,22 @@
         <div class="invalid-feedback">Enter a stronger password.</div>
       </div>
 
+      <div class="mb-3">
+        <label for="about" class="form-label fw-semibold">About: </label>
+        <textarea
+          type="text"
+          id="about"
+          name="about"
+          placeholder="Tell us more about your self that helps others to know about you..."
+          class="form-control"
+          rows="3"
+          cols="20"
+        ></textarea>
+      </div>
+
       <button class="btn btn-outline-success">SignUp</button>
     </form>
+    <hr />
+    <h3><a href="/auth/google">Sign Up with Google</a></h3>
   </div>
 </div>

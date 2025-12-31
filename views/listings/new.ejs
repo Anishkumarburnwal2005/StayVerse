@@ -186,6 +186,21 @@
       gap: 0.7rem;
     }
   }
+
+  .boob {
+    display: flex;
+    justify-content: center;
+  }
+
+  .uploadIcon {
+    font-size: 10rem;
+    color: #dc3545;
+    transition: all 0.2s ease;
+  }
+
+  .uploadIcon:hover {
+    color: #248943;
+  }
 </style>
 
 <body>
@@ -283,6 +298,10 @@
       <!-- STEP 2 -->
       <div class="step-content">
         <div class="mb-3">
+          <label for="image" class="form-label fw-semibold boob">
+            <i class="fa-sharp fa-solid fa-cloud-arrow-down uploadIcon"></i>
+          </label>
+          <br />
           <label for="image" class="form-label fw-semibold"
             >Upload Images *</label
           >

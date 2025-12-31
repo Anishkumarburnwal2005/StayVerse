@@ -18,22 +18,23 @@ const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
 
 const ExpressError = require("./utils/ExpressError.js");
-const wrapAsync = require("./utils/wrapAsync.js");
 const mongoose = require("mongoose");
 
 const listingRouters = require("./routes/listing.js");
 const reviewRouters = require("./routes/review.js");
 const userRouters = require("./routes/user.js");
+const googleUsers = require("./routes/googleUser.js");
 
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 
-const passPort = require("passport");
+const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
-const Listing = require("./models/listing.js");
 const dbUrl = process.env.ATLASDB_URL;
+
+let GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 main()
   .then(() => {
@@ -76,13 +77,46 @@ const sessionOptions = {
 };
 
 app.use(session(sessionOptions));
-app.use(passPort.initialize());
-app.use(passPort.session());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
-passPort.use(new LocalStrategy(User.authenticate()));
-passPort.serializeUser(User.serializeUser());
-passPort.deserializeUser(User.deserializeUser());
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: "/auth/google/callback",
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      //console.log(profile);
+      let user = await User.findOne({ googleId: profile.id });
+      try {
+        if (!user) {
+          user =
+            (await User.create({
+              googleId: profile.id,
+              username: profile.displayName,
+              email: profile.emails?.[0]?.value || null,
+              profilePic: profile.photos[0].value,
+              profilenName: profile.name.givenName,
+            })) || null;
+        }
+
+        console.log(user);
+        return done(null, user);
+      } catch (err) {
+        console.log(err);
+        return done(err, user);
+      }
+    }
+  )
+);
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
@@ -94,16 +128,7 @@ app.use((req, res, next) => {
 app.use("/listings", listingRouters);
 app.use("/listings/:id/reviews", reviewRouters);
 app.use("/", userRouters);
-
-app.get(
-  "/showPhotos/:id",
-  wrapAsync(async (req, res) => {
-    let { id } = req.params;
-    let listing = await Listing.findById(id);
-    const redirectUrl = req.headers.referer || "/listing";
-    res.render("listings/showPhotos.ejs", { listing, redirectUrl });
-  })
-);
+app.use("/auth/google", googleUsers);
 
 app.all("*", (req, res, next) => {
   throw new ExpressError(404, "Page not found!!");

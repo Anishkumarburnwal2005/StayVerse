@@ -10,15 +10,15 @@ module.exports.getSign = (req, res) => {
 
 module.exports.postSign = async (req, res) => {
   try {
-    let { username, email, password } = req.body;
-    const newUser = new User({ username, email });
+    let { username, email, gender, password, location } = req.body;
+    const newUser = new User({ username, email, gender, location });
     let registeredUser = await User.register(newUser, password);
     req.login(registeredUser, (err) => {
       if (err) {
         return next(err);
       }
       req.flash("success", "Welcome to StayVerse!");
-      res.redirect("/listings");
+      res.redirect("/listings/index");
     });
   } catch (e) {
     req.flash("error", e.message);
@@ -32,7 +32,7 @@ module.exports.getLogin = (req, res) => {
 
 module.exports.postLogin = (req, res) => {
   req.flash("success", "Welcome back to StayVerse!");
-  let redirectUrl = res.locals.redirectUrl || "/listings";
+  let redirectUrl = res.locals.redirectUrl || "/listings/index";
   res.redirect(redirectUrl);
 };
 

@@ -72,7 +72,7 @@
   }
 
   .rightScroll {
-    max-height: 100vh;
+    max-height: 90vh;
     overflow-y: auto;
     overflow-x: hidden;
   }
@@ -128,7 +128,7 @@
             /></a>
             <div class="card-img-overlay huu">
               <%if(listing.image.length>1){%>
-              <form method="GET" action="/showPhotos/<%=listing._id%>">
+              <form method="GET" action="/listings/showPhotos/<%=listing._id%>">
                 <button class="photos">
                   <i class="fa-duotone fa-solid fa-images i"></i>
                   <p class="P"><%=listing.image.length%> More Photos</p>
