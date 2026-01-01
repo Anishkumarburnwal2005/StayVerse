@@ -1,0 +1,147 @@
+<style>
+  .part4 {
+    text-align: center;
+    margin-bottom: 4.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .part4 h1 {
+    color: #222;
+    font-weight: 500;
+    font-size: 3rem;
+  }
+
+  .part4 p {
+    font-weight: 450;
+    font-size: 1.3rem;
+  }
+
+  .need2 {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 6rem;
+  }
+
+  .card-text {
+    font-size: 1.3rem;
+    font-weight: 450;
+  }
+
+  .card2 {
+    min-height: 24rem;
+  }
+
+  .stars {
+    margin-bottom: 0;
+  }
+
+  .stars i {
+    color: #eeea0f;
+    font-size: 1.7rem;
+  }
+
+  .profilePic {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+</style>
+
+<div class="part4">
+  <h1>Loved by Travelers Worldwide</h1>
+  <p class="text-muted">
+    Don't just take our word for it - hear from our community
+  </p>
+</div>
+
+<div class="need2">
+  <div class="card card2" style="width: 22rem">
+    <div class="card-body ha">
+      <div class="stars">
+        <% for(i=1; i<=5; i++) {%>
+        <i class="fa-solid fa-star"></i>
+        <% } %>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <img
+            src="https://photosly.in/wp-content/uploads/2024/08/cute-girl-pic55.jpg"
+            alt="pic1"
+            class="profilePic"
+          />
+        </div>
+        <div class="col-8">
+          <p>Sarah Johnson</p>
+          <p class="text-muted" style="font-size: 1.1rem">Travel Blogger</p>
+        </div>
+      </div>
+      <p class="card-text text-muted">
+        "StayVerse transformed my travel experience! The booking process was
+        seamless, and the properties exceeded my expectations. I found my dream
+        beachfront villa in Bali."
+      </p>
+    </div>
+  </div>
+
+  <div class="card card2" style="width: 21rem">
+    <div class="card-body">
+      <div class="stars">
+        <% for(i=1; i<=5; i++) {%>
+        <i class="fa-solid fa-star"></i>
+        <% } %>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfYcU6lPnRRszGO37W8NeTidJjq57Z-oDg8g&s"
+            alt="pic1"
+            class="profilePic"
+          />
+        </div>
+        <div class="col-8">
+          <p>Michael Chen</p>
+          <p class="text-muted" style="font-size: 1.1rem">Digital Nomad</p>
+        </div>
+      </div>
+      <p class="card-text text-muted">
+        "As someone who travels full-time, I need reliable accommodation.
+        StayVerse has become my go-to platform. The variety and quality are
+        unmatched!"
+      </p>
+    </div>
+  </div>
+
+  <div class="card card2" style="width: 21rem">
+    <div class="card-body">
+      <div class="stars">
+        <% for(i=1; i<=5; i++) {%>
+        <i class="fa-solid fa-star"></i>
+        <% } %>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <img
+            src="https://cutedp.org/wp-content/uploads/2024/07/cute-girl-pic-44.jpg"
+            alt="pic1"
+            class="profilePic"
+          />
+        </div>
+        <div class="col-8">
+          <p>Emma Rodriguez</p>
+          <p class="text-muted" style="font-size: 1.1rem">Family Travel</p>
+        </div>
+      </div>
+      <p class="card-text text-muted">
+        "Planning family vacations used to be stressful, but StayVerse made it
+        so easy! The detailed listings and reviews helped us find the perfect
+        family-friendly home."
+      </p>
+    </div>
+  </div>
+</div>
+
+<p style="text-align: center">
+  <i class="fa-solid fa-star" style="color: #eeea0f; font-size: 1.7rem"></i>4.9
+  out of 5 based on 50,000+ reviews
+</p>

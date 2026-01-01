@@ -1,4 +1,10 @@
-<%layout("/Layout/boilerplate.ejs")%>
+<%layout("/Layout/boilerplate.ejs")%> <% if(!currUser) {%>
+<style>
+  .navbar {
+    display: none;
+  }
+</style>
+<% } %>
 
 <body>
   <div class="row row-cols-lg-3 row-cols-md-2 row-cols-md-1 mt-3 bebo">

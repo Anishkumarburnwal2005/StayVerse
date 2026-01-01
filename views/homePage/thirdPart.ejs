@@ -1,0 +1,86 @@
+<style>
+  .part3 {
+    text-align: center;
+    margin-bottom: 4.5rem;
+  }
+
+  .part3 h1 {
+    color: #222;
+    font-weight: 500;
+    font-size: 3rem;
+  }
+
+  .part3 p {
+    font-weight: 450;
+    font-size: 1.3rem;
+  }
+
+  .home_listings {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 1rem;
+    width: 100%;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .home_listings::-webkit-scrollbar {
+    display: none;
+  }
+
+  .home_card {
+    min-width: 17rem;
+    height: 17rem;
+    margin-bottom: 2rem;
+    border-radius: 5%;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .home_card:hover {
+    opacity: 0.5;
+  }
+
+  .home_img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+</style>
+
+<div class="part3">
+  <h1>Explore Popular Destinations</h1>
+  <p class="text-muted">
+    Discover handpicked stays in the world's most sought-after locations
+  </p>
+</div>
+
+<div class="row">
+  <div class="col-10 offset-1">
+    <h2><a href="/listings/page/Hotels">Hotels</a></h2>
+    <div class="home_listings">
+      <% for(listing of listings){ %> <%if(listing.category == "Hotels"){%>
+      <a href="/listings/page/Hotels">
+        <div class="home_card">
+          <img
+            src="<%=listing.image[0].url%>"
+            class="home_img"
+            alt="listing_image"
+          />
+        </div>
+      </a>
+      <%}%> <%}%>
+    </div>
+  </div>
+</div>
+<script>
+  document.querySelectorAll(".home_listings").forEach((slider) => {
+    slider.addEventListener("wheel", (e) => {
+      e.preventDefault(); // stop vertical scroll
+      slider.scrollLeft += e.deltaY * 4.5; // wheel → horizontal
+      ease = 0.08;
+    });
+  });
+</script>

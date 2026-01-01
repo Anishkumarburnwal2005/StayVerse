@@ -5,6 +5,14 @@
   const listing = <%- JSON.stringify(listing)%>;
 </script>
 
+<% if(!currUser) {%>
+<style>
+  .navbar {
+    display: none;
+  }
+</style>
+<% } %>
+
 <style>
   .show-btns {
     display: flex;

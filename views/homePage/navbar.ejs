@@ -1,0 +1,62 @@
+<style>
+  .navbar {
+    height: 5rem;
+  }
+
+  .collection {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between !important;
+    align-content: space-between;
+  }
+
+  .mid,
+  .last {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .navbarTitle {
+    font-family: "Roboto Condensed", sans-serif !important;
+    font-weight: 500;
+    color: #fe424d;
+    font-size: 2rem;
+    text-decoration: none;
+  }
+
+  .navLink {
+    font-size: 1.25rem;
+    color: #222;
+    text-decoration: none;
+    font-weight: 400;
+  }
+
+  .navLink:hover {
+    color: #fe424d;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg bg-body-light">
+  <div class="container-fluid">
+    <div class="collection">
+      <div class="start">
+        <a class="navbarTitle" href="/listings">
+          <i class="fa-sharp fa-regular fa-compass"></i> StayVerse
+        </a>
+      </div>
+      <div class="mid">
+        <a class="navLink" href="#">Destinations</a>
+        <a class="navLink" href="#">Features</a>
+        <a class="navLink" href="/listings/terms">About Us</a>
+        <a class="navLink" href="#">Contact</a>
+      </div>
+      <div class="last">
+        <a href="/login" class="btn btn-outline-danger">Sign In</a>
+        <a href="/signUp" class="btn btn-danger">Get Started Free</a>
+      </div>
+    </div>
+  </div>
+</nav>
