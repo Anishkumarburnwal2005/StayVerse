@@ -1,12 +1,74 @@
 <% layout("/Layout/boilerplate.ejs")%>
 
-<div class="row">
-  <div class="col-6 offset-3 mt-4 signUpPage">
-    <h1 class="signHeading">SignUp on StayVerse</h1>
-    <hr />
+<style>
+  .googleLogin {
+    text-decoration: none !important;
+    color: #222;
+    font-size: 1.35rem;
+    font-weight: 400;
+  }
+
+  .boxLogin {
+    height: 2.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid black 1px;
+    border-radius: 10px;
+  }
+
+  .loginTitle {
+    font-weight: 450;
+    color: #222;
+    font-size: 1.8rem;
+  }
+
+  .navbar {
+    display: none;
+  }
+
+  .loginText {
+    font-family: "Roboto Condensed", sans-serif !important;
+  }
+
+  .directSign {
+    text-decoration: none !important;
+    font-weight: 450;
+  }
+
+  .fix2 {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 2.3rem;
+    font-weight: 500;
+    color: #222;
+    text-decoration: none;
+    margin-top: 1rem;
+    color: #fe424d;
+  }
+</style>
+
+<div class="row loginText">
+  <div class="col-4 fix">
+    <a class="fix2" href="/listings">
+      <i class="fa-sharp fa-regular fa-compass"></i> &nbsp;&nbsp;StayVerse
+    </a>
+  </div>
+
+  <div class="col-5 mt-3 loginPage">
+    <p class="loginTitle">Create an account to wander on StayVerse</p>
+    <div class="boxLogin">
+      <a href="/auth/google" class="googleLogin"
+        ><i class="fa-brands fa-google"></i> &nbsp;&nbsp;&nbsp; Continue with
+        Google</a
+      >
+    </div>
+    <p style="text-align: center; font-size: 1.5rem">or</p>
+
     <form method="POST" action="/signUp" class="needs-validation" novalidate>
       <div class="mb-3">
-        <label for="username" class="form-label fw-semibold">Username : </label>
+        <label for="username" class="form-label">Username : </label>
         <input
           type="text"
           id="username"
@@ -19,7 +81,7 @@
       </div>
 
       <div class="mb-3">
-        <label for="email" class="form-label fw-semibold">Email : </label>
+        <label for="email" class="form-label">Email : </label>
         <input
           type="email"
           id="email"
@@ -32,7 +94,7 @@
       </div>
 
       <div class="mb-3">
-        <label for="gender" class="form-label fw-semibold">Gender: </label>
+        <label for="gender" class="form-label">Gender: </label>
         <select name="gender" id="gender" class="form-control">
           <option value="male">Male</option>
           <option value="female">Female</option>
@@ -42,7 +104,7 @@
       </div>
 
       <div class="mb-3">
-        <label for="password" class="form-label fw-semibold">Password : </label>
+        <label for="password" class="form-label">Password : </label>
         <input
           type="password"
           id="password"
@@ -67,9 +129,7 @@
         ></textarea>
       </div>
 
-      <button class="btn btn-outline-success">SignUp</button>
+      <button class="btn btn-outline-success mb-5">SignUp</button>
     </form>
-    <hr />
-    <h3><a href="/auth/google">Sign Up with Google</a></h3>
   </div>
 </div>

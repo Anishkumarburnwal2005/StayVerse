@@ -41,7 +41,7 @@ router
   .route("/:id")
 
   //Show route
-  .get(listingController.renderShowForm)
+  .get(wrapAsync(listingController.renderShowForm))
 
   //Update route
   .put(

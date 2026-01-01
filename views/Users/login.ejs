@@ -1,28 +1,71 @@
 <% layout("/Layout/boilerplate.ejs")%>
 
 <style>
-    @media(max-width:500px) and (orientation:portrait){
-       .loginPage{
-            margin:2.5rem 1rem 4rem 2rem !important;
-            width:19rem !important;
-            padding: 0;
-       }
+    .googleLogin {
+        text-decoration: none !important;
+        color: #222;
+        font-size: 1.35rem;
+        font-weight: 400;
     }
 
-    @media(max-width:800px) and (orientation:landscape){
-       .loginPage{
-            margin:2rem 1rem 2rem 2rem !important;
-            width:30rem !important;
-            padding: 0;
-       }
+    .boxLogin {
+        height: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid black 1px;
+        border-radius: 10px;
+    }
+
+    .loginTitle {
+        font-weight: 450;
+        color: #222;
+        font-size: 1.8rem;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .loginText {
+        font-family: "Roboto Condensed", sans-serif !important;
+    }
+
+    .directSign {
+        text-decoration: none !important;
+        font-weight: 450;
+    }
+
+ 
+
+    .fix2 {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        font-size: 2.3rem;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none; 
+        margin-top: 1rem;
+        color: #fe424d;
     }
 
 </style>
 
-    <div class="row">
-        <div class="col-6 offset-3 mt-4 loginPage">
-            <h1>Login on StayVerse</h1>
-            <hr>
+    <div class="row loginText">
+
+        <div class="col-4 fix">
+            <a class="fix2" href="/listings">
+                <i class="fa-sharp fa-regular fa-compass"></i> &nbsp;&nbsp;StayVerse
+            </a>
+        </div>
+
+        <div class="col-5 mt-4 loginPage">
+            <p class="loginTitle">Log in or create an account to wander on StayVerse</p>
+            <div class="boxLogin">
+                <a href="/auth/google"  class="googleLogin"><i class="fa-brands fa-google"></i> &nbsp;&nbsp;&nbsp; Continue with Google</a>
+            </div>
+            <p style="text-align: center; font-size: 1.6rem;">or</p>
             <form method="POST" action="/login" class="needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="username" class="form-label">Username : </label>
@@ -35,17 +78,11 @@
                 <button class="btn btn-outline-success">Login</button>
             </form>
 
-            <hr />
-            <h3><a href="/auth/google">Sign Up with Google</a></h3>
-
-            <br><hr>
+           <hr>
 
             <p>
                 Looks like you're not signed in. Please sign in first to continue -> 
-
-                <form action="/signUp">
-                    <button class="btn btn-outline-success">Sign in</button>
-                </form>
+                <p class="text-muted">No account? &nbsp;<a href="/signUp" class="directSign">Create one</a></p>
             </p>
         </div>
     </div>

@@ -5,7 +5,10 @@ module.exports.ownListings = async (req, res) => {
   let { id } = req.params;
 
   const allListings = await Listing.find({ owner: id });
-  //console.log(allListings);
+  if (allListings && allListings.length <= 0) {
+    req.flash("error", "No Listing is created yet!!");
+    res.redirect(`/auth/google/info/${id}`);
+  }
   res.render("Users/userListings.ejs", { allListings });
 };
 
