@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: #222;
+  background-color: #fff;
+  line-height: 1.6;
+}
+
+.section {
+  padding: 5rem 8%;
+}
+
+.bg-light {
+  background-color: #f8f9fb;
+}
+
+/* Headings */
+.section h2 {
+  font-size: 2.6rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 650px;
+  margin: 0 auto 3rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Hover Effect */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.contact-info p {
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* Form */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 0.9rem;
+}
+
+.contact-form textarea {
+  resize: none;
+  height: 120px;
+}
+
+.contact-form button {
+  border: none;
+  cursor: pointer;
+}
+
+.about-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.about-stats div h3 {
+  font-size: 2rem;
+  color: #6366f1;
+}
+
+.about-stats div p {
+  font-size: 0.9rem;
+  color: #555;
+}

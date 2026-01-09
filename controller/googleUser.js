@@ -20,5 +20,6 @@ module.exports.userData = async (req, res) => {
 };
 
 module.exports.authenticated = function (req, res) {
+  req.flash("success", "Welcome back to StayVerse!");
   return res.redirect("/listings/index"); // Authentication successful
 };

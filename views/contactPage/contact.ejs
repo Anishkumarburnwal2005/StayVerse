@@ -1,0 +1,41 @@
+<% layout("contactPage/home.ejs") %>
+
+<section id="contact" class="section bg-light">
+  <h2>Contact Us</h2>
+  <p class="section-subtitle">Have questions? We’re here to help you anytime</p>
+
+  <div class="contact-container">
+    <div class="contact-info">
+      <p><strong>Email:</strong> support@stayverse.com</p>
+      <p><strong>Phone:</strong> +1 800 123 4567</p>
+      <p><strong>Address:</strong> 221B Travel Street, Asansol, India</p>
+      <p><strong>Support Hours:</strong> 24/7 Customer Assistance</p>
+    </div>
+
+    <form
+      method="get"
+      action="/listings/feedback"
+      class="contact-form needs-validation"
+      novalidate
+    >
+      <input
+        type="text"
+        placeholder="Your Name"
+        class="form-control"
+        required
+      />
+      <input
+        type="email"
+        placeholder="Your Email"
+        class="form-control"
+        required
+      />
+      <textarea
+        placeholder="Your Message"
+        class="form-control"
+        required
+      ></textarea>
+      <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+  </div>
+</section>

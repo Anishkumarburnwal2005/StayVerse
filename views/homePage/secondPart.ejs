@@ -44,10 +44,24 @@
     font-size: 3.5rem;
     margin-top: 1rem;
     margin-bottom: 3rem;
+    transition: transform 0.7s ease;
+  }
+
+  .card i:hover {
+    transform: rotate(360deg);
   }
 
   .card {
     height: 17rem;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
   }
 </style>
 
@@ -95,7 +109,7 @@
       <div class="card-body">
         <i
           class="fa-sharp fa-solid fa-face-smile"
-          style="color: rgb(206, 209, 42)"
+          style="color: rgb(208, 211, 29)"
         ></i>
         <h5 class="card-title">Best Price Guarantee</h5>
         <p class="card-text text-muted">

@@ -26,6 +26,9 @@ async function getCoordinates(address) {
 }
 
 module.exports.home = async (req, res) => {
+  if (req.user) {
+    res.redirect("/listings/index");
+  }
   let listings = await Listing.find({});
   res.render("listings/home.ejs", { listings });
 };
@@ -252,4 +255,25 @@ module.exports.showAllImgPage = async (req, res) => {
   let listing = await Listing.findById(id);
   const redirectUrl = req.headers.referer || "/listing";
   res.render("listings/showPhotos.ejs", { listing, redirectUrl });
+};
+
+module.exports.destination = (req, res) => {
+  res.render("contactPage/destination.ejs");
+};
+
+module.exports.features = (req, res) => {
+  res.render("contactPage/feature.ejs");
+};
+
+module.exports.contact = (req, res) => {
+  res.render("contactPage/contact.ejs");
+};
+
+module.exports.about = (req, res) => {
+  res.render("contactPage/about.ejs");
+};
+
+module.exports.feedback = (req, res) => {
+  req.flash("success", "Supporting team will reach you soon!");
+  res.redirect("/listings");
 };

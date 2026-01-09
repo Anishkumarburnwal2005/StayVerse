@@ -29,13 +29,28 @@ router.post(
 );
 
 //Privacy route
-router.get("/privacy", wrapAsync(listingController.privacy));
+router.get("/privacy", listingController.privacy);
 
 //Terms route
-router.get("/terms", wrapAsync(listingController.terms));
+router.get("/terms", listingController.terms);
 
 //Search
 router.get("/search", wrapAsync(listingController.search));
+
+//Destination
+router.get("/destination", listingController.destination);
+
+//About
+router.get("/about", listingController.about);
+
+//Contact
+router.get("/contact", listingController.contact);
+
+//Features
+router.get("/features", listingController.features);
+
+// Feedback
+router.get("/feedback", listingController.feedback);
 
 router
   .route("/:id")
